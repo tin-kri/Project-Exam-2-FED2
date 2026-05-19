@@ -1,4 +1,5 @@
 import "./App.css";
+import Footer from "./components/layout/footer";
 import { Calendar } from "./components/ui/calendar"
 import React from "react";
 
@@ -7,6 +8,7 @@ const [date, setDate] = React.useState<Date | undefined>(new Date())
 
   return (
     <>
+    
       <h1>Holidaze</h1>
      
        <Calendar
@@ -22,6 +24,7 @@ const [date, setDate] = React.useState<Date | undefined>(new Date())
         <button className="btn btn-outline w-full">Book Now</button>
         
       </div>
+      <Footer />
     </>
   );
 }
