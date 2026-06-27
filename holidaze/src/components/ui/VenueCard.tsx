@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-
 import type { VenueApiData } from "@/types/types";
+import RatingSection from "@/components/ui/StarRating";
 
 interface VenueCardProps {
   venue: VenueApiData;
@@ -50,7 +50,9 @@ export default function VenueCard({ venue }: VenueCardProps) {
           </ul>
         )}
 
-        {/* Rating shad? lucid? */}
+        {/* Rating shad? lucid? */}<div className="mt-3 pt-3" >
+<RatingSection  rating={venue.rating}/>
+</div>
 
         {/* price */}
         <div className="mt-3 flex items-center justify-between border-t border-grey-200 pt-3">
