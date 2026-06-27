@@ -58,7 +58,7 @@ export default function RatingSection({ rating = 0 }: RatingSectionProps) {
 
   return (
     <div>
-      <div className="flex items-center gap-1 text-star">
+      <div className="flex items-center gap-1 mt-3 text-star">
         {Array.from({ length: fullStars }).map((_, i) => (
           <Star key={`full-${i}`} type="full" />
         ))}

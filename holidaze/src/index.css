@@ -15,10 +15,14 @@
   --color-grey-100: #f0f2f5;
   --color-grey-200: #e2e6ea;
   --color-grey-900: #1a1f2e;
+  --color-grey-600: #6d6d6d;
 
   --color-bg-card: #f7f5f0;
   --color-page-bg: #fefaf7;
   --color-star: #f5a623;
+
+  --color-light-blue: #e0edff;
+  --color-blue: #00448c;
 
   --font-sans: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Source Serif 4", ui-serif, Georgia, serif;
