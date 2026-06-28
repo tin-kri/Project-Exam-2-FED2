@@ -3,13 +3,26 @@
 @import "shadcn/tailwind.css";
 
 @theme {
+  --color-navy-900: #0a1845;
   --color-navy-800: #0d1f5c;
+
+  /* for hoover text links */
+  --color-navy-500: #2a3c79;
+
+  --color-sky-300: #87ceeb;
+  --color-sky-100: #dff0fa;
 
   --color-grey-100: #f0f2f5;
   --color-grey-200: #e2e6ea;
   --color-grey-900: #1a1f2e;
+  --color-grey-600: #6d6d6d;
 
-  --color-sky-100: #dff0fa;
+  --color-bg-card: #f7f5f0;
+  --color-page-bg: #fefaf7;
+  --color-star: #f5a623;
+
+  --color-light-blue: #e0edff;
+  --color-blue: #00448c;
 
   --font-sans: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Source Serif 4", ui-serif, Georgia, serif;
@@ -17,8 +30,6 @@
   --radius-sm: 5px;
 
   --tracking-tight: -0.045em;
-
-  
 }
 
 @layer base {
@@ -33,5 +44,6 @@
   html {
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+    background-color: #fefaf7;
   }
 }
