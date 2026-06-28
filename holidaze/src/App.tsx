@@ -2,7 +2,6 @@ import "./App.css";
 import Navbar from "./components/layout/Navbar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import VenuesPage from "./pages/Venues";
-
 function App() {
   return (
     <>

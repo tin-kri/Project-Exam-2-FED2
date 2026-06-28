@@ -1,20 +1,14 @@
-import { useEffect, useState } from "react";
-import { getVenues } from "../api/venues";
-import type { VenueApiData } from "../types/types";
 import VenueCard from "@/components/ui/VenueCard";
 import PageWrapper from "@/components/layout/PageWrapper";
+import Pagination from "@/components/ui/Pagination";
+import { useVenuePagination } from "@/hooks/useVenuePagination";
+import { useVenues } from "@/hooks/useVenue";
+
+const limit = 24;
 
 export default function VenuesPage() {
-  const [venues, setVenues] = useState<VenueApiData[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    getVenues()
-      .then((response) => setVenues(response.data))
-      .catch((error) => setError(error.message))
-      .finally(() => setIsLoading(false));
-  }, []);
+  const { page, nextPage, previousPage } = useVenuePagination();
+  const { venues, meta, isLoading, error } = useVenues({ page, limit: limit });
 
   if (isLoading) return <p>Loading venues...</p>;
   if (error) return <p>Something went wrong: {error}</p>;
@@ -22,16 +16,21 @@ export default function VenuesPage() {
 
   return (
     <PageWrapper>
-     
-            <ul className="mt-6 grid list-none  gap-4 md:grid-cols-2">
-          {venues.map((venue) => (
-            <li key={venue.id}>
-              <VenueCard venue={venue} />
-            </li>
-          ))}
-        </ul>
+      <ul className="mt-6 grid list-none gap-4 md:grid-cols-2">
+        {venues.map((venue) => (
+          <li key={venue.id}>
+            <VenueCard venue={venue} />
+          </li>
+        ))}
+      </ul>
 
-      
+      {meta && (
+        <Pagination
+          meta={meta}
+          onNext={() => nextPage(meta)}
+          onPrevious={() => previousPage(meta)}
+        />
+      )}
     </PageWrapper>
   );
 }
