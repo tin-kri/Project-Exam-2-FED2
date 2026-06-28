@@ -2,7 +2,7 @@ import VenueCard from "@/components/ui/VenueCard";
 import PageWrapper from "@/components/layout/PageWrapper";
 import Pagination from "@/components/ui/Pagination";
 import { useVenuePagination } from "@/hooks/useVenuePagination";
-import { useVenues } from "@/hooks/useVenue";
+import { useVenues } from "@/hooks/useVenues";
 
 const limit = 24;
 

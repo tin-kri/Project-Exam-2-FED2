@@ -1,27 +1,21 @@
-import { useState, useEffect, useMemo } from "react";
-import { getVenues } from "@/api/venues";
-import type { VenueApiData, ApiMeta, VenueQueryParams } from "@/types/types";
+import { useState, useEffect } from "react";
+import { getVenueById } from "@/api/venues";
+import type { VenueApiData } from "@/types/types";
 
-export function useVenues(params: VenueQueryParams) {
-  const [venues, setVenues] = useState<VenueApiData[]>([]);
-  const [meta, setMeta] = useState<ApiMeta | null>(null);
+export function useVenue(id: string | undefined) {
+  const [venue, setVenue] = useState<VenueApiData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const stableParams = useMemo(
-    () => params,
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [params.page, params.limit]
-  );
-
   useEffect(() => {
+    if (!id) return;
+
     let active = true;
 
-    getVenues(stableParams)
+    getVenueById(id)
       .then((res) => {
         if (!active) return;
-        setVenues(res.data);
-        setMeta(res.meta);
+        setVenue(res.data);
         setIsLoading(false);
       })
       .catch((err) => {
@@ -33,7 +27,7 @@ export function useVenues(params: VenueQueryParams) {
     return () => {
       active = false;
     };
-  }, [stableParams]);
+  }, [id]);
 
-  return { venues, meta, isLoading, error };
+  return { venue, isLoading, error };
 }
