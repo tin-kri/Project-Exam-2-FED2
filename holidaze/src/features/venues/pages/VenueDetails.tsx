@@ -11,12 +11,9 @@ export default function VenueDetailPage() {
   if (error) return <p>Something went wrong: {error}</p>;
   if (!venue) return <p>Venue not found.</p>;
 
-  console.log("api venue:",(venue))
-
   return (
     <PageWrapper>
       <VenueDetailsCard venue={venue} />
-      
       <BookingSection venue={venue} />
     </PageWrapper>
   );
