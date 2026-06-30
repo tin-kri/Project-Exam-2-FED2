@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { addDays, differenceInCalendarDays } from "date-fns";
 import type { VenueApiData } from "@/types/types";
-import DateRangePicker from "@/components/ui/DateRangePicker";
+import DateRangePicker from "@/features/bookings/components/DateRangePicker";
 import { type DateRange } from "react-day-picker";
 import { Button } from "@/components/ui/button";
 

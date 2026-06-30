@@ -1,4 +1,4 @@
-import type { VenueApiData } from "@/types/types";
+import type { VenueApiData } from "../types/venue.types";
 import RatingSection from "@/components/ui/StarRating";
 import AmenitiesTag from "./AmenitiesTag";
 

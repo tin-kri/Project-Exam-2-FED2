@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
-import { useVenue } from "@/hooks/useVenue";
+import { useVenue } from "@/features/venues/hooks/useVenue";
 import PageWrapper from "@/components/layout/PageWrapper";
-import VenueDetailsCard from "@/components/ui/VenueDetailsCard";
-import BookingSection from "@/components/ui/BookingSection";
+import VenueDetailsCard from "@/features/venues/components/VenueDetailsCard";
+import BookingSection from "@/features/bookings/components/BookingSection";
 
 export default function VenueDetailPage() {
   const { id } = useParams<{ id: string }>();
@@ -11,9 +11,12 @@ export default function VenueDetailPage() {
   if (error) return <p>Something went wrong: {error}</p>;
   if (!venue) return <p>Venue not found.</p>;
 
+  console.log("api venue:",(venue))
+
   return (
     <PageWrapper>
       <VenueDetailsCard venue={venue} />
+      
       <BookingSection venue={venue} />
     </PageWrapper>
   );

@@ -1,8 +1,8 @@
 import "./App.css";
 import Navbar from "./components/layout/Navbar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import VenuesPage from "./pages/Venues";
-import VenueDetailPage from "./pages/VenueDetails";
+import VenuesPage from "./features/venues/pages/Venues";
+import VenueDetailPage from "./features/venues/pages/VenueDetails";
 function App() {
   return (
     <>
