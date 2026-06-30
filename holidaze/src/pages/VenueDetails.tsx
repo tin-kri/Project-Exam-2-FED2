@@ -4,7 +4,6 @@ import PageWrapper from "@/components/layout/PageWrapper";
 import VenueDetailsCard from "@/components/ui/VenueDetailsCard";
 import BookingSection from "@/components/ui/BookingSection";
 
-
 export default function VenueDetailPage() {
   const { id } = useParams<{ id: string }>();
   const { venue, isLoading, error } = useVenue(id);
@@ -15,11 +14,7 @@ export default function VenueDetailPage() {
   return (
     <PageWrapper>
       <VenueDetailsCard venue={venue} />
-             <div className="lg:col-span-1">
-          <BookingSection venue={venue} />
-         
-        </div>
-
+      <BookingSection venue={venue} />
     </PageWrapper>
   );
 }

@@ -1,4 +1,3 @@
-
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 import { type DateRange } from "react-day-picker";
@@ -10,14 +9,15 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { useState } from "react";
 
- 
 type DateRangePickerProps = {
   date: DateRange | undefined;
-  onSelect: (date: DateRange | undefined) => void;
+
 };
 
-export default function DateRangePicker({ date, onSelect }: DateRangePickerProps) {
+export default function DateRangePicker(DateRangePickerProps) {
+  const [date, setDate] = useState<DateRange | undefined>();
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -25,10 +25,9 @@ export default function DateRangePicker({ date, onSelect }: DateRangePickerProps
           variant="outline"
           className={cn(
             "w-full justify-start text-left font-normal",
-            !date && "text-muted-foreground"
+            !date && "text-muted-foreground",
           )}
         >
-
           <CalendarIcon className="mr-2 size-4" />
           {date?.from ? (
             date.to ? (
@@ -45,11 +44,10 @@ export default function DateRangePicker({ date, onSelect }: DateRangePickerProps
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0 bg-white" align="start">
-
-                <Calendar
+        <Calendar
           mode="range"
           selected={date}
-          onSelect={onSelect}
+          onSelect={setDate}
           disabled={{ before: new Date() }}
           classNames={{
             months: "flex flex-col gap-4",
@@ -68,7 +66,7 @@ export default function DateRangePicker({ date, onSelect }: DateRangePickerProps
           }}
         />
 
-              {/* <Calendar
+        {/* <Calendar
           mode="range"
           defaultMonth={date?.from}
           selected={date}
@@ -77,10 +75,7 @@ export default function DateRangePicker({ date, onSelect }: DateRangePickerProps
           disabled={(day) => day < new Date()}
           classNames={{ months: "flex flex-row gap-4" }}
         /> */}
-
       </PopoverContent>
     </Popover>
   );
-
-  
 }
