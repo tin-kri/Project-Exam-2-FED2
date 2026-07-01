@@ -11,7 +11,7 @@ export function useVenues(params: VenueQueryParams) {
   const stableParams = useMemo(
     () => params,
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [params.page, params.limit]
+    [params.page, params.limit],
   );
 
   useEffect(() => {

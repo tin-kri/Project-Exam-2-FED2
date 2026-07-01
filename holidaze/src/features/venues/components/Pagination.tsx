@@ -1,5 +1,5 @@
 import type { ApiMeta } from "@/types/types";
-import Button from "./button";
+import { Button } from "@/components/ui/button";
 
 type PaginationProps = {
   meta: ApiMeta;
@@ -7,7 +7,11 @@ type PaginationProps = {
   onPrevious: () => void;
 };
 
-export default function Pagination({ meta, onNext, onPrevious }: PaginationProps) {
+export default function Pagination({
+  meta,
+  onNext,
+  onPrevious,
+}: PaginationProps) {
   return (
     <div className="mt-8 flex items-center justify-center gap-3">
       <Button size="sm" onClick={onPrevious} disabled={meta.isFirstPage}>

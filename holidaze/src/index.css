@@ -3,19 +3,40 @@
 @import "shadcn/tailwind.css";
 
 @theme {
+  /* Expose shadcn tokens as Tailwind utilities */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
   --color-navy-900: #0a1845;
   --color-navy-800: #0d1f5c;
 
   /* for hoover text links */
   --color-navy-500: #2a3c79;
 
+  --color-sky-500: #32acdc;
   --color-sky-300: #87ceeb;
   --color-sky-100: #dff0fa;
 
   --color-grey-100: #f0f2f5;
   --color-grey-200: #e2e6ea;
   --color-grey-900: #1a1f2e;
-  --color-grey-600: #6d6d6d;
+  --color-grey-600: #505152;
 
   --color-bg-card: #f7f5f0;
   --color-page-bg: #fefaf7;
@@ -30,6 +51,38 @@
   --radius-sm: 5px;
 
   --tracking-tight: -0.045em;
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+}
+
+/* ============================================
+   :root — Holidaze brand mapped to shadcn tokens
+   ============================================ */
+:root {
+  --radius: 0.3rem;
+
+  /* Mapped to Holidaze brand */
+  --background: #ffffff;
+  --foreground: #1a1f2e;
+  --card: #ffffff;
+  --card-foreground: #1a1f2e;
+  --popover: #ffffff;
+  --popover-foreground: #1a1f2e;
+  --primary: #0d1f5c; /* navy-800 */
+  --primary-foreground: #ffffff;
+  --secondary: #dff0fa; /* sky-100 */
+  --secondary-foreground: #0d1f5c;
+  --muted: #dff0fa; /* sky-100 — calendar range fill */
+  --muted-foreground: #5a6372;
+  --accent: #dff0fa; /* sky-100 — hover states */
+  --accent-foreground: #0d1f5c;
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: #e2e6ea; /* grey-200 */
+  --input: #e2e6ea;
+  --ring: #0d1f5c; /* navy-800 */
 }
 
 @layer base {

@@ -36,8 +36,8 @@ function Star({ type }: { type: StarType }) {
 
       <path
         strokeLinecap="butt"
-        stroke-Linejoin="miter"
-        stroke-Miterlimit="2"
+        strokeLinejoin="miter"
+        strokeMiterlimit="2"
         d="M12 2l2.832 6.836 7.394.5888-5.363 4.592 1.576 7.216L12 17.77 5.561 21.232 7.137 14.016 1.774 9.424 9.168 8.836 12 2z"
       />
     </svg>
