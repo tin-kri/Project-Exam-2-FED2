@@ -3,28 +3,30 @@ import { CalendarIcon } from "lucide-react";
 import { type DateRange } from "react-day-picker";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
+import { Calendar } from "@/components/ui/Calendar";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { useState } from "react";
+import PageWrapper from "@/components/layout/PageWrapper";
 
 type DateRangePickerProps = {
   date: DateRange | undefined;
-
+  onSelect: (date: DateRange | undefined) => void;
 };
 
-export default function DateRangePicker(DateRangePickerProps) {
-  const [date, setDate] = useState<DateRange | undefined>();
+export default function DateRangePicker({
+  date,
+  onSelect,
+}: DateRangePickerProps) {
   return (
     <Popover>
       <PopoverTrigger asChild>
         <Button
           variant="outline"
           className={cn(
-            "w-full justify-start text-left font-normal",
+            "w-full rounded-md justify-start text-left font-normal",
             !date && "text-muted-foreground",
           )}
         >
@@ -43,39 +45,30 @@ export default function DateRangePicker(DateRangePickerProps) {
           )}
         </Button>
       </PopoverTrigger>
+    
       <PopoverContent className="w-auto p-0 bg-white" align="start">
         <Calendar
-          mode="range"
-          selected={date}
-          onSelect={setDate}
-          disabled={{ before: new Date() }}
-          classNames={{
-            months: "flex flex-col gap-4",
-            month: "w-full",
-            nav: "flex items-center justify-between mb-4",
-            month_caption: "font-serif text-sm font-bold text-navy-800",
-            weekday: "text-xs text-grey-900 font-normal",
-            day: "h-9 w-9 rounded-full text-sm text-grey-900 hover:bg-sky-100",
-            day_button: "h-9 w-9 rounded-full",
-            selected: "bg-navy-800 text-white rounded-full hover:bg-navy-800",
-            range_start: "bg-navy-800 text-white rounded-full",
-            range_end: "bg-navy-800 text-white rounded-full",
-            range_middle: "bg-sky-100 text-navy-800 rounded-none",
-            today: "font-bold text-navy-800",
-            disabled: "text-grey-200 opacity-40",
-          }}
-        />
-
-        {/* <Calendar
           mode="range"
           defaultMonth={date?.from}
           selected={date}
           onSelect={onSelect}
-          numberOfMonths={2}
+          numberOfMonths={1}
           disabled={(day) => day < new Date()}
-          classNames={{ months: "flex flex-row gap-4" }}
-        /> */}
+          className="[--cell-radius:9999px] "
+          classNames={{
+            selected: "bg-sky-300",
+            months: "flex flex-row gap-4",
+            day_button:
+              "rounded-full hover:bg-sky-100 transition-colors " +
+              "group-data-[focused=true]/day:!ring-sky-500 group-data-[focused=true]/day:!border-sky-300 " +
+              "data-[selected-single=true]:!bg-sky-300 data-[selected-single=true]:!text-navy-800 " +
+              "data-[range-start=true]:!bg-sky-300 data-[range-start=true]:!text-navy-800 " +
+              "data-[range-end=true]:!bg-sky-300 data-[range-end=true]:!text-navy-800 " +
+              "data-[range-middle=true]:!bg-sky-100 data-[range-middle=true]:!text-navy-800 data-[range-middle=true]:!rounded-none",
+          }}
+        />
       </PopoverContent>
+      
     </Popover>
   );
 }

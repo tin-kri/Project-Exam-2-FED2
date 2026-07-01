@@ -22,7 +22,7 @@ export default function VenueImageCarousel({
   console.log(media);
   
   return (
-    <div>
+    <div className="">
       <Carousel setApi={setApi} className="w-full">
         <CarouselContent>
           {media.map((image, index) => (
@@ -30,7 +30,7 @@ export default function VenueImageCarousel({
               <img
                 src={image.url}
                 alt={image.alt || `${venueName} photo ${index + 1}`}
-                className="h-72 w-full rounded-sm object-cover"
+                className="aspect-video w-full rounded-sm object-cover"
               />
             </CarouselItem>
           ))}
