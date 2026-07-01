@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getVenueById } from "@/api/venues";
-import type { VenueApiData } from "@/types/types";
+import type { VenueApiData } from "../types/venue.types";
 
 export function useVenue(id: string | undefined) {
   const [venue, setVenue] = useState<VenueApiData | null>(null);

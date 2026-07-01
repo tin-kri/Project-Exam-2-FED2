@@ -4,13 +4,13 @@ import { type DateRange } from "react-day-picker";
 type BookingSummaryProps = {
   date: DateRange | undefined;
   total: number;
-  days: number;
+  nights: number;
 };
 
 export default function BookingSummary({
   date,
   total,
-  days,
+  nights,
 }: BookingSummaryProps) {
   if (!date?.from) return null;
 
@@ -27,13 +27,13 @@ export default function BookingSummary({
             <span className="text-grey-900">{format(date.to, "d/M/yyyy")}</span>
           </div>
         )}
-        {days > 0 && (
+        {nights > 0 && (
           <div className="flex gap-4 text-sm">
-            <span className="w-24 font-bold text-navy-800">Days</span>
-            <span className="text-grey-900">{days}</span>
+            <span className="w-24 font-bold text-navy-800">Nights</span>
+            <span className="text-grey-900">{nights}</span>
           </div>
         )}
-        {days > 0 && (
+        {nights > 0 && (
           <div className="flex gap-4 text-sm">
             <span className="w-24 font-bold text-navy-800">Price</span>
             <span className="text-grey-900">${total}</span>
