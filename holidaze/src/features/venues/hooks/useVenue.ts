@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getVenueById } from "@/api/venues";
+import { getVenueById } from "@/features/venues/api/venues";
 import type { VenueApiData } from "../types/venue.types";
 
 export function useVenue(id: string | undefined) {

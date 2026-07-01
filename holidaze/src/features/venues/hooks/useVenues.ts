@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
-import { getVenues } from "@/api/venues";
+import { getVenues } from "@/features/venues/api/venues";
 import type { VenueApiData, ApiMeta, VenueQueryParams } from "@/types/types";
 
 export function useVenues(params: VenueQueryParams) {
