@@ -3,23 +3,40 @@ import VenueCard from "@/features/venues/components/VenueCard";
 import SearchBar from "@/features/venues/components/SearchBar";
 import Pagination from "@/features/venues/components/Pagination";
 import { useVenuesPage } from "@/features/venues/hooks/useVenuesPage";
+import { useSearchParams } from "react-router-dom";
 
 export default function VenuesPage() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get("query") ?? "";
+
+function handleQueryChange(value: string) {
+    setSearchParams(
+      (prev) => {
+        if (value.trim()) {
+          prev.set("query", value);
+        } else {
+          prev.delete("query");
+        }
+        return prev;
+      },
+      { replace: true }, // set to true so it does not spam browser history per keystroke!
+    );
+  }
+
+
   const {
     venues,
     meta,
     isLoading,
     error,
     isSearching,
-    query,
-    onQueryChange,
     nextPage,
     previousPage,
-  } = useVenuesPage();
+  } = useVenuesPage(query);
 
   return (
     <PageWrapper>
-      <SearchBar value={query} onChange={onQueryChange} />
+      <SearchBar value={query} onChange={handleQueryChange} />
 
       {isLoading && <p className="mt-8 text-sm text-grey-900">Loading venues...</p>}
       {error && <p className="mt-8 text-sm text-red-500">Something went wrong: {error}</p>}
