@@ -1,7 +1,7 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import { searchVenues } from "@/features/venues/api/venues";
+import type { VenueApiData } from "../types/venue.types";
 import type { ApiMeta } from "@/types/types";
-import type { VenueApiData} from "../types/venue.types";
 import { useDebounce } from "@/hooks/useDebounce";
 
 export function useVenueSearch(query: string) {
@@ -10,34 +10,38 @@ export function useVenueSearch(query: string) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const debounce = useDebounce(query, 400);
+  const debouncedQuery = useDebounce(query, 300);
 
   useEffect(() => {
-    if (!debounce.trim()) {
+    if (!debouncedQuery.trim()) {
       setResults([]);
+      setMeta(null)
+      setError(null)
+      setIsLoading(false)
       return;
     }
+
     let active = true;
     setIsLoading(true);
     setError(null);
 
-    searchVenues(debounce)
+    searchVenues(debouncedQuery)
       .then((response) => {
         if (!active) return;
         setResults(response.data);
         setMeta(response.meta);
-        setIsLoading(true);
+        setIsLoading(false);
       })
-      .catch((error) => {
+      .catch((err: Error) => {
         if (!active) return;
-        setError(error.message);
+        setError(err.message);
         setIsLoading(false);
       });
 
     return () => {
       active = false;
     };
-  },[debounce]);
+  }, [debouncedQuery]);
 
   return { results, meta, isLoading, error };
 }
