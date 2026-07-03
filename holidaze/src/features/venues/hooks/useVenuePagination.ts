@@ -1,19 +1,3 @@
-// export interface ApiMeta {
-//   isFirstPage: boolean;
-//   isLastPage: boolean;
-//   currentPage: number;
-//   previousPage: number | null;
-//   nextPage: number | null;
-//   pageCount: number;
-//   totalCount: number;
-// }
-
-// export interface VenueQueryParams {
-//   limit?: number;
-//   page?: number;
-//   sort?: keyof VenueApiData;
-//   sortOrder?: "asc" | "desc";
-// }
 import { useState } from "react";
 import type { ApiMeta } from "@/types/types";
 

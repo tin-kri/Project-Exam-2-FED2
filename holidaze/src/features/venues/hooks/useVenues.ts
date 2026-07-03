@@ -1,6 +1,10 @@
 import { useState, useEffect, useMemo } from "react";
-import { getVenues } from "@/api/venues";
-import type { VenueApiData, ApiMeta, VenueQueryParams } from "@/types/types";
+import { getVenues } from "@/features/venues/api/venues";
+import type {
+  VenueApiData,
+  VenueQueryParams,
+} from "@/features/venues/types/venue.types";
+import type { ApiMeta } from "@/types/types";
 
 export function useVenues(params: VenueQueryParams) {
   const [venues, setVenues] = useState<VenueApiData[]>([]);
