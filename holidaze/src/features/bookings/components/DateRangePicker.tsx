@@ -3,7 +3,7 @@ import { CalendarIcon } from "lucide-react";
 import { type DateRange } from "react-day-picker";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/Calendar";
+import { Calendar } from "@/components/ui/calendar";
 import {
   Popover,
   PopoverContent,
@@ -11,14 +11,21 @@ import {
 } from "@/components/ui/popover";
 
 
+
 type DateRangePickerProps = {
   date: DateRange | undefined;
   onSelect: (date: DateRange | undefined) => void;
+  disabledDates?: DateRange[],
 };
+
+
 
 export default function DateRangePicker({
   date,
   onSelect,
+  disabledDates = [],
+
+
 }: DateRangePickerProps) {
   return (
     <Popover>
@@ -45,7 +52,7 @@ export default function DateRangePicker({
           )}
         </Button>
       </PopoverTrigger>
-    
+
       <PopoverContent className="w-auto p-0 bg-white" align="start">
         <Calendar
           mode="range"
@@ -53,7 +60,7 @@ export default function DateRangePicker({
           selected={date}
           onSelect={onSelect}
           numberOfMonths={1}
-          disabled={(day) => day < new Date()}
+          disabled={[{ before: new Date() }, ...disabledDates]}
           className="[--cell-radius:9999px] "
           classNames={{
             selected: "bg-sky-300",
@@ -68,7 +75,6 @@ export default function DateRangePicker({
           }}
         />
       </PopoverContent>
-      
     </Popover>
   );
 }

@@ -10,6 +10,7 @@ export interface VenueApiData {
   updated: string;
   meta: VenueMeta;
   location: VenueLocation;
+  bookings?: Booking[];
 }
 
 export interface Media {
@@ -39,4 +40,14 @@ export interface VenueQueryParams {
   page?: number;
   sort?: keyof VenueApiData;
   sortOrder?: "asc" | "desc";
+}
+
+// should this be in venue folder? it is needed for cal availablity but also BookingSection. shared later?
+export interface Booking {
+  id: string;
+  dateFrom: string;
+  dateTo: string;
+  guests: number;
+  created: string;
+  updated: string;
 }
