@@ -39,7 +39,7 @@ function handleQueryChange(value: string) {
       <SearchBar value={query} onChange={handleQueryChange} />
 
       {isLoading && <p className="mt-8 text-sm text-grey-900">Loading venues...</p>}
-      {error && <p className="mt-8 text-sm text-red-500">Something went wrong: {error}</p>}
+      {error && <p className="mt-8 text-sm text-destructive">Something went wrong: {error}</p>}
       {!isLoading && !error && venues.length === 0 && (
         <p className="mt-8 text-sm text-grey-900">No venues found.</p>
       )}
