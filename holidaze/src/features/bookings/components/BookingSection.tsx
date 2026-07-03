@@ -5,6 +5,7 @@ import { type DateRange } from "react-day-picker";
 import { Button } from "@/components/ui/button";
 import { useBookingCalculation } from "../hooks/useCalculations";
 import BookingSummary from "./BookingSummary";
+import { useBookedDates } from "@/features/venues/hooks/useBookingDays";
 
 interface BookingSectionProps {
   venue: VenueApiData;
@@ -15,7 +16,9 @@ export default function BookingSection({ venue }: BookingSectionProps) {
 
   const [date, setDate] = useState<DateRange | undefined>(undefined);
   const { nights, total } = useBookingCalculation(date, price);
-
+  const bookedDays = useBookedDates(venue.bookings);
+console.log("venue.bookings:", venue.bookings);
+console.log("bookedDates:", bookedDays);
   return (
     <div className="mt-4 border-t border-grey-200 pt-8 rounded-lg px-3 py-4">
       <div className="flex flex-col gap-8 md:flex-row md:items-start md:gap-12">
@@ -28,7 +31,11 @@ export default function BookingSection({ venue }: BookingSectionProps) {
             <p className="mb-2 text-sm font-medium text-navy-800">
               Select dates
             </p>
-            <DateRangePicker date={date} onSelect={setDate} />
+            <DateRangePicker
+              date={date}
+              onSelect={setDate}
+              disabledDates={bookedDays}
+            />
           </div>
         </section>
 

@@ -1,6 +1,6 @@
 import { apiFetch } from "../../../api/base";
 import type { ApiResponse } from "@/types/types"; 
-import type { VenueApiData, VenueQueryParams } from "../types/venue.types";
+import type { VenueApiData, VenueQueryParams, Booking } from "../types/venue.types";
  
 
 export function getVenues(
@@ -27,4 +27,10 @@ export function getVenueById(id: string): Promise<ApiResponse<VenueApiData>> {
 export function searchVenues(q: string): Promise<ApiResponse<VenueApiData[]>> {
   const params = new URLSearchParams({ q });
   return apiFetch<ApiResponse<VenueApiData[]>>(`/venues/search?${params}`);
+}
+
+//  venue bookings availability 
+export function getBookingByVenue(id: string): Promise<ApiResponse<VenueApiData>> {
+ 
+     return apiFetch<ApiResponse<VenueApiData>>(`/venues/${id}?_bookings=true`);
 }

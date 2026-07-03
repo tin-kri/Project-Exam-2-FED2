@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getVenueById } from "@/features/venues/api/venues";
+import { getBookingByVenue } from "../api/venues";
 import type { VenueApiData } from "../types/venue.types";
 
 export function useVenue(id: string | undefined) {
@@ -12,13 +12,13 @@ export function useVenue(id: string | undefined) {
 
     let active = true;
 
-    getVenueById(id)
+     getBookingByVenue(id)
       .then((res) => {
         if (!active) return;
         setVenue(res.data);
         setIsLoading(false);
       })
-      .catch((err) => {
+      .catch((err: Error) => {
         if (!active) return;
         setError(err.message);
         setIsLoading(false);
