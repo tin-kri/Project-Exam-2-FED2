@@ -1,4 +1,4 @@
-import { apiFetch } from "../../../api/base";
+import { fetchVenues } from "../../../api/base";
 import type { ApiResponse } from "@/types/types"; 
 import type { VenueApiData, VenueQueryParams, Booking } from "../types/venue.types";
  
@@ -14,23 +14,23 @@ export function getVenues(
   if (params.sortOrder) query.set("sortOrder", params.sortOrder);
 
   const queryString = query.toString();
-  const endpoint = queryString ? `/venues?${queryString}` : "/venues";
+  const endpoint = queryString ? `venues?${queryString}` : "venues";
 
-  return apiFetch<ApiResponse<VenueApiData[]>>(endpoint);
+  return fetchVenues<ApiResponse<VenueApiData[]>>(endpoint);
 }
 
 export function getVenueById(id: string): Promise<ApiResponse<VenueApiData>> {
-  return apiFetch<ApiResponse<VenueApiData>>(`/venues/${id}`);
+  return fetchVenues<ApiResponse<VenueApiData>>(`venues/${id}`);
 }
 
 // search
 export function searchVenues(q: string): Promise<ApiResponse<VenueApiData[]>> {
   const params = new URLSearchParams({ q });
-  return apiFetch<ApiResponse<VenueApiData[]>>(`/venues/search?${params}`);
+  return fetchVenues<ApiResponse<VenueApiData[]>>(`venues/search?${params}`);
 }
 
 //  venue bookings availability 
 export function getBookingByVenue(id: string): Promise<ApiResponse<VenueApiData>> {
  
-     return apiFetch<ApiResponse<VenueApiData>>(`/venues/${id}?_bookings=true`);
+     return fetchVenues<ApiResponse<VenueApiData>>(`venues/${id}?_bookings=true`);
 }

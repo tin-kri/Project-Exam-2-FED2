@@ -1,8 +1,8 @@
 import { apiFetch } from "@/api/base";
-import type { RegisterForm } from "../types/auth.types";
+import type { AuthRegisterValues, AuthResponse } from "../types/auth.types";
 
-export function registerUser(register: RegisterForm): Promise<Response> {
-  return apiFetch<Response>("/register", {
+export function registerUser(register: AuthRegisterValues): Promise<AuthResponse> {
+  return apiFetch<AuthResponse>("auth/register", {
     method: "POST",
     body: JSON.stringify({
       name: register.name,

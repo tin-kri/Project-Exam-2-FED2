@@ -6,6 +6,10 @@ export interface RegisterForm {
 }
 
 export interface AuthRegisterValues {
+  name: string;
+  email: string;
+  password: string;
+  venueManager: boolean;
   bio?: string;
   avatar?: {
     url: string;
@@ -15,4 +19,9 @@ export interface AuthRegisterValues {
     url: string;
     alt?: string;
   };
+  
+}
+
+export interface AuthResponse {
+  data: AuthRegisterValues;
 }
