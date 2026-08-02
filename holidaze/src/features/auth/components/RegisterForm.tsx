@@ -22,25 +22,31 @@ function validate(values: AuthRegisterValues): RegisterErrors {
   return errors;
 }
 
-export default function RegisterForm({ onSubmit, isLoading, error }: RegisterFormProps) {
+export default function RegisterForm({
+  onSubmit,
+  isLoading,
+  error,
+}: RegisterFormProps) {
   const [values, setValues] = useState<AuthRegisterValues>({
     name: "",
     email: "",
     password: "",
     venueManager: false,
-    
   });
   const [errors, setErrors] = useState<RegisterErrors>({});
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value, type, checked } = e.target;
-    setValues((prev) => ({ ...prev, [name]: type === "checkbox" ? checked : value }));
+    setValues((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
     if (errors[name as keyof RegisterErrors]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
   }
 
-  async function handleSubmit(e: React.SubmitEvent) {
+  async function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
     e.preventDefault();
     const validationErrors = validate(values);
     if (Object.keys(validationErrors).length > 0) {
@@ -52,11 +58,15 @@ export default function RegisterForm({ onSubmit, isLoading, error }: RegisterFor
 
   return (
     <section className="rounded-md bg-secondary p-6">
-      <h1 className="text-center text-navy-900 font-serif text-2xl font-bold tracking-tight text-foreground">
+      <h1 className="text-center text-navy-900 font-serif text-2xl font-bold tracking-tight ">
         Register to Holidaze
       </h1>
 
-      <form onSubmit={handleSubmit} className="mt-4 flex flex-col gap-4 text-navy-800" noValidate>
+      <form
+        onSubmit={handleSubmit}
+        className="mt-4 flex flex-col gap-4 text-navy-800"
+        noValidate
+      >
         {error && <p className="text-destructive">{error}</p>}
 
         <div className="flex flex-col gap-1">
@@ -70,7 +80,9 @@ export default function RegisterForm({ onSubmit, isLoading, error }: RegisterFor
             onChange={handleChange}
             className="w-full rounded-sm border border-input bg-background px-4 py-2"
           />
-          {errors.name && <span className="text-sm text-destructive">{errors.name}</span>}
+          {errors.name && (
+            <span className="text-sm text-destructive">{errors.name}</span>
+          )}
         </div>
 
         <div className="flex flex-col gap-1">
@@ -84,7 +96,9 @@ export default function RegisterForm({ onSubmit, isLoading, error }: RegisterFor
             onChange={handleChange}
             className="w-full rounded-sm border border-input bg-background px-4 py-2"
           />
-          {errors.email && <span className="text-sm text-destructive">{errors.email}</span>}
+          {errors.email && (
+            <span className="text-sm text-destructive">{errors.email}</span>
+          )}
         </div>
 
         <div className="flex flex-col gap-1">
@@ -115,7 +129,12 @@ export default function RegisterForm({ onSubmit, isLoading, error }: RegisterFor
           <label htmlFor="venueManager">Register as Venue Manager?</label>
         </div>
 
-        <Button type="submit" variant="outline" className="mt-2 w-full" disabled={isLoading}>
+        <Button
+          type="submit"
+          variant="outline"
+          className="mt-2 w-full"
+          disabled={isLoading}
+        >
           {isLoading ? "Registering..." : "Register"}
         </Button>
       </form>

@@ -1,6 +1,6 @@
 import { fetchVenues } from "../../../api/base";
 import type { ApiResponse } from "@/types/types"; 
-import type { VenueApiData, VenueQueryParams, Booking } from "../types/venue.types";
+import type { VenueApiData, VenueQueryParams } from "../types/venue.types";
  
 
 export function getVenues(
