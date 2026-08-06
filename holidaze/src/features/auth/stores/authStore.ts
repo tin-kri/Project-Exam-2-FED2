@@ -1,25 +1,22 @@
-import { User } from "../types/auth.types";
+import type { User } from "../types/auth.types";
+import { create } from "zustand";
+import { persist, createJSONStorage } from "zustand/middleware";
 
 interface UserStore {
-  name: string;
-  email: string;
-  venueManager: boolean;
-  bio?: string;
-  avatar?: {
-    url: string;
-    alt?: string;
-  };
-  banner?: {
-    url: string;
-    alt?: string;
-  };
-  accessToken: string;
+  user: User | null;
+  login: (user: User) => void;
+  logout: () => void;
 }
- const useUserStore = create<UserStore>()(
-    persist(
-        logout()
-
-        name:"user-storage",
-        storage: createJSONStorage(()=> localStorage)
-    )
- )
+export const useUserStore = create<UserStore>()(
+  persist(
+    (set) => ({
+      user: null,
+      login: (user) => set({ user }),
+      logout: () => set({ user: null }),
+    }),
+    {
+      name: "user-storage",
+      storage: createJSONStorage(() => localStorage),
+    },
+  ),
+);

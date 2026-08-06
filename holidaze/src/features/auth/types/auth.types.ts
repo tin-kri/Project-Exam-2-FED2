@@ -11,8 +11,14 @@ export interface User {
     url: string;
     alt?: string;
   };
-  accessToken: string
+  accessToken: string;
 }
+
+export interface LoginForm{
+  email: string;
+  password: string;
+}
+
 
 export interface RegisterForm {
   name: string;
