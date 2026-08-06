@@ -2,12 +2,12 @@ import type { User } from "../types/auth.types";
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
-interface UserStore {
+interface AuthStore {
   user: User | null;
   login: (user: User) => void;
   logout: () => void;
 }
-export const useUserStore = create<UserStore>()(
+export const useAuthStore = create<AuthStore>()(
   persist(
     (set) => ({
       user: null,
@@ -15,7 +15,7 @@ export const useUserStore = create<UserStore>()(
       logout: () => set({ user: null }),
     }),
     {
-      name: "user-storage",
+      name: "auth-storage",
       storage: createJSONStorage(() => localStorage),
     },
   ),
