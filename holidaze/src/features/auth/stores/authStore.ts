@@ -2,7 +2,7 @@ import type { User } from "../types/auth.types";
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
-interface AuthStore {
+export interface AuthStore {
   user: User | null;
   login: (user: User) => void;
   logout: () => void;
