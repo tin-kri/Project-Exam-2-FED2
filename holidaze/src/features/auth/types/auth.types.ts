@@ -14,7 +14,7 @@ export interface User {
   accessToken: string;
 }
 
-export interface LoginForm{
+export interface LoginFormValues{
   email: string;
   password: string;
 }
@@ -43,6 +43,10 @@ export interface AuthRegisterValues {
   };
 }
 
+
+
+
+
 export interface AuthResponse {
-  data: AuthRegisterValues;
+  data:  User;
 }

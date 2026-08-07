@@ -4,6 +4,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import VenuesPage from "./features/venues/pages/Venues";
 import VenueDetailPage from "./features/venues/pages/VenueDetails";
 import RegisterPage from "./features/auth/pages/Register";
+import LoginPage from "./features/auth/pages/Login";
+import ProfilePage from "./features/profile/pages/Profile"
 function App() {
   return (
     <>
@@ -15,8 +17,9 @@ function App() {
           <Route path="/venues" element={<VenuesPage />} />
           <Route path="/venues/:id" element={<VenueDetailPage />} />
           <Route path="contact" element={<h1>Contact</h1>} />
-          <Route path="/login" element={<h1>Login</h1>} />
+          <Route path="/login" element={<LoginPage/>} />
           <Route path="/register" element={<RegisterPage />} />
+           <Route path="/profile" element={<ProfilePage />} />
         </Routes>
       </BrowserRouter>
     </>
