@@ -1,4 +1,3 @@
-// features/profile/hooks/useProfile.ts
 import { useState, useEffect } from "react";
 import { getProfile } from "../api/profile";
 import { useAuthStore } from "@/features/auth/stores/authStore";

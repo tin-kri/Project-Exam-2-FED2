@@ -1,4 +1,3 @@
-// features/profile/hooks/useUpdateAvatar.ts
 import { useState } from "react";
 import { changeAvatar } from "../api/profile";
 import { useAuthStore } from "@/features/auth/stores/authStore";
