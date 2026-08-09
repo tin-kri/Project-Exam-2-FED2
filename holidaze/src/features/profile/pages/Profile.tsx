@@ -1,11 +1,25 @@
-import PageWrapper from "@/components/layout/PageWrapper"
-export default function ProfilePage(){
+import PageWrapper from "@/components/layout/PageWrapper";
+import ProfileCard from "../components/ProfileCard";
+import useProfile from "../hooks/useProfile";
 
-
+export default function ProfilePage() {
+  const { profile, isLoading, error } = useProfile();
+  if (isLoading)
     return (
-            <PageWrapper>
-            <h1>Profile Page, Welcome user!</h1>
-            </PageWrapper>
-        
-    )
+      <PageWrapper>
+        <p>Loading…</p>
+      </PageWrapper>
+    );
+  if (error)
+    return (
+      <PageWrapper>
+        <p role="alert">{error}</p>
+      </PageWrapper>
+    );
+  if (!profile) return null;
+  return (
+    <PageWrapper>
+      <ProfileCard profile={profile} />
+    </PageWrapper>
+  );
 }
