@@ -3,8 +3,8 @@ import PageWrapper from "@/components/layout/PageWrapper";
 import ProfileCard from "../components/ProfileCard";
 import useProfile from "../hooks/useProfile";
 import AvatarModal from "../components/AvatarModule";
-import FutureBookings from "../components/FutureBookingsCard";
-import PreviousBookings from "../components/PreviousBookingsCard";
+import UserBookings from "../components/UserBookings";
+
 
 export default function ProfilePage() {
   const { profile, isLoading, error } = useProfile();
@@ -35,8 +35,8 @@ export default function ProfilePage() {
           onClose={() => setIsAvatarModalOpen(false)}
         />
       )}
-      <FutureBookings profile={profile} />
-      <PreviousBookings profile={profile} />
+      <UserBookings profile={profile} />
+     
     </PageWrapper>
   );
 }
