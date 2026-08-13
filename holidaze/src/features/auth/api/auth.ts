@@ -1,8 +1,8 @@
-import { apiFetch } from "@/api/base";
+import { baseFetch} from "@/api/base";
 import type { AuthRegisterValues, AuthResponse, LoginFormValues } from "../types/auth.types";
 
 export function registerUser(register: AuthRegisterValues): Promise<AuthResponse> {
-  return apiFetch<AuthResponse>("auth/register", {
+  return baseFetch<AuthResponse>("auth/register", {
     method: "POST",
     body: JSON.stringify({
       name: register.name,
@@ -14,7 +14,7 @@ export function registerUser(register: AuthRegisterValues): Promise<AuthResponse
 }
 
 export function loginUser(values: LoginFormValues): Promise<AuthResponse> {
- return apiFetch<AuthResponse>("auth/login", {
+ return baseFetch<AuthResponse>("auth/login", {
     method: "POST",
     body: JSON.stringify({
       email: values.email,
