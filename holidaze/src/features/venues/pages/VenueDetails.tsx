@@ -12,7 +12,7 @@ export default function VenueDetailPage() {
   if (!venue) return <p>Venue not found.</p>;
 
   return (
-    <PageWrapper>
+    <PageWrapper >
       <VenueDetailsCard venue={venue} />
       <BookingSection venue={venue} />
     </PageWrapper>
