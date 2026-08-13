@@ -1,18 +1,27 @@
+import { useAuthStore } from "@/features/auth/stores/authStore";
+
 const API_BASE = "https://v2.api.noroff.dev/";
 const HOLIDAZE_BASE = "https://v2.api.noroff.dev/holidaze/";
 const API_KEY = import.meta.env.VITE_API_KEY;
 
-export async function apiFetch<T>(
+//header function for all requests
+function buildHeaders(options: RequestInit): HeadersInit {
+  const token = useAuthStore.getState().user?.accessToken;
+  return {
+    "Content-Type": "application/json",
+    "X-Noroff-API-Key": API_KEY,
+    ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    ...options.headers,
+  };
+}
+
+export async function baseFetch<T>(
   endpoint: string,
-  options: RequestInit = {}
+  options: RequestInit = {},
 ): Promise<T> {
   const response = await fetch(`${API_BASE}${endpoint}`, {
     ...options,
-    headers: {
-      "Content-Type": "application/json",
-      "X-Noroff-API-Key": API_KEY,
-      ...options.headers,
-    },
+    headers: buildHeaders(options),
   });
 
   if (!response.ok) {
@@ -24,18 +33,13 @@ export async function apiFetch<T>(
   return response.json() as Promise<T>;
 }
 
-
-export async function fetchVenues<T>(
+export async function holidazeFetch<T>(
   endpoint: string,
-  options: RequestInit = {}
+  options: RequestInit = {},
 ): Promise<T> {
-  const response =  await fetch (`${HOLIDAZE_BASE}${endpoint}`, {
+  const response = await fetch(`${HOLIDAZE_BASE}${endpoint}`, {
     ...options,
-        headers: {
-      "Content-Type": "application/json",
-      "X-Noroff-API-Key": API_KEY,
-      ...options.headers,
-    },
+    headers: buildHeaders(options),
   });
   if (!response.ok) {
     const errorBody = await response.json().catch(() => null);
@@ -45,22 +49,3 @@ export async function fetchVenues<T>(
 
   return response.json() as Promise<T>;
 }
- 
-// export async function fetchBrowseListings() {
-//   const url = `${API_CONFIG.BASE_URL}${API_CONFIG.ENDPOINTS.AUCTION.LISTINGS}?_active=true&_seller=true&_bids=true`;
-//   try {
-//     const headers = isLoggedIn()
-//       ? getAuthHeaders()
-//       : { 'Content-Type': 'application/json' };
-//     const response = await fetch(url, { headers });
-//     if (!response.ok) {
-//       throw new Error('Failed to fetch browse listings');
-//     }
-//     const data = await response.json();
-
-//     return data;
-//   } catch (error) {
-//     console.error('failed to fetch browse listings', error);
-//     throw error;
-//   }
-// }
