@@ -1,8 +1,7 @@
-import { fetchVenues } from "@/api/base";
-import type { Profile } from "../types/profile.types";
+import type { ApiResponse } from "@/types/types";
+import type { BookingVenue } from "../types/booking.types";
+import { holidazeFetch } from "@/api/base";
 
-export function getBookings(name: string): Promise<{ApiResponse<BookingVenue }> {
-  return fetchVenues<{ data: Profile }>(
-    `profiles/${name}?_bookings=true&_venues=true`,
-  );
+export function getUsersBookings(name: string): Promise<ApiResponse<BookingVenue[]>> {
+  return holidazeFetch(`profiles/${name}/bookings?_venue=true`);
 }
