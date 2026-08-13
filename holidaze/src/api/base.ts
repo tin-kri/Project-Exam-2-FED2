@@ -1,8 +1,11 @@
+import { useAuthStore } from "@/features/auth/stores/authStore";
+
 const API_BASE = "https://v2.api.noroff.dev/";
 const HOLIDAZE_BASE = "https://v2.api.noroff.dev/holidaze/";
 const API_KEY = import.meta.env.VITE_API_KEY;
 import { useAuthStore } from "@/features/auth/stores/authStore";
 
+//header function for all requests
 function buildHeaders(options: RequestInit): HeadersInit {
   const token = useAuthStore.getState().user?.accessToken;
   return {
@@ -12,6 +15,15 @@ function buildHeaders(options: RequestInit): HeadersInit {
     ...options.headers,
   };
 }
+
+export async function baseFetch<T>(
+  endpoint: string,
+  options: RequestInit = {},
+): Promise<T> {
+  const response = await fetch(`${API_BASE}${endpoint}`, {
+    ...options,
+    headers: buildHeaders(options),
+  });
 
 async function handleResponse<T>(response: Response): Promise<T> {
   if (response.status === 401) {
@@ -26,25 +38,14 @@ async function handleResponse<T>(response: Response): Promise<T> {
   return response.json() as Promise<T>;
 }
 
-export async function apiFetch<T>(
+export async function holidazeFetch<T>(
   endpoint: string,
   options: RequestInit = {},
 ): Promise<T> {
-  const response = await fetch(`${API_BASE}${endpoint}`, {
+  const response = await fetch(`${HOLIDAZE_BASE}${endpoint}`, {
     ...options,
     headers: buildHeaders(options),
   });
 
-  return handleResponse<T>(response);
-}
-
-export async function fetchVenues<T>(
-  endpoint: string,
-  options: RequestInit = {},
-): Promise<T> {
- const response = await fetch(`${HOLIDAZE_BASE}${endpoint}`, {
-    ...options,
-    headers: buildHeaders(options),
-  });
   return handleResponse<T>(response);
 }
