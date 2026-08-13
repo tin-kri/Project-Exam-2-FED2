@@ -3,7 +3,6 @@ import { useAuthStore } from "@/features/auth/stores/authStore";
 const API_BASE = "https://v2.api.noroff.dev/";
 const HOLIDAZE_BASE = "https://v2.api.noroff.dev/holidaze/";
 const API_KEY = import.meta.env.VITE_API_KEY;
-import { useAuthStore } from "@/features/auth/stores/authStore";
 
 //header function for all requests
 function buildHeaders(options: RequestInit): HeadersInit {
@@ -24,6 +23,7 @@ export async function baseFetch<T>(
     ...options,
     headers: buildHeaders(options),
   });
+  return handleResponse<T>(response)}
 
 async function handleResponse<T>(response: Response): Promise<T> {
   if (response.status === 401) {
