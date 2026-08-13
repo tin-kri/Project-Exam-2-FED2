@@ -18,7 +18,7 @@ export default function FutureBookings({ profile}: FutureBookingsProps) {
     </section>
   );
 }
-//create types for booking
+//create types for bookingx
 //create a getBookings, should it be one for prev and future?
 //fetch, then maybe split them into prev and future?
 //create a booking card 
