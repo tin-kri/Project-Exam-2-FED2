@@ -7,18 +7,30 @@ import { useBookingCalculation } from "../hooks/useCalculations";
 import BookingSummary from "./BookingSummary";
 import { useBookedDates } from "@/features/venues/hooks/useBookingDays";
 import Stepper from "@/components/ui/stepper";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useAuthStore } from "@/features/auth/stores/authStore";
+
 interface BookingSectionProps {
   venue: VenueApiData;
 }
 
 export default function BookingSection({ venue }: BookingSectionProps) {
-  const [guests, setGuests] = useState(1)
+  const [guests, setGuests] = useState(1);
   const { price } = venue;
   const [date, setDate] = useState<DateRange | undefined>(undefined);
   const { nights, total } = useBookingCalculation(date, price);
   const bookedDays = useBookedDates(venue.bookings);
+
   console.log("venue.bookings:", venue.bookings);
   console.log("bookedDates:", bookedDays);
+
+  const user = useAuthStore((state) => state.user);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+
+
+
   return (
     <div className="mt-4 border-t border-grey-200 pt-8 rounded-lg px-3 py-4 ">
       <div className="flex flex-col gap-8 md:flex-row md:items-start md:gap-12 ">
@@ -27,10 +39,10 @@ export default function BookingSection({ venue }: BookingSectionProps) {
           <h2 className=" mb-2 font-serif text-xl font-bold text-navy-800">
             Plan Your Stay
           </h2>
- <p className="mb-2 text-sm font-medium text-navy-800">
-              Select number of guests
-            </p>
-          <Stepper value={guests} onChange={setGuests}  max={venue.maxGuests}/>
+          <p className="mb-2 text-sm font-medium text-navy-800">
+            Select number of guests
+          </p>
+          <Stepper value={guests} onChange={setGuests} max={venue.maxGuests} />
 
           {/* //GUEST STEPPER */}
 
@@ -52,15 +64,34 @@ export default function BookingSection({ venue }: BookingSectionProps) {
             <h2 className="font-serif text-xl font-bold text-navy-800">
               My booking
             </h2>
-            <BookingSummary date={date} total={total} nights={nights} guests={guests}/>
-            <Button
+            <BookingSummary
+              date={date}
+              total={total}
+              nights={nights}
+              guests={guests}
+            />
+
+            {user ?(
+              <Button
+              
+                className="mt-4 w-full"
+                disabled={nights === 0}> Book Now</Button>
+            ) : (
+              <Button
+              
+              className="mt-4 w-full"
+              onClick={()=> navigate("/login", {state: {from:location}})}>
+                Log in to Book
+              </Button>
+            )}
+            {/* <Button
               variant="outline"
               className="mt-4 w-full"
               onClick={SubmitEvent}
               disabled={nights === 0}
             >
               Book now
-            </Button>
+            </Button> */}
           </section>
         )}
       </div>
