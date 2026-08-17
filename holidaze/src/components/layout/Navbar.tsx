@@ -28,15 +28,15 @@ const navLinks = user
   : [
       { to: "/venues", label: "Venues" },
       { to: "/contact", label: "Contact" },
-      { to: "/login", label: "Login" },
-      { to: "/register", label: "Join" },
+      { to: "/login", label: "Log in" },
+      { to: "/register", label: "Sign up" },
     ];
 
 const rightLinks = user
   ? [{ to: "/profile", label: "Profile" }]
   : [
-      { to: "/login", label: "Login" },
-      { to: "/register", label: "Join" },
+      { to: "/login", label: "Log in" },
+      { to: "/register", label: "Sign up" },
     ];
 
 

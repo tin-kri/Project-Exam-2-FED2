@@ -52,9 +52,9 @@ export default function LoginForm({
 
   return (
     <section className="rounded-md bg-secondary p-6">
-      <h1 className=" uppercase text-center text-navy-900 font-serif text-2xl font-bold tracking-tight ">
-        Welcome! <br />
-        Please log in!
+      <h1 className=" text-center text-navy-900 font-serif text-2xl font-bold tracking-tight ">
+      
+       Log in to your Holidaze Account
       </h1>
     
 

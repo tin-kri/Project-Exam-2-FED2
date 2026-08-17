@@ -56,6 +56,7 @@ export default function BookingSection({ venue }: BookingSectionProps) {
             <Button
               variant="outline"
               className="mt-4 w-full"
+              onClick={SubmitEvent}
               disabled={nights === 0}
             >
               Book now

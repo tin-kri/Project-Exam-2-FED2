@@ -59,7 +59,7 @@ export default function RegisterForm({
   return (
     <section className="rounded-md bg-secondary p-6">
       <h1 className="text-center text-navy-900 font-serif text-2xl font-bold tracking-tight ">
-        Register to Holidaze
+        Create your Holidaze Account
       </h1>
 
       <form
@@ -135,7 +135,7 @@ export default function RegisterForm({
           className="mt-2 w-full"
           disabled={isLoading}
         >
-          {isLoading ? "Registering..." : "Register"}
+          {isLoading ? "Creating Account..." : "Create Account"}
         </Button>
       </form>
     </section>

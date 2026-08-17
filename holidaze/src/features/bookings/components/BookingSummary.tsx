@@ -41,6 +41,7 @@ export default function BookingSummary({
           <div className="flex gap-4 text-sm">
             <span className="w-24 font-bold text-navy-800">Guests</span>
             <span className="text-grey-900">{guests}</span>
+            
           </div>
         )}
         {nights > 0 && (
