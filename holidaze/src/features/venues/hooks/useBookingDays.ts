@@ -1,6 +1,5 @@
 import { useMemo } from "react";
-import type { Booking } from "@/features/venues/types/venue.types";
- 
+import type { Booking } from "@/features/bookings/types/booking.types"; 
 type DateRange = {
   from: Date;
   to: Date;

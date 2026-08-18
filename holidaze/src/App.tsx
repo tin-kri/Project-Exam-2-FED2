@@ -6,6 +6,7 @@ import VenueDetailPage from "./features/venues/pages/VenueDetails";
 import RegisterPage from "./features/auth/pages/Register";
 import LoginPage from "./features/auth/pages/Login";
 import ProfilePage from "./features/profile/pages/Profile";
+import BookingConfirmationPage from "./features/bookings/pages/BookingConfirmation";
 import { ProtectedRoute } from "./features/auth/components/ProtectedRoute";
 function App() {
   return (
@@ -29,6 +30,15 @@ function App() {
               </ProtectedRoute>
             }
           />
+
+          <Route
+          path="/booking-confirmed"
+          element={
+            <ProtectedRoute>
+              <BookingConfirmationPage />
+            </ProtectedRoute>
+          }
+        />
         </Routes>
       </BrowserRouter>
     </>
