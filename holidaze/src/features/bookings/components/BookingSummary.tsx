@@ -1,16 +1,20 @@
 import { format } from "date-fns";
 import { type DateRange } from "react-day-picker";
 
+
 type BookingSummaryProps = {
   date: DateRange | undefined;
   total: number;
   nights: number;
+  guests: number;
+
 };
 
 export default function BookingSummary({
   date,
   total,
   nights,
+  guests,
 }: BookingSummaryProps) {
   if (!date?.from) return null;
 
@@ -31,6 +35,13 @@ export default function BookingSummary({
           <div className="flex gap-4 text-sm">
             <span className="w-24 font-bold text-navy-800">Nights</span>
             <span className="text-grey-900">{nights}</span>
+          </div>
+        )}
+           {nights > 0 && (
+          <div className="flex gap-4 text-sm">
+            <span className="w-24 font-bold text-navy-800">Guests</span>
+            <span className="text-grey-900">{guests}</span>
+            
           </div>
         )}
         {nights > 0 && (

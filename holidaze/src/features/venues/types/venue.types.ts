@@ -1,3 +1,5 @@
+import type { Booking } from "@/features/bookings/types/booking.types";
+
 export interface VenueApiData {
   id: string;
   name: string;
@@ -43,11 +45,11 @@ export interface VenueQueryParams {
 }
 
 // should this be in venue folder? it is needed for cal availablity but also BookingSection. shared later?
-export interface Booking {
-  id: string;
-  dateFrom: string;
-  dateTo: string;
-  guests: number;
-  created: string;
-  updated: string;
-}
+// export interface Booking {
+//   id: string;
+//   dateFrom: string;
+//   dateTo: string;
+//   guests: number;
+//   created: string;
+//   updated: string;
+// }

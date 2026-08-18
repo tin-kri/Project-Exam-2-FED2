@@ -1,4 +1,4 @@
-import { holidazeFetch } from "../../../api/base";
+import { holidazeFetch } from "@/api/base";
 import type { ApiResponse } from "@/types/types"; 
 import type { VenueApiData, VenueQueryParams } from "../types/venue.types";
  

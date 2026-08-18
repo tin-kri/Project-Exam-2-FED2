@@ -19,7 +19,7 @@ export default function VenueImageCarousel({
 }: VenueImageCarouselProps) {
   const { current, count, setApi } = useCarouselState();
   if (!media || media.length === 0) return null;
-  console.log(media);
+
   
   return (
     <div className="">

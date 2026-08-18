@@ -3,6 +3,7 @@ import LoginForm from "../components/LoginForm";
 import { useLocation, useNavigate } from "react-router-dom";
 import useLogin from "../hooks/useLogin";
 import type { LoginFormValues } from "../types/auth.types";
+import RegisterRedirect from "../components/RegisterRedirect";
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -21,6 +22,7 @@ export default function LoginPage() {
   return (
     <PageWrapper>
       <LoginForm onSubmit={handleSubmit} isLoading={isLoading} error={error} />
+    <RegisterRedirect />
     </PageWrapper>
   );
 }

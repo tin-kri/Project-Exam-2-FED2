@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import type { BookingVenue } from "../types/booking.types";
 import { format } from "date-fns";
 
@@ -10,7 +11,11 @@ export default function BookingCard({ booking }: BookingCardProps) {
   const image = venue?.media?.[0];
 
   return (
+      <Link
+            to={`/venues/${venue.id}`}
+          >
     <article className="flex gap-4 rounded-sm bg-white p-3">
+   
       <img
         src={image?.url }
         alt={image?.alt || venue?.name || "Venue"}
@@ -25,7 +30,10 @@ export default function BookingCard({ booking }: BookingCardProps) {
           {format(new Date(booking.dateTo), "d MMM yyyy")}
         </p>
         <p className="text-grey-900 text-sm">{booking.guests} guests</p>
+         
+           
+         
       </div>
-    </article>
+    </article> </Link>
   );
 }
