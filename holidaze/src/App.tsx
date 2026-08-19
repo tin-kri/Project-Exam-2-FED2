@@ -7,13 +7,15 @@ import RegisterPage from "./features/auth/pages/Register";
 import LoginPage from "./features/auth/pages/Login";
 import ProfilePage from "./features/profile/pages/Profile";
 import BookingConfirmationPage from "./features/bookings/pages/BookingConfirmation";
+import CreateVenuePage from "./features/venue-management/pages/CreateVenuePage";
 import { ProtectedRoute } from "./features/auth/components/ProtectedRoute";
+import { Toaster } from "sonner";
 function App() {
   return (
     <>
       <BrowserRouter>
         <Navbar />
-
+<Toaster />
         <Routes>
           <Route path="/" element={<h1>Home</h1>} />
           <Route path="/venues" element={<VenuesPage />} />
@@ -39,7 +41,21 @@ function App() {
             </ProtectedRoute>
           }
         />
+
+        <Route
+      path="/manage-venues"
+      element={
+        <ProtectedRoute requireVenueManager>
+       <CreateVenuePage />
+        </ProtectedRoute>
+      }
+      />
+
+
+
         </Routes>
+
+        
       </BrowserRouter>
     </>
   );
