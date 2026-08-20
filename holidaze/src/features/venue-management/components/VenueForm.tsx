@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { createVenueSchema, type CreateVenueValues } from "../schema/venueManagementSchema";
+import {
+  createVenueSchema,
+  type CreateVenueValues,
+} from "../schema/venueManagementSchema";
+import FormField from "@/components/ui/FormField";
 
 type VenueFormErrors = Partial<Record<string, string>>;
 
@@ -36,8 +40,10 @@ export default function VenueForm({
   const [errors, setErrors] = useState<VenueFormErrors>({});
 
   function handleChange(
-  e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-) {
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) {
     const { name, value, type } = e.target;
     const checked = (e.target as HTMLInputElement).checked;
 
@@ -61,7 +67,9 @@ export default function VenueForm({
     } else if (name === "media.alt") {
       setValues((prev) => ({
         ...prev,
-        media: [{ ...prev.media?.[0], url: prev.media?.[0]?.url ?? "", alt: value }],
+        media: [
+          { ...prev.media?.[0], url: prev.media?.[0]?.url ?? "", alt: value },
+        ],
       }));
     } else {
       setValues((prev) => ({
@@ -102,139 +110,79 @@ export default function VenueForm({
       <h1 className="mb-6 font-serif text-2xl font-bold text-navy-800">
         Create a Venue
       </h1>
- 
+
       {error && (
-        <p role="alert" className="mb-4 text-sm text-destructive">{error}</p>
+        <p role="alert" className="mb-4 text-sm text-destructive">
+          {error}
+        </p>
       )}
- 
+
       <form
         onSubmit={handleSubmit}
         noValidate
         className="flex flex-col gap-4 text-navy-800"
       >
- 
         {/* name */}
-        <div className="flex flex-col gap-1">
-          <label htmlFor="name" className="font-semibold">
-            Name of Venue
-          </label>
-          <input
-            id="name"
-            name="name"
-            type="text"
-            value={values.name}
-            onChange={handleChange}
-            aria-required="true"
-            aria-invalid={!!errors.name}
-            aria-describedby={errors.name ? "name-error" : undefined}
-            className="w-full rounded-sm border border-grey-200 bg-white px-4 py-2"
-          />
-          {errors.name && (
-            <span id="name-error" role="alert" className="text-sm text-destructive">
-              {errors.name}
-            </span>
-          )}
-        </div>
- 
+        <FormField
+          label="Venue name"
+          name="name"
+          value={values.name}
+          onChange={handleChange}
+          error={errors.name}
+          required
+        />
+
         {/* description */}
-        <div className="flex flex-col gap-1">
-          <label htmlFor="description" className="font-semibold">
-            Description
-          </label>
-          <textarea
-            id="description"
-            name="description"
-            rows={4}
-            value={values.description}
-            onChange={handleChange}
-            aria-required="true"
-            aria-invalid={!!errors.description}
-            aria-describedby={errors.description ? "description-error" : undefined}
-            className="w-full resize-none rounded-sm border border-grey-200 bg-white px-4 py-2"
-          />
-          {errors.description && (
-            <span id="description-error" role="alert" className="text-sm text-destructive">
-              {errors.description}
-            </span>
-          )}
-        </div>
- 
+        <FormField
+          label="Description"
+          name="description"
+          rows={5}
+          multiline
+          value={values.description}
+          onChange={handleChange}
+          error={errors.description}
+        />
         {/* city */}
-        <div className="flex flex-col gap-1">
-          <label htmlFor="location.city" className="font-semibold">City</label>
-          <input
-            id="location.city"
-            name="location.city"
-            type="text"
-            value={values.location?.city ?? ""}
-            onChange={handleChange}
-            className="w-full rounded-sm border border-grey-200 bg-white px-4 py-2"
-          />
-        </div>
- 
+        <FormField
+          label="City"
+          name="location.city"
+          value={values.location?.city ?? ""}
+          onChange={handleChange}
+          error={errors.description}
+        />
         {/* country */}
-        <div className="flex flex-col gap-1">
-          <label htmlFor="location.country" className="font-semibold">Country</label>
-          <input
-            id="location.country"
-            name="location.country"
-            type="text"
-            value={values.location?.country ?? ""}
-            onChange={handleChange}
-            className="w-full rounded-sm border border-grey-200 bg-white px-4 py-2"
-          />
-        </div>
- 
+        <FormField
+          label="Country"
+          name="location.country"
+          value={values.location?.country ?? ""}
+          onChange={handleChange}
+          error={errors.description}
+        />
         {/* price */}
-        <div className="flex flex-col gap-1">
-          <label htmlFor="price" className="font-semibold">Price per Night</label>
-          <input
-            id="price"
-            name="price"
-            type="number"
-            min={1}
-            value={values.price || ""}
-            onChange={handleChange}
-            aria-required="true"
-            aria-invalid={!!errors.price}
-            aria-describedby={errors.price ? "price-error" : undefined}
-            className="w-full rounded-sm border border-grey-200 bg-white px-4 py-2"
-          />
-          {errors.price && (
-            <span id="price-error" role="alert" className="text-sm text-destructive">
-              {errors.price}
-            </span>
-          )}
-        </div>
- 
-        {/* maxGuests */}
-        <div className="flex flex-col gap-1">
-          <label htmlFor="maxGuests" className="font-semibold">
-            Maximum number of guests
-          </label>
-          <input
-            id="maxGuests"
-            name="maxGuests"
-            type="number"
-            min={1}
-            max={100}
-            value={values.maxGuests || ""}
-            onChange={handleChange}
-            aria-required="true"
-            aria-invalid={!!errors.maxGuests}
-            aria-describedby={errors.maxGuests ? "maxGuests-error" : undefined}
-            className="w-full rounded-sm border border-grey-200 bg-white px-4 py-2"
-          />
-          {errors.maxGuests && (
-            <span id="maxGuests-error" role="alert" className="text-sm text-destructive">
-              {errors.maxGuests}
-            </span>
-          )}
-        </div>
- 
+        <FormField
+          label="Price per night"
+          name="price"
+          type="number"
+          value={values.price}
+          onChange={handleChange}
+          error={errors.price}
+          required
+        />
+        {/* guests */}
+        <FormField
+          label="Number of guests"
+          name="maxGuests"
+          type="number"
+          value={values.maxGuests}
+          onChange={handleChange}
+          error={errors.maxGuests}
+        />
+
         {/* rating */}
         <div className="flex flex-col gap-1">
-          <label htmlFor="rating" className="font-semibold">Rating</label>
+          <label htmlFor="rating" className="font-semibold">
+            Rating
+          </label>
           <select
             id="rating"
             name="rating"
@@ -243,11 +191,13 @@ export default function VenueForm({
             className="w-20 rounded-sm border border-grey-200 bg-white px-3 py-2 text-sm"
           >
             {[0, 1, 2, 3, 4, 5].map((r) => (
-              <option key={r} value={r}>{r}</option>
+              <option key={r} value={r}>
+                {r}
+              </option>
             ))}
           </select>
         </div>
- 
+
         {/* amenities */}
         <fieldset className="flex flex-col gap-2">
           <legend className="mb-1 font-semibold">Amenities</legend>
@@ -278,11 +228,11 @@ export default function VenueForm({
             </div>
           ))}
         </fieldset>
- 
+
         {/* images */}
         <div className="flex flex-col gap-3">
           <p className="font-semibold">Images</p>
- 
+
           <div className="flex flex-col gap-1">
             <label htmlFor="media.url">Image URL</label>
             <input
@@ -292,16 +242,22 @@ export default function VenueForm({
               value={values.media?.[0]?.url ?? ""}
               onChange={handleChange}
               aria-invalid={!!errors["media.0.url"]}
-              aria-describedby={errors["media.0.url"] ? "media-url-error" : undefined}
+              aria-describedby={
+                errors["media.0.url"] ? "media-url-error" : undefined
+              }
               className="w-full rounded-sm border border-grey-200 bg-white px-4 py-2"
             />
             {errors["media.0.url"] && (
-              <span id="media-url-error" role="alert" className="text-sm text-destructive">
+              <span
+                id="media-url-error"
+                role="alert"
+                className="text-sm text-destructive"
+              >
                 {errors["media.0.url"]}
               </span>
             )}
           </div>
- 
+
           <div className="flex flex-col gap-1">
             <label htmlFor="media.alt">Image Alt Text</label>
             <input
@@ -314,17 +270,15 @@ export default function VenueForm({
             />
           </div>
         </div>
- 
+
         <Button
           type="submit"
-          
           className="mt-2 w-full"
           disabled={isLoading}
           aria-busy={isLoading}
         >
           {isLoading ? "Creating..." : submitLabel}
         </Button>
- 
       </form>
     </section>
   );

@@ -15,8 +15,8 @@ export const createVenueSchema = z.object({
 
   price: z.coerce
     .number({ error: "Price must be a number" })
-    .min(1, "Price must be at least 1")
-    .max(100000, "Price can not be higher than 100000"),
+    .min(0, "Price must be at least 0")
+    .max(10000, "Price can not be higher than 10000"),
 
   maxGuests: z.coerce
     .number({ error: "Max guests must be a number" })
@@ -48,8 +48,8 @@ export const createVenueSchema = z.object({
       zip: z.string().optional(),
       country: z.string().optional(),
       continent: z.string().optional(),
-      lat: z.number().optional(),
-      lng: z.number().optional(),
+      lat: z.coerce.number().min(-90).max(90).optional(),
+      lng: z.coerce.number().min(-180).max(180).optional(),
     })
     .optional(),
 });
