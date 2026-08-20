@@ -1,13 +1,9 @@
 import { z } from "zod";
-// do i need coerce? 
+// do i need coerce?
 const mediaSchema = z.object({
-  url: z
-    .string()
-    .url("Must be a valid URL")
-    .min(1, "Image URL is required"),
+  url: z.string().url("Must be a valid URL").min(1, "Image URL is required"),
   alt: z.string().optional(),
 });
-
 
 export const createVenueSchema = z.object({
   name: z
@@ -15,19 +11,19 @@ export const createVenueSchema = z.object({
     .min(1, "Venue name is required")
     .max(100, "Name must be less than 100 characters"),
 
-  description: z
-    .string()
-    .min(1, "Description is required"),
+  description: z.string().min(1, "Description is required"),
 
-  price: z
+  price: z.coerce
     .number({ error: "Price must be a number" })
     .min(1, "Price must be at least 1")
     .max(100000, "Price can not be higher than 100000"),
 
-  maxGuests: z
+  maxGuests: z.coerce
     .number({ error: "Max guests must be a number" })
     .min(1, "Must allow at least 1 guest")
     .max(100, "Max guests cannot exceed 100"),
+
+  rating: z.coerce.number().min(0).max(5).optional(),
 
   media: z.array(mediaSchema).optional(),
 
@@ -38,7 +34,12 @@ export const createVenueSchema = z.object({
       breakfast: z.boolean().default(false),
       pets: z.boolean().default(false),
     })
-    .optional(),
+    .default({
+      wifi: false,
+      parking: false,
+      breakfast: false,
+      pets: false,
+    }),
 
   location: z
     .object({
@@ -53,8 +54,4 @@ export const createVenueSchema = z.object({
     .optional(),
 });
 
-
-
-
 export type CreateVenueValues = z.infer<typeof createVenueSchema>;
-

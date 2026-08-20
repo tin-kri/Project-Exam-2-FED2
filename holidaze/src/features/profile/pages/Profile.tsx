@@ -4,6 +4,7 @@ import ProfileCard from "../components/ProfileCard";
 import useProfile from "../hooks/useProfile";
 import AvatarModal from "../components/AvatarModule";
 import UserBookings from "../components/UserBookings";
+import { Link } from "react-router-dom";
 
 
 export default function ProfilePage() {
@@ -35,6 +36,13 @@ export default function ProfilePage() {
           onClose={() => setIsAvatarModalOpen(false)}
         />
       )}
+
+        <Link
+            to="/manage-venues"
+            className="font-semibold text-navy-800 underline underline-offset-4"
+          >
+            Create a New Venue
+          </Link>
       <UserBookings profile={profile} />
      
     </PageWrapper>
