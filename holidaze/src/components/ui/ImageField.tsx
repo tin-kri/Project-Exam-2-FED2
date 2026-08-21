@@ -1,37 +1,34 @@
 import FormField from "@/components/ui/FormField";
 import { Button } from "./button";
-import { Trash2  } from 'lucide-react';
-import { Plus } from 'lucide-react';
-
-
+import { Trash2 } from "lucide-react";
+import { Plus } from "lucide-react";
 
 interface ImageItem {
   url: string;
   alt: string;
 }
 interface ImageFieldProps {
-      media: ImageItem[],
-    
-  
-      onChange: (media: ImageItem[] ) => void;
-      error?: string | null
-        required?: boolean;
-      
+  media: ImageItem[];
+
+  onChange: (media: ImageItem[]) => void;
+  error?: string | null;
+  required?: boolean;
 }
 
-
-export default function ImageField({ media, onChange, error }: ImageFieldProps) {
-  
-    function updateItem(index: number, field: keyof ImageItem, value: string) {
-  
-        const next = media.map((item, i) =>
+export default function ImageField({
+  media,
+  onChange,
+  error,
+}: ImageFieldProps) {
+  function updateItem(index: number, field: keyof ImageItem, value: string) {
+    const next = media.map((item, i) =>
       i === index ? { ...item, [field]: value } : item,
     );
     onChange(next);
   }
 
   function addItem() {
-    if (media.length >= 8)return;
+    if (media.length >= 8) return;
     onChange([...media, { url: "", alt: "" }]);
   }
 
@@ -39,15 +36,15 @@ export default function ImageField({ media, onChange, error }: ImageFieldProps) 
     onChange(media.filter((_, i) => i !== index));
   }
 
-    return (
- <div className="flex flex-col gap-3">
-          <p className="font-semibold">Images</p>
+  return (
+    <div className="flex flex-col gap-3">
+      <p className="font-semibold">Images</p>
 
-  {media.map((item, index) => (
+      {media.map((item, index) => (
         <div
           key={index}
           className="flex flex-col gap-2 rounded-md border border-border bg-grey-100 p-3"
-        >   
+        >
           <div className="flex items-center justify-between">
             <span className="text-sm text-muted-foreground">
               Image {index + 1}
@@ -64,7 +61,6 @@ export default function ImageField({ media, onChange, error }: ImageFieldProps) 
               </Button>
             )}
           </div>
-        
 
           <FormField
             label="Image URL"
@@ -82,7 +78,6 @@ export default function ImageField({ media, onChange, error }: ImageFieldProps) 
             placeholder="Describe the image"
           />
         </div>
-       
       ))}
 
       {error && (
@@ -90,15 +85,16 @@ export default function ImageField({ media, onChange, error }: ImageFieldProps) 
           {error}
         </span>
       )}
-  
-      <Button type="button" variant="outline" disabled={media.length >=8} onClick={addItem} className="self-end">
+
+      <Button
+        type="button"
+        variant="outline"
+        disabled={media.length >= 8}
+        onClick={addItem}
+        className="self-end"
+      >
         <Plus /> Add image
       </Button>
-        </div>
-
-    )
-
+    </div>
+  );
 }
-
-
-

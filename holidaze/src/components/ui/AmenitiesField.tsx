@@ -27,7 +27,7 @@ export default function AmenitiesField({
       <legend className="mb-1 font-semibold">Amenities</legend>
 
       {amenities.map(({ key, label }) => (
-        <div className=" flex items-center gap-2">
+        <div key={key} className=" flex items-center gap-2">
           <input
             id={key}
             type="checkbox"

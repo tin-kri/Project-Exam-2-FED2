@@ -46,15 +46,16 @@ export default function VenueForm({
     >,
   ) {
     const { name, value, type } = e.target;
-    const checked = (e.target as HTMLInputElement).checked;
+    // const checked = (e.target as HTMLInputElement).checked;
 
-    if (name.startsWith("meta.")) {
-      const key = name.split(".")[1];
-      setValues((prev) => ({
-        ...prev,
-        meta: { ...prev.meta, [key]: checked },
-      }));
-    } else if (name.startsWith("location.")) {
+    // if (name.startsWith("meta.")) {
+    //   const key = name.split(".")[1];
+    //   setValues((prev) => ({
+    //     ...prev,
+    //     meta: { ...prev.meta, [key]: checked },
+    //   }));
+    // } else
+    if (name.startsWith("location.")) {
       const key = name.split(".")[1];
       setValues((prev) => ({
         ...prev,
@@ -63,7 +64,7 @@ export default function VenueForm({
     } else {
       setValues((prev) => ({
         ...prev,
-        [name]: type === "number" ? Number(value) : value,
+        [name]: type === "number" || name === "rating" ? Number(value) : value,
       }));
     }
 
@@ -84,7 +85,7 @@ export default function VenueForm({
         if (!fieldErrors[path]) fieldErrors[path] = error.message;
       });
       setErrors(fieldErrors);
-      // focus first error field
+
       const firstKey = Object.keys(fieldErrors)[0];
       document.getElementById(firstKey)?.focus();
       return;
@@ -188,6 +189,7 @@ export default function VenueForm({
           </select>
         </div>
 
+        {/* amenities */}
         <AmenitiesField
           meta={values.meta}
           onChange={(name, value) =>
@@ -197,38 +199,8 @@ export default function VenueForm({
             }))
           }
         />
-
-        {/* amenities */}
-        {/* <fieldset className="flex flex-col gap-2">
-          <legend className="mb-1 font-semibold">Amenities</legend>
-          {(
-            [
-              { name: "meta.parking", label: "Parking is available" },
-              { name: "meta.pets", label: "Pets are allowed" },
-              { name: "meta.breakfast", label: "Breakfast is available" },
-              { name: "meta.wifi", label: "Wifi is available" },
-            ] as const
-          ).map(({ name, label }) => (
-            <div key={name} className="flex items-center gap-2">
-              <input
-                id={name}
-                name={name}
-                type="checkbox"
-                checked={
-                  values.meta?.[
-                    name.split(".")[1] as keyof typeof values.meta
-                  ] ?? false
-                }
-                // onChange={handleChange}
-                className="h-4 w-4 accent-sky-500"
-              />
-              <label htmlFor={name} className="cursor-pointer select-none">
-                {label}
-              </label>
-            </div>
-          ))}
-        </fieldset> */}
-
+        
+        {/* image */}
         <ImageField
           media={
             (values.media as { url: string; alt: string }[]) ?? [
