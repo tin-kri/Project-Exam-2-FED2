@@ -1,6 +1,6 @@
 import FormField from "@/components/ui/FormField";
 import { Button } from "./button";
-import { X } from 'lucide-react';
+import { Trash2  } from 'lucide-react';
 import { Plus } from 'lucide-react';
 
 
@@ -46,7 +46,7 @@ export default function ImageField({ media, onChange, error }: ImageFieldProps) 
   {media.map((item, index) => (
         <div
           key={index}
-          className="flex flex-col gap-2 rounded-md border border-border p-3"
+          className="flex flex-col gap-2 rounded-md border border-border bg-grey-100 p-3"
         >   
           <div className="flex items-center justify-between">
             <span className="text-sm text-muted-foreground">
@@ -60,7 +60,7 @@ export default function ImageField({ media, onChange, error }: ImageFieldProps) 
                 onClick={() => removeItem(index)}
                 aria-label={`Remove image ${index + 1}`}
               >
-                <X />
+                <Trash2 />
               </Button>
             )}
           </div>
@@ -91,7 +91,7 @@ export default function ImageField({ media, onChange, error }: ImageFieldProps) 
         </span>
       )}
   
-      <Button type="button" variant="outline" disabled={media.length >=8} onClick={addItem} className="self-start">
+      <Button type="button" variant="outline" disabled={media.length >=8} onClick={addItem} className="self-end">
         <Plus /> Add image
       </Button>
         </div>

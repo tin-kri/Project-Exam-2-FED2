@@ -5,7 +5,8 @@ import {
   type CreateVenueValues,
 } from "../schema/venueManagementSchema";
 import FormField from "@/components/ui/FormField";
-import ImageField from "@/components/ui/ImageField"
+import ImageField from "@/components/ui/ImageField";
+import AmenitiesField from "@/components/ui/AmenitiesField";
 type VenueFormErrors = Partial<Record<string, string>>;
 
 interface VenueFormProps {
@@ -59,7 +60,6 @@ export default function VenueForm({
         ...prev,
         location: { ...prev.location, [key]: value },
       }));
-   
     } else {
       setValues((prev) => ({
         ...prev,
@@ -156,7 +156,6 @@ export default function VenueForm({
           onChange={handleChange}
           error={errors.price}
           required
-         
         />
         {/* guests */}
         <FormField
@@ -189,14 +188,24 @@ export default function VenueForm({
           </select>
         </div>
 
+        <AmenitiesField
+          meta={values.meta}
+          onChange={(name, value) =>
+            setValues((prev) => ({
+              ...prev,
+              meta: { ...prev.meta, [name]: value },
+            }))
+          }
+        />
+
         {/* amenities */}
-        <fieldset className="flex flex-col gap-2">
+        {/* <fieldset className="flex flex-col gap-2">
           <legend className="mb-1 font-semibold">Amenities</legend>
           {(
             [
               { name: "meta.parking", label: "Parking is available" },
               { name: "meta.pets", label: "Pets are allowed" },
-              { name: "meta.breakfast", label: "Breakfast is served" },
+              { name: "meta.breakfast", label: "Breakfast is available" },
               { name: "meta.wifi", label: "Wifi is available" },
             ] as const
           ).map(({ name, label }) => (
@@ -210,7 +219,7 @@ export default function VenueForm({
                     name.split(".")[1] as keyof typeof values.meta
                   ] ?? false
                 }
-                onChange={handleChange}
+                // onChange={handleChange}
                 className="h-4 w-4 accent-sky-500"
               />
               <label htmlFor={name} className="cursor-pointer select-none">
@@ -218,17 +227,17 @@ export default function VenueForm({
               </label>
             </div>
           ))}
-        </fieldset>
+        </fieldset> */}
 
-
-
-<ImageField
-  media={(values.media as { url:string; alt: string}[]) ?? [{ url: "", alt: "" }]}
-  onChange={(media) => setValues((prev) => ({ ...prev, media }))}
-  error={errors["media.0.url"]}
-/>
-
-
+        <ImageField
+          media={
+            (values.media as { url: string; alt: string }[]) ?? [
+              { url: "", alt: "" },
+            ]
+          }
+          onChange={(media) => setValues((prev) => ({ ...prev, media }))}
+          error={errors["media.0.url"]}
+        />
 
         <Button
           type="submit"
