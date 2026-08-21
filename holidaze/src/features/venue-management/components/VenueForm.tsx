@@ -5,7 +5,7 @@ import {
   type CreateVenueValues,
 } from "../schema/venueManagementSchema";
 import FormField from "@/components/ui/FormField";
-
+import ImageField from "@/components/ui/ImageField"
 type VenueFormErrors = Partial<Record<string, string>>;
 
 interface VenueFormProps {
@@ -20,7 +20,7 @@ const defaultValues: CreateVenueValues = {
   name: "",
   description: "",
   price: 0,
-  maxGuests: 0,
+  maxGuests: 1,
   media: [{ url: "", alt: "" }],
   meta: { wifi: false, parking: false, breakfast: false, pets: false },
   location: { city: "", country: "" },
@@ -59,18 +59,7 @@ export default function VenueForm({
         ...prev,
         location: { ...prev.location, [key]: value },
       }));
-    } else if (name === "media.url") {
-      setValues((prev) => ({
-        ...prev,
-        media: [{ ...prev.media?.[0], url: value }],
-      }));
-    } else if (name === "media.alt") {
-      setValues((prev) => ({
-        ...prev,
-        media: [
-          { ...prev.media?.[0], url: prev.media?.[0]?.url ?? "", alt: value },
-        ],
-      }));
+   
     } else {
       setValues((prev) => ({
         ...prev,
@@ -78,7 +67,6 @@ export default function VenueForm({
       }));
     }
 
-    // clear error on change
     if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
@@ -141,6 +129,7 @@ export default function VenueForm({
           value={values.description}
           onChange={handleChange}
           error={errors.description}
+          required
         />
         {/* city */}
         <FormField
@@ -148,7 +137,7 @@ export default function VenueForm({
           name="location.city"
           value={values.location?.city ?? ""}
           onChange={handleChange}
-          error={errors.description}
+          error={errors["location.city"]}
         />
         {/* country */}
         <FormField
@@ -156,7 +145,7 @@ export default function VenueForm({
           name="location.country"
           value={values.location?.country ?? ""}
           onChange={handleChange}
-          error={errors.description}
+          error={errors["location.country"]}
         />
         {/* price */}
         <FormField
@@ -167,6 +156,7 @@ export default function VenueForm({
           onChange={handleChange}
           error={errors.price}
           required
+         
         />
         {/* guests */}
         <FormField
@@ -176,6 +166,7 @@ export default function VenueForm({
           value={values.maxGuests}
           onChange={handleChange}
           error={errors.maxGuests}
+          required
         />
 
         {/* rating */}
@@ -229,47 +220,15 @@ export default function VenueForm({
           ))}
         </fieldset>
 
-        {/* images */}
-        <div className="flex flex-col gap-3">
-          <p className="font-semibold">Images</p>
 
-          <div className="flex flex-col gap-1">
-            <label htmlFor="media.url">Image URL</label>
-            <input
-              id="media.url"
-              name="media.url"
-              type="url"
-              value={values.media?.[0]?.url ?? ""}
-              onChange={handleChange}
-              aria-invalid={!!errors["media.0.url"]}
-              aria-describedby={
-                errors["media.0.url"] ? "media-url-error" : undefined
-              }
-              className="w-full rounded-sm border border-grey-200 bg-white px-4 py-2"
-            />
-            {errors["media.0.url"] && (
-              <span
-                id="media-url-error"
-                role="alert"
-                className="text-sm text-destructive"
-              >
-                {errors["media.0.url"]}
-              </span>
-            )}
-          </div>
 
-          <div className="flex flex-col gap-1">
-            <label htmlFor="media.alt">Image Alt Text</label>
-            <input
-              id="media.alt"
-              name="media.alt"
-              type="text"
-              value={values.media?.[0]?.alt ?? ""}
-              onChange={handleChange}
-              className="w-full rounded-sm border border-grey-200 bg-white px-4 py-2"
-            />
-          </div>
-        </div>
+<ImageField
+  media={(values.media as { url:string; alt: string}[]) ?? [{ url: "", alt: "" }]}
+  onChange={(media) => setValues((prev) => ({ ...prev, media }))}
+  error={errors["media.0.url"]}
+/>
+
+
 
         <Button
           type="submit"
