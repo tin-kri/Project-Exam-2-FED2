@@ -21,7 +21,7 @@ export default function ManagerVenueCard({ venue }: ManagerVenueCardProps) {
 
       <div className="px-4 py-3">
         <Link
-          to={`/venues/${venue.id}`}
+          to={`/manage-venues/${venue.id}`}
           className="font-serif text-base font-bold text-navy-800 hover:text-sky-300"
         >
           {venue.name}

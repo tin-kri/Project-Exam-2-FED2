@@ -3,6 +3,7 @@ import VenueForm from "../components/VenueForm";
 import { useCreateVenue } from "../hooks/useCreateVenue";
 import type { CreateVenueValues } from "../schema/venueManagementSchema";
  import { useNavigate } from "react-router-dom";
+import {  toast } from 'sonner'
 
 export default function CreateVenuePage() {
 
@@ -12,7 +13,8 @@ const {handleCreateVenue, isLoading, error} = useCreateVenue();
  async function handleSubmit(values: CreateVenueValues) {
     const venue = await handleCreateVenue(values);
     if (venue) {
-      navigate(`/venues/${venue.id}`);
+      toast.success("Successfully created new venue")
+      navigate(`/manage-venues/${venue.id}`);
     }
   }
 
@@ -20,8 +22,7 @@ const {handleCreateVenue, isLoading, error} = useCreateVenue();
 
   return (
     <PageWrapper>
-      
-    <h1>Create a venue</h1>
+
    <VenueForm 
    onSubmit={handleSubmit}  
    isLoading= {isLoading}
