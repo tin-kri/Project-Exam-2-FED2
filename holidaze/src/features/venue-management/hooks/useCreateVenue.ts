@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { createVenue } from "../api/venueManagement ";
+import { createVenue } from "../api/venueManagement";
 import type { VenueApiData } from "@/features/venues/types/venue.types";
 import type { CreateVenueValues } from "../schema/venueManagementSchema";
 

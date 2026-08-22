@@ -3,6 +3,7 @@ import type { ApiResponse } from "@/types/types";
  
 
 export type CreateVenueResponse = ApiResponse<VenueApiData>; 
+export type ManagerVenuesResponse = ApiResponse<VenueApiData[]>;
 
 
 // export interface VenueApiData {

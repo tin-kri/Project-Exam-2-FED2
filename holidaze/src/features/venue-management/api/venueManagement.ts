@@ -1,5 +1,5 @@
 import { holidazeFetch } from "@/api/base";
-import type { CreateVenueResponse } from "../types/venueManagement.types";
+import type { CreateVenueResponse, ManagerVenuesResponse } from "../types/venueManagement.types";
 import type { CreateVenueValues } from "../schema/venueManagementSchema";
 
 export function createVenue(values: CreateVenueValues): Promise<CreateVenueResponse> {
@@ -9,3 +9,6 @@ export function createVenue(values: CreateVenueValues): Promise<CreateVenueRespo
     })
 }
 
+export function getManagerVenues(name: string): Promise<ManagerVenuesResponse>{
+  return holidazeFetch(`profiles/${name}/venues?_bookings=true`);
+}
