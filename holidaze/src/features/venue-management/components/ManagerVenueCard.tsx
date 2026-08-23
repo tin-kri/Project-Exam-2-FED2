@@ -3,9 +3,10 @@ import type { VenueApiData } from "@/features/venues/types/venue.types";
 
 interface ManagerVenueCardProps {
   venue: VenueApiData;
+  onDelete: (venue: VenueApiData) =>void;
 }
 
-export default function ManagerVenueCard({ venue }: ManagerVenueCardProps) {
+export default function ManagerVenueCard({ venue, onDelete }: ManagerVenueCardProps) {
   const image = venue.media?.[0];
 
   return (
@@ -52,6 +53,7 @@ export default function ManagerVenueCard({ venue }: ManagerVenueCardProps) {
 
           <button
             type="button"
+            onClick={() => onDelete(venue)}
             className="flex items-center gap-1 text-sm font-medium text-destructive hover:text-red-400"
           >
             Delete

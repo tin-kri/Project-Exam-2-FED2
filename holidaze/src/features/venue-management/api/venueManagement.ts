@@ -1,12 +1,18 @@
 import { holidazeFetch } from "@/api/base";
-import type { CreateVenueResponse, ManagerVenuesResponse, EditVenueResponse } from "../types/venueManagement.types";
+import type {
+  CreateVenueResponse,
+  ManagerVenuesResponse,
+  EditVenueResponse,
+} from "../types/venueManagement.types";
 import type { CreateVenueValues } from "../schema/venueManagementSchema";
 
-export function createVenue(values: CreateVenueValues): Promise<CreateVenueResponse> {
-    return holidazeFetch("venues", {
-        method: "POST",
-        body: JSON.stringify(values)
-    })
+export function createVenue(
+  values: CreateVenueValues,
+): Promise<CreateVenueResponse> {
+  return holidazeFetch("venues", {
+    method: "POST",
+    body: JSON.stringify(values),
+  });
 }
 
 export function editVenue(
@@ -19,6 +25,12 @@ export function editVenue(
   });
 }
 
-export function getManagerVenues(name: string): Promise<ManagerVenuesResponse>{
+export function deleteVenue(id: string): Promise<void> {
+  return holidazeFetch(`venues/${id}`, {
+    method: "DELETE",
+  });
+}
+
+export function getManagerVenues(name: string): Promise<ManagerVenuesResponse> {
   return holidazeFetch(`profiles/${name}/venues?_bookings=true`);
 }

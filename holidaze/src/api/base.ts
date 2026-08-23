@@ -35,8 +35,10 @@ async function handleResponse<T>(response: Response): Promise<T> {
     const message = errorBody?.errors?.[0]?.message ?? response.statusText;
     throw new Error(`API error ${response.status}: ${message}`);
   }
+    if (response.status === 204) return undefined as T;
   return response.json() as Promise<T>;
 }
+
 
 export async function holidazeFetch<T>(
   endpoint: string,
