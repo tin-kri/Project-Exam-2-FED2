@@ -1,5 +1,6 @@
 import { Navigate, useLocation } from "react-router-dom";
 import { useAuthStore } from "../stores/authStore";
+import {  toast } from 'sonner'
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
@@ -16,10 +17,12 @@ export function ProtectedRoute({
   if (!user) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
-//Use this one for late when making possible to create venues
-  if (requireVenueManager && !user.venueManager) {
-    return <Navigate to="/" replace />;
-  }
 
+  if (requireVenueManager && !user.venueManager) {
+   toast.error("You need to be a Venue Manager to access this page.")
+    return <Navigate to="/profile"  replace />;
+  }
+console.log("user:", user);
+console.log("venueManager:", user?.venueManager);
   return <>{children}</>;
 }

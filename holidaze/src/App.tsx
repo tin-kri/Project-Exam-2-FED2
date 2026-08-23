@@ -7,31 +7,33 @@ import RegisterPage from "./features/auth/pages/Register";
 import LoginPage from "./features/auth/pages/Login";
 import ProfilePage from "./features/profile/pages/Profile";
 import BookingConfirmationPage from "./features/bookings/pages/BookingConfirmation";
+import CreateVenuePage from "./features/venue-management/pages/CreateVenuePage";
 import { ProtectedRoute } from "./features/auth/components/ProtectedRoute";
+import { Toaster } from "sonner";
+import ManageVenuePage from "./features/venue-management/pages/ManageVenuePage";
 function App() {
   return (
-    <>
-      <BrowserRouter>
-        <Navbar />
+    <BrowserRouter>
+      <Navbar />
+      <Toaster />
+      <Routes>
+        <Route path="/" element={<h1>Home</h1>} />
+        <Route path="/venues" element={<VenuesPage />} />
+        <Route path="/venues/:id" element={<VenueDetailPage />} />
+        <Route path="contact" element={<h1>Contact</h1>} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
 
-        <Routes>
-          <Route path="/" element={<h1>Home</h1>} />
-          <Route path="/venues" element={<VenuesPage />} />
-          <Route path="/venues/:id" element={<VenueDetailPage />} />
-          <Route path="contact" element={<h1>Contact</h1>} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <ProfilePage />
+            </ProtectedRoute>
+          }
+        />
 
-          <Route
-            path="/profile"
-            element={
-              <ProtectedRoute>
-                <ProfilePage />
-              </ProtectedRoute>
-            }
-          />
-
-          <Route
+        <Route
           path="/booking-confirmed"
           element={
             <ProtectedRoute>
@@ -39,9 +41,26 @@ function App() {
             </ProtectedRoute>
           }
         />
-        </Routes>
-      </BrowserRouter>
-    </>
+
+        <Route
+          path="/manage-venues"
+          element={
+            <ProtectedRoute requireVenueManager>
+              <CreateVenuePage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/manage-venues/:id"
+          element={
+            <ProtectedRoute requireVenueManager>
+              <ManageVenuePage />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

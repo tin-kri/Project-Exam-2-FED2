@@ -12,7 +12,7 @@ export default function UserBookings({ profile }: UserBookingsProps) {
   return (
     <section className="bg-bg-card mt-12 rounded-sm">
       <div className="flex flex-col gap-4 bg-bg-card px-6 py-8">
-        <h2 className="text-center font-serif text-2xl font-semibold tracking-tight text-navy-800">
+        <h2 className=" font-serif text-2xl font-semibold tracking-tight text-navy-800">
           My Bookings
         </h2>
 
@@ -33,7 +33,7 @@ export default function UserBookings({ profile }: UserBookingsProps) {
         )}
 
         {bookings.length > 0 && (
-          <div className="flex flex-col gap-3">
+          <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
             {bookings.map((booking) => (
               <BookingCard key={booking.id} booking={booking} />
             ))}

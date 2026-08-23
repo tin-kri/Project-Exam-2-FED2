@@ -5,6 +5,7 @@ import useProfile from "../hooks/useProfile";
 import AvatarModal from "../components/AvatarModule";
 import UserBookings from "../components/UserBookings";
 
+import VenueManagerSection from "@/features/venue-management/components/VenueManagerSection";
 
 export default function ProfilePage() {
   const { profile, isLoading, error } = useProfile();
@@ -35,8 +36,27 @@ export default function ProfilePage() {
           onClose={() => setIsAvatarModalOpen(false)}
         />
       )}
+
+        {/* {profile.venueManager &&(<Link
+            to="/manage-venues"
+            className="font-semibold text-navy-800 underline underline-offset-4"
+          >
+            Create a New Venue
+          </Link>)} */}
+
+
+      {profile.venueManager && ( 
+        <VenueManagerSection /> 
+      )}
+  {/* <Link
+            to="/manage-venues/"
+            className="text-sm font-medium text-navy-800 underline underline-offset-4 hover:text-sky-300"
+          >
+            + Create new venue
+          </Link> */}
+
       <UserBookings profile={profile} />
-     
+   
     </PageWrapper>
   );
 }
