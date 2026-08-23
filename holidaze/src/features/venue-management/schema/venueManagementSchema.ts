@@ -1,7 +1,7 @@
 import { z } from "zod";
-// do i need coerce?
+
 const mediaSchema = z.object({
-  url: z.string().url("Must be a valid URL").min(1, "Image URL is required"),
+  url: z.url("Must be a valid URL").min(1, "Image URL is required"),
   alt: z.string().optional(),
 });
 
@@ -43,11 +43,11 @@ export const createVenueSchema = z.object({
 
   location: z
     .object({
-      address: z.string().optional(),
-      city: z.string().optional(),
-      zip: z.string().optional(),
-      country: z.string().optional(),
-      continent: z.string().optional(),
+      address: z.string().optional().nullable(),
+      city: z.string().optional().nullable(),
+      zip: z.string().optional().nullable(),
+      country: z.string().optional().nullable(),
+      continent: z.string().optional().nullable(),
       lat: z.coerce.number().min(-90).max(90).optional(),
       lng: z.coerce.number().min(-180).max(180).optional(),
     })
@@ -55,3 +55,5 @@ export const createVenueSchema = z.object({
 });
 
 export type CreateVenueValues = z.infer<typeof createVenueSchema>;
+export const updateVenueSchema = createVenueSchema.partial();
+export type UpdateVenueValues = z.infer<typeof updateVenueSchema>;

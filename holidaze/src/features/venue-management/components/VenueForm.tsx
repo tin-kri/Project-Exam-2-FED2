@@ -15,6 +15,8 @@ interface VenueFormProps {
   error: string | null;
   initialValues?: Partial<CreateVenueValues>;
   submitLabel?: string;
+  loadingLabel?: string;
+  title?: string;
 }
 
 const defaultValues: CreateVenueValues = {
@@ -32,7 +34,9 @@ export default function VenueForm({
   isLoading,
   error,
   initialValues,
-  submitLabel = "Create Venue Listing",
+  submitLabel,
+  title,
+  loadingLabel,
 }: VenueFormProps) {
   const [values, setValues] = useState<CreateVenueValues>({
     ...defaultValues,
@@ -46,15 +50,7 @@ export default function VenueForm({
     >,
   ) {
     const { name, value, type } = e.target;
-    // const checked = (e.target as HTMLInputElement).checked;
 
-    // if (name.startsWith("meta.")) {
-    //   const key = name.split(".")[1];
-    //   setValues((prev) => ({
-    //     ...prev,
-    //     meta: { ...prev.meta, [key]: checked },
-    //   }));
-    // } else
     if (name.startsWith("location.")) {
       const key = name.split(".")[1];
       setValues((prev) => ({
@@ -97,7 +93,7 @@ export default function VenueForm({
   return (
     <section className="rounded-sm bg-bg-card px-6 py-8">
       <h1 className="mb-6 font-serif text-2xl font-bold text-navy-800">
-        Create a Venue
+        {title ?? "Create a Venue"}
       </h1>
 
       {error && (
@@ -199,7 +195,7 @@ export default function VenueForm({
             }))
           }
         />
-        
+
         {/* image */}
         <ImageField
           media={
@@ -217,7 +213,9 @@ export default function VenueForm({
           disabled={isLoading}
           aria-busy={isLoading}
         >
-          {isLoading ? "Creating..." : submitLabel}
+          {isLoading
+            ? (loadingLabel ?? "Creating...")
+            : (submitLabel ?? "Create Venue")}
         </Button>
       </form>
     </section>

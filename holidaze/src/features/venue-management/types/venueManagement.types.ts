@@ -4,6 +4,7 @@ import type { ApiResponse } from "@/types/types";
 
 export type CreateVenueResponse = ApiResponse<VenueApiData>; 
 export type ManagerVenuesResponse = ApiResponse<VenueApiData[]>;
+export type EditVenueResponse = ApiResponse<VenueApiData>;
 
 export interface VenueBooking extends Booking {
     customer?: {
