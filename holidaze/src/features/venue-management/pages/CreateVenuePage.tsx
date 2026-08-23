@@ -24,6 +24,7 @@ const {handleCreateVenue, isLoading, error} = useCreateVenue();
     <PageWrapper>
 
    <VenueForm 
+  
    onSubmit={handleSubmit}  
    isLoading= {isLoading}
    error={error}/> 

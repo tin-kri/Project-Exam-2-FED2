@@ -22,7 +22,7 @@ export default function VenueBookingsList({
             No bookings yet.
           </p>
         ) : (
-          <div className="flex flex-col gap-3">
+          <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
             {bookings.map((booking) => {
               const nights = differenceInCalendarDays(
                 new Date(booking.dateTo),
@@ -38,7 +38,7 @@ export default function VenueBookingsList({
                   <div className="flex gap-4 border-b border-grey-200 pb-2 text-sm">
                     <span className="w-24 font-bold text-navy-800">Dates</span>
                     <span className="text-grey-900">
-                      {format(new Date(booking.dateFrom), "d MMM yyyy")} →{" "}
+                      {format(new Date(booking.dateFrom), "d MMM yyyy")} -{" "}
                       {format(new Date(booking.dateTo), "d MMM yyyy")}
                     </span>
                   </div>

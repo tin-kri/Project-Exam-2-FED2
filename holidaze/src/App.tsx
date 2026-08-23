@@ -11,6 +11,8 @@ import CreateVenuePage from "./features/venue-management/pages/CreateVenuePage";
 import { ProtectedRoute } from "./features/auth/components/ProtectedRoute";
 import { Toaster } from "sonner";
 import ManageVenuePage from "./features/venue-management/pages/ManageVenuePage";
+import EditVenuePage from "./features/venue-management/pages/EditVenuePage";
+
 function App() {
   return (
     <BrowserRouter>
@@ -59,7 +61,18 @@ function App() {
             </ProtectedRoute>
           }
         />
+     
+
+<Route
+          path="/manage-venues/:id/edit"
+          element={
+            <ProtectedRoute requireVenueManager>
+              <EditVenuePage />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
+      
     </BrowserRouter>
   );
 }
