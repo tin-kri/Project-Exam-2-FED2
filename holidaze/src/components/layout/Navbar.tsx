@@ -24,6 +24,7 @@ const navLinks = user
       { to: "/venues", label: "Venues" },
       { to: "/contact", label: "Contact" },
       { to: "/profile", label: "Profile" },
+      
     ]
   : [
       { to: "/venues", label: "Venues" },
@@ -132,7 +133,16 @@ const rightLinks = user
                 {label}
               </NavLink>
             </li>
-          ))}
+          ))}  {user&& (
+            <li >
+                 <button
+      onClick={handleLogout}
+      className="block w-full rounded-sm px-4 py-3 text-left text-base text-grey-900 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy-800"
+    >
+      Logout
+    </button>
+            </li>
+          )}
         </ul>
       )}
     </header>
