@@ -12,6 +12,8 @@ import { ProtectedRoute } from "./features/auth/components/ProtectedRoute";
 import { Toaster } from "sonner";
 import ManageVenuePage from "./features/venue-management/pages/ManageVenuePage";
 import EditVenuePage from "./features/venue-management/pages/EditVenuePage";
+import Footer from "./components/layout/footer";
+
 
 function App() {
   return (
@@ -31,6 +33,7 @@ function App() {
           element={
             <ProtectedRoute>
               <ProfilePage />
+             
             </ProtectedRoute>
           }
         />
@@ -72,7 +75,7 @@ function App() {
           }
         />
       </Routes>
-      
+       <Footer />
     </BrowserRouter>
   );
 }
