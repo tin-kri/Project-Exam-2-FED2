@@ -12,8 +12,8 @@ import { ProtectedRoute } from "./features/auth/components/ProtectedRoute";
 import { Toaster } from "sonner";
 import ManageVenuePage from "./features/venue-management/pages/ManageVenuePage";
 import EditVenuePage from "./features/venue-management/pages/EditVenuePage";
-import Footer from "./components/layout/footer";
-
+import Footer from "./components/layout/Footer";
+import LandingPage from "./pages/LandingPage";
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
       <Navbar />
       <Toaster />
       <Routes>
-        <Route path="/" element={<h1>Home</h1>} />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/venues" element={<VenuesPage />} />
         <Route path="/venues/:id" element={<VenueDetailPage />} />
         <Route path="contact" element={<h1>Contact</h1>} />
@@ -33,7 +33,6 @@ function App() {
           element={
             <ProtectedRoute>
               <ProfilePage />
-             
             </ProtectedRoute>
           }
         />
@@ -64,9 +63,8 @@ function App() {
             </ProtectedRoute>
           }
         />
-     
 
-<Route
+        <Route
           path="/manage-venues/:id/edit"
           element={
             <ProtectedRoute requireVenueManager>
@@ -75,7 +73,7 @@ function App() {
           }
         />
       </Routes>
-       <Footer />
+      <Footer />
     </BrowserRouter>
   );
 }
