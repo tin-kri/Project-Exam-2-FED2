@@ -1,9 +1,7 @@
-import SearchBar from "../features/venues/components/SearchBar";
-
 import PageWrapper from "@/components/layout/PageWrapper";
+import LandingSearch from "./landing-page/components/LandingSearch";
 
 export default function LandingPage() {
-
 
   return (
     <>
@@ -18,7 +16,9 @@ export default function LandingPage() {
 
         <div className="absolute inset-0 flex items-center justify-center px-4 lg:px-24">
           <div className="w-full max-w-3xl">
-            <SearchBar  />
+           
+  <LandingSearch />
+
           </div>
         </div>
       </div>
