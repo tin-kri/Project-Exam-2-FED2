@@ -1,6 +1,7 @@
 import PageWrapper from "@/components/layout/PageWrapper";
 import LandingSearch from "./landing-page/components/LandingSearch";
 import Destinations from "./landing-page/components/Destinations";
+import PopularVenues from "./landing-page/components/PopularVenues";
 export default function LandingPage() {
   return (
     <>
@@ -28,7 +29,7 @@ export default function LandingPage() {
         <p className=" font-sans text-xl text-foreground mt-3">
           Discover holiday venues  handpicked for a unforgettable stay
         </p>
-
+<PopularVenues />
         <Destinations />
       </PageWrapper>
     </>
