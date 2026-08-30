@@ -23,12 +23,12 @@ export default function LandingPage() {
         </div>
       </div>
       <PageWrapper>
-        <h1 className="font-serif text-3xl font-semibold tracking-tight text-primary">
+        <h1 className="font-serif text-4xl font-bold tracking-tight text-primary mt-6">
           Find your next stay
           {/* <span className="font-serif text-3xl font-bold tracking-tight text-primary">
           Holidaze</span> */}
         </h1>
-        <p className=" font-sans text-xl  text-grey-600 mt-2">
+        <p className=" font-sans text-xl text-grey-600 mt-3">
           Discover holiday venues <br /> handpicked for a unforgettable stay
         </p>
       </PageWrapper>
