@@ -59,7 +59,7 @@ export default function LandingSearch() {
           className="w-full bg-transparent text-base text-navy-900 outline-none placeholder:text-sm placeholder:text-grey-600"
         />
 
-        <Button type="submit" variant="secondary" aria-label="Search venues">
+        <Button type="submit" variant="secondary" aria-label="Search venues" className="cursor-pointer">
           Search
         </Button>
       </form>
@@ -92,6 +92,7 @@ export default function LandingSearch() {
               aria-label="Search for venues"
               variant="link"
               onClick={handleSubmit}
+              className=" cursor-pointer "
             >
               See all results for "{query}"
             </Button>
