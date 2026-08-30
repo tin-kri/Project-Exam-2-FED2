@@ -1,6 +1,6 @@
 import PageWrapper from "@/components/layout/PageWrapper";
 import LandingSearch from "./landing-page/components/LandingSearch";
-import TopDestinations from "./landing-page/components/Destinations";
+import Destinations from "./landing-page/components/Destinations";
 export default function LandingPage() {
   return (
     <>
@@ -25,11 +25,11 @@ export default function LandingPage() {
           {/* <span className="font-serif text-3xl font-bold tracking-tight text-primary">
           Holidaze</span> */}
         </h1>
-        <p className=" font-sans text-xl text-grey-600 mt-3">
-          Discover holiday venues <br /> handpicked for a unforgettable stay
+        <p className=" font-sans text-xl text-foreground mt-3">
+          Discover holiday venues  handpicked for a unforgettable stay
         </p>
 
-        <TopDestinations />
+        <Destinations />
       </PageWrapper>
     </>
   );
