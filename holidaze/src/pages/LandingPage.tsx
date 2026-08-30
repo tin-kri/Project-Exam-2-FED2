@@ -1,8 +1,8 @@
 import PageWrapper from "@/components/layout/PageWrapper";
 import LandingSearch from "./landing-page/components/LandingSearch";
-
+import Destinations from "./landing-page/components/Destinations";
+import PopularVenues from "./landing-page/components/PopularVenues";
 export default function LandingPage() {
-
   return (
     <>
       <div className="relative h-96 w-full  md:h-125">
@@ -16,10 +16,7 @@ export default function LandingPage() {
 
         <div className="absolute inset-0 flex items-center justify-center px-4 lg:px-24">
           <div className="w-full max-w-3xl">
-           
-  <LandingSearch />
-  
-
+            <LandingSearch />
           </div>
         </div>
       </div>
@@ -29,9 +26,11 @@ export default function LandingPage() {
           {/* <span className="font-serif text-3xl font-bold tracking-tight text-primary">
           Holidaze</span> */}
         </h1>
-        <p className=" font-sans text-xl text-grey-600 mt-3">
-          Discover holiday venues <br /> handpicked for a unforgettable stay
+        <p className=" font-sans text-xl text-foreground mt-3">
+          Discover holiday venues  handpicked for a unforgettable stay
         </p>
+<PopularVenues />
+        <Destinations />
       </PageWrapper>
     </>
   );
