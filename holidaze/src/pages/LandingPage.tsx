@@ -18,6 +18,7 @@ export default function LandingPage() {
           <div className="w-full max-w-3xl">
            
   <LandingSearch />
+  
 
           </div>
         </div>

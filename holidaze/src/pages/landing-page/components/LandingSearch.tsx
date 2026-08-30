@@ -1,9 +1,8 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Search } from "lucide-react";
 import { useVenueSearch } from "@/features/venues/hooks/useVenueSearch";
 import { Button } from "@/components/ui/button";
-import { useRef } from "react";
 import { useClickOutside } from "@/hooks/useClickOutside";
 
 export default function LandingSearch() {
@@ -26,7 +25,8 @@ export default function LandingSearch() {
     navigate(`/venues/${venueId}`);
   }
 
-  const showListSuggestions = query.trim().length > 0 && results.length > 0;
+  const showListSuggestions =
+    query.trim().length > 0 && !isLoading && results.length > 0;
 
   const containerRef = useRef<HTMLDivElement>(null);
   useClickOutside(containerRef, () => setQuery(""));
@@ -59,7 +59,12 @@ export default function LandingSearch() {
           className="w-full bg-transparent text-base text-navy-900 outline-none placeholder:text-sm placeholder:text-grey-600"
         />
 
-        <Button type="submit" variant="secondary" aria-label="Search venues" className="cursor-pointer">
+        <Button
+          type="submit"
+          variant="secondary"
+          aria-label="Search venues"
+          className="cursor-pointer"
+        >
           Search
         </Button>
       </form>
