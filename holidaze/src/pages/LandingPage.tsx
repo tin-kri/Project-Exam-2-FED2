@@ -12,25 +12,39 @@ export default function LandingPage() {
           className="h-full w-full object-center object-cover"
         />
 
-        <div className="absolute inset-0 bg-sky-200/20 mix-blend-darken" />
+        <div className="absolute inset-0 bg-sky-200/50 mix-blend-lighten" />
 
         <div className="absolute inset-0 flex items-center justify-center px-4 lg:px-24">
           <div className="w-full max-w-3xl">
+            <div className="text-center mb-6">
+              <span className="font-serif text-4xl font-bold tracking-tight text-primary">
+                {" "}
+                Find your perfect venue <br />
+              </span>
+            </div>
             <LandingSearch />
           </div>
         </div>
       </div>
       <PageWrapper>
-        <h1 className="font-serif text-4xl font-bold tracking-tight text-primary mt-6">
-          Find your next stay
+        <div className="mt-12 border-t border-gray-200"></div>
+        <PopularVenues />
+        <div className="mt-12 border-t border-gray-200"></div>
+        <h1 className="font-serif text-center text-3xl font-bold tracking-tight text-primary mt-6">
+          Holidaze
           {/* <span className="font-serif text-3xl font-bold tracking-tight text-primary">
           Holidaze</span> */}
         </h1>
-        <p className=" font-sans text-xl text-foreground mt-3">
-          Discover holiday venues  handpicked for a unforgettable stay
+        <p className=" text-center font-sans text-xl text-foreground mt-3">
+          Whether you're planning a weekend escape, a family holiday, or a dream
+          retreat — Holidaze connects you with unique venues for comfort,
+          character and unforgettable experiences. Browse hundreds of locations
+          across the world and book the stay you've always wanted.{" "}
         </p>
-<PopularVenues />
+        <div className="mt-12 border-t border-gray-200"></div>
+
         <Destinations />
+        <div className="mt-12 border-t border-gray-200"></div>
       </PageWrapper>
     </>
   );

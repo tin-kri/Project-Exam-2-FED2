@@ -1,5 +1,5 @@
 import { useId } from "react";
-import type { VenueApiData } from "@/types/types";
+import type { VenueApiData } from "@/features/venues/types/venue.types";
 
 type StarType = "full" | "half" | "empty";
 type RatingSectionProps = {

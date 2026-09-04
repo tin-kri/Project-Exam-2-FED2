@@ -61,7 +61,6 @@ export default function LandingSearch() {
 
         <Button
           type="submit"
-          variant="secondary"
           aria-label="Search venues"
           className="cursor-pointer"
         >

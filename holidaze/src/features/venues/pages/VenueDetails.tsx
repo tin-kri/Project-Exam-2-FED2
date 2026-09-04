@@ -28,6 +28,7 @@ export default function VenueDetailPage() {
 
   return (
     <PageWrapper>
+      
       <VenueDetailsCard venue={venue} />
       <BookingSection
         venue={venue}

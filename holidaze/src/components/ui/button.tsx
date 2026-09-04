@@ -9,8 +9,8 @@ const buttonVariants = cva(
         default: "bg-primary text-primary-foreground hover:bg-primary/80",
         outline:
           "border-navy-800 bg-white text-navy-800 " +
-          "hover:bg-sky-100 hover:text-navy-800 hover:border-navy-800 " +
-          "active:bg-sky-300 active:text-navy-800 active:border-navy-800 " +
+          "hover:bg-sky-300 hover:text-navy-800 hover:border-navy-800 " +
+          "active:bg-sky-100 active:text-navy-800 active:border-navy-800 " +
           "focus-visible:bg-white focus-visible:text-navy-800 focus-visible:border-sky-300 " +
           "disabled:bg-grey-100 disabled:text-grey-600 disabled:border-grey-200",
         secondary:

@@ -21,6 +21,7 @@ export default function LoginPage() {
 
   return (
     <PageWrapper>
+     
       <LoginForm onSubmit={handleSubmit} isLoading={isLoading} error={error} />
     <RegisterRedirect />
     </PageWrapper>
