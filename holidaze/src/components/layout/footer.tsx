@@ -23,10 +23,6 @@ export default function Footer() {
             Home
           </NavLink>
 
-          <NavLink to="/contact" className={navLinkClass}>
-            Contact
-          </NavLink>
-
           <NavLink to="/venues" className={navLinkClass}>
             Venues
           </NavLink>

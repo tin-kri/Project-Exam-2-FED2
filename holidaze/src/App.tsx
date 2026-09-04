@@ -18,13 +18,14 @@ import LandingPage from "./pages/LandingPage";
 function App() {
   return (
     <BrowserRouter>
+    <div className="flex min-h-screen flex-col">
       <Navbar />
       <Toaster />
+         <main className="flex-1">
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/venues" element={<VenuesPage />} />
         <Route path="/venues/:id" element={<VenueDetailPage />} />
-        <Route path="contact" element={<h1>Contact</h1>} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
 
@@ -73,7 +74,9 @@ function App() {
           }
         />
       </Routes>
+      </main>
       <Footer />
+      </div>
     </BrowserRouter>
   );
 }
