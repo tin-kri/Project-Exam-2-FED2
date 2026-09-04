@@ -3,77 +3,86 @@
 @import "shadcn/tailwind.css";
 
 @theme {
-  /* Font */
+  /* Expose shadcn tokens as Tailwind utilities */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-navy-900: #0a1845;
+  --color-navy-800: #0d1f5c;
+
+  /* for hoover text links */
+  --color-navy-500: #2a3c79;
+
+  --color-sky-500: #32acdc;
+  --color-sky-300: #87ceeb;
+  --color-sky-100: #dff0fa;
+
+  --color-grey-100: #f0f2f5;
+  --color-grey-200: #e2e6ea;
+  --color-grey-900: #1a1f2e;
+  --color-grey-600: #505152;
+
+  --color-bg-card: #f7f5f0;
+  --color-page-bg: #fefaf7;
+  --color-star: #f5a623;
+
+  --color-light-blue: #e0edff;
+  --color-blue: #00448c;
+
   --font-sans: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Source Serif 4", ui-serif, Georgia, serif;
 
-  /* Colors */
-  --color-primary: #1a365d;
-  --color-primary-light: #2c5282;
+  --radius-sm: 5px;
 
-  --color-secondary: #63b3ed;
-  --color-secondary-light: #90cdf4;
+  --tracking-tight: -0.045em;
 
-  --color-accent: #f6e05e;
-  --color-accent-light: #faf089;
-
-  /* Neutrals */
-  --color-background: #ffffff;
-  --color-foreground: #1a365d;
-  --color-body: #1e2125;
-  --color-subtle: #718096;
-  --color-placeholder: #a0aec0;
-  --color-border: #e2e8f0;
-  --color-border-dark: #cbd5e0;
-
-  /* Info */
-  --color-card: #ffffff;
-  --color-ring: #63b3ed;
-  --color-success: #48bb78;
-  --color-warning: #ed8936;
-  --color-error: #f56565;
-
-  /* Border Radius */
-  --radius-sm: 0.25rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
 }
 
-/* SHADCN  */
+/* ============================================
+   :root — Holidaze brand mapped to shadcn tokens
+   ============================================ */
+:root {
+  --radius: 0.3rem;
 
-@layer base {
-  :root {
-    --background: var(--color-background);
-    --foreground: var(--color-foreground);
-
-    --primary: var(--color-primary);
-    --primary-foreground: #ffffff;
-
-    --secondary: var(--color-secondary);
-    --secondary-foreground: var(--color-primary);
-
-    --accent: var(--color-accent);
-    --accent-foreground: var(--color-primary);
-
-
-    --muted: #f1f5f9;
-    --muted-foreground: var(--color-subtle);
-
-    --card: var(--color-card);
-    --card-foreground: var(--color-foreground);
-
-    --popover: var(--color-card);
-    --popover-foreground: var(--color-foreground);
-
-    --border: var(--color-border);
-    --input: var(--color-border);
-    --ring: var(--color-ring);
-
-    --destructive: var(--color-error);
-    --destructive-foreground: #ffffff;
-
-    --radius: var(--radius-md);
-  }
+  /* Mapped to Holidaze brand */
+  --background: #ffffff;
+  --foreground: #1a1f2e;
+  --card: #ffffff;
+  --card-foreground: #1a1f2e;
+  --popover: #ffffff;
+  --popover-foreground: #1a1f2e;
+  --primary: #0d1f5c; /* navy-800 */
+  --primary-foreground: #ffffff;
+  --secondary: #dff0fa; /* sky-100 */
+  --secondary-foreground: #0d1f5c;
+  --muted: #dff0fa; /* sky-100 — calendar range fill */
+  --muted-foreground: #5a6372;
+  --accent: #dff0fa; /* sky-100 — hover states */
+  --accent-foreground: #0d1f5c;
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: #e2e6ea; /* grey-200 */
+  --input: #e2e6ea;
+  --ring: #0d1f5c; /* navy-800 */
 }
 
 @layer base {
@@ -81,163 +90,13 @@
   *::before,
   *::after {
     box-sizing: border-box;
-    border-color: var(--color-border);
+    margin: 0;
+    padding: 0;
   }
 
   html {
-    scroll-behavior: smooth;
-  }
-
-  body {
-    @apply bg-background text-body font-sans antialiased leading-relaxed;
-  }
-
-  /* Heading*/
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-serif text-foreground font-semibold leading-tight;
-  }
-
-  h1 {
-    @apply text-4xl;
-  }
-  h2 {
-    @apply text-2xl;
-  }
-  h3 {
-    @apply text-xl;
-  }
-  h4 {
-    @apply text-lg;
-  }
-
-  p {
-    @apply text-body leading-relaxed;
-  }
-
-  a {
-    @apply text-primary underline-offset-2 transition-colors hover:text-primary-light;
-  }
-
-  :focus-visible {
-    @apply outline-2 outline-offset-2 outline-ring;
-  }
-}
-
-/* ============================================================
-   4. GLOBAL COMPONENT STYLES
-   Keep only what cannot live in a React component:
-   layout primitives, gradients, and button base/variants
-   (since buttons are used everywhere with consistent variants).
-   Card/input/badge/search styles belong in your React components.
-   ============================================================ */
-@layer components {
-  /* Layout */
-  .container-app {
-    @apply w-full max-w-7xl mx-auto px-4;
-  }
-
-  /* Buttons btn btn-primary  */
-.btn {
-  @apply inline-flex items-center justify-center gap-2
-         px-4 py-2 rounded-md font-sans font-medium transition-colors
-         focus-visible:outline-none focus-visible:ring-2
-         focus-visible:ring-ring focus-visible:ring-offset-2
-         disabled:pointer-events-none disabled:opacity-50;
-}
-
-.btn-primary {
-  @apply inline-flex items-center justify-center gap-2
-         px-4 py-2 rounded-md font-sans font-medium transition-colors
-         focus-visible:outline-none focus-visible:ring-2
-         focus-visible:ring-ring focus-visible:ring-offset-2
-         disabled:pointer-events-none disabled:opacity-50
-         bg-primary text-white hover:bg-primary-light;
-}
-
-.btn-secondary {
-  @apply inline-flex items-center justify-center gap-2
-         px-4 py-2 rounded-md font-sans font-medium transition-colors
-         focus-visible:outline-none focus-visible:ring-2
-         focus-visible:ring-ring focus-visible:ring-offset-2
-         disabled:pointer-events-none disabled:opacity-50
-         bg-secondary text-primary hover:bg-secondary-light;
-}
-
-.btn-outline {
-  @apply inline-flex items-center justify-center gap-2
-         px-4 py-2 rounded-md font-sans font-medium transition-colors
-         focus-visible:outline-none focus-visible:ring-2
-         focus-visible:ring-ring focus-visible:ring-offset-2
-         disabled:pointer-events-none disabled:opacity-50
-         border-2 border-primary bg-transparent text-primary
-         hover:bg-primary hover:text-white;
-}
-
-  /* .btn-icon {
-    @apply 
-  } */
-}
-
-/* Typography */
-@layer utilities {
-  .text-body-lg {
-    @apply text-lg  font-sans text-body leading-relaxed;
-  }
-  .text-body {
-    @apply text-base font-sans text-body leading-relaxed;
-  }
-  .text-body-sm {
-    @apply text-sm  font-sans text-body leading-relaxed;
-  }
-  .text-caption {
-    @apply text-xs  font-sans text-placeholder;
-  }
-
-  .text-logo {
-    @apply font-serif text-2xl font-semibold text-primary;
-  }
-  .text-location {
-    @apply text-sm font-sans text-body;
-  }
-  .text-price {
-    @apply text-xl font-serif font-semibold text-primary;
-  }
-  .text-price-unit {
-    @apply text-sm font-sans text-subtle;
-  }
-}
-
-/* Animations */
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes slide-up {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@layer utilities {
-  .animate-fade-in {
-    animation: fade-in 0.3s ease-in-out;
-  }
-  .animate-slide-up {
-    animation: slide-up 0.3s ease-out;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    background-color: #fefaf7;
   }
 }
