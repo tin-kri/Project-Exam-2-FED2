@@ -1,4 +1,3 @@
-
 import { test, expect } from "@playwright/test";
 
 test.describe("login", () => {
@@ -43,15 +42,16 @@ test.describe("login", () => {
     ).toBeVisible();
   });
   test("shows an error for a wrong password", async ({ page }) => {
-  await page.goto("/login");
+    const email = process.env.TEST_USER_EMAIL;
+    await page.goto("/login");
 
-  await page.getByLabel("Email").fill("email");
-  await page.getByLabel("Password").fill("wrongpassword123");
+    await page.getByLabel("Email").fill(email);
+    await page.getByLabel("Password").fill("wrongpassword123");
 
-  await page.getByRole("button", { name: "Log in" }).click();
+    await page.getByRole("button", { name: "Log in" }).click();
 
-  await expect(
-    page.getByText("Invalid email or password"),
-  ).toBeVisible();
-});
+    await expect(
+      page.getByText("API error 401: Invalid email or password"),
+    ).toBeVisible();
+  });
 });

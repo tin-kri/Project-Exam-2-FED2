@@ -22,17 +22,21 @@ export function registerUser(
 }
 
 export function loginUser(values: LoginFormValues): Promise<AuthResponse> {
-  return baseFetch<AuthResponse>("auth/login", {
-    method: "POST",
-    body: JSON.stringify({
-      email: values.email,
-      password: values.password,
-    }),
-  });
+  return baseFetch<AuthResponse>(
+    "auth/login",
+    {
+      method: "POST",
+      body: JSON.stringify({
+        email: values.email,
+        password: values.password,
+      }),
+    },
+    { skipSessionHandling: true },
+  );
 }
 
 export async function loginWithProfile(values: LoginFormValues): Promise<User> {
-  // step 1 — get token
+
   const loginResponse = await loginUser(values);
   const userData = loginResponse.data;
 

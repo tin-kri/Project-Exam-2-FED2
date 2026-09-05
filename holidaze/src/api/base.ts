@@ -15,18 +15,11 @@ function buildHeaders(options: RequestInit): HeadersInit {
   };
 }
 
-export async function baseFetch<T>(
-  endpoint: string,
-  options: RequestInit = {},
+async function handleResponse<T>(
+  response: Response,
+  options?: { skipSessionHandling?: boolean },
 ): Promise<T> {
-  const response = await fetch(`${API_BASE}${endpoint}`, {
-    ...options,
-    headers: buildHeaders(options),
-  });
-  return handleResponse<T>(response)}
-
-async function handleResponse<T>(response: Response): Promise<T> {
-  if (response.status === 401) {
+  if (response.status === 401 && !options?.skipSessionHandling) {
     useAuthStore.getState().logout();
     throw new Error("Your session expired. Please log in again.");
   }
@@ -35,8 +28,20 @@ async function handleResponse<T>(response: Response): Promise<T> {
     const message = errorBody?.errors?.[0]?.message ?? response.statusText;
     throw new Error(`API error ${response.status}: ${message}`);
   }
-    if (response.status === 204) return undefined as T;
+  if (response.status === 204) return undefined as T;
   return response.json() as Promise<T>;
+}
+
+export async function baseFetch<T>(
+  endpoint: string,
+  options: RequestInit = {},
+  fetchOptions?: { skipSessionHandling?: boolean },
+): Promise<T> {
+  const response = await fetch(`${API_BASE}${endpoint}`, {
+    ...options,
+    headers: buildHeaders(options),
+  });
+  return handleResponse<T>(response, fetchOptions);
 }
 
 
