@@ -10,22 +10,16 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-
-
 type DateRangePickerProps = {
   date: DateRange | undefined;
   onSelect: (date: DateRange | undefined) => void;
-  disabledDates?: DateRange[],
+  disabledDates?: DateRange[];
 };
-
-
 
 export default function DateRangePicker({
   date,
   onSelect,
   disabledDates = [],
-
-
 }: DateRangePickerProps) {
   return (
     <Popover>
