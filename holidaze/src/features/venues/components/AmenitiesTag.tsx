@@ -1,4 +1,4 @@
-import type { VenueMeta } from "@/types/types";
+import type { VenueMeta } from "../types/venue.types";
 
 type AmenitiesTagProps = {
   meta: VenueMeta;
