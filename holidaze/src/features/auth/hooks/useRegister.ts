@@ -10,8 +10,7 @@ export default function useRegister() {
     setIsLoading(true);
     setError(null);
     try {
-     const response = await registerUser(values)
-console.log("Register response:", response);
+     await registerUser(values);
       return true; 
     } catch (error: unknown) {
       setError(error instanceof Error ? error.message : "something went wrong, try again!");
