@@ -52,11 +52,9 @@ export default function LoginForm({
 
   return (
     <section className="rounded-md bg-secondary p-6">
-      <h1 className=" text-center text-navy-900 font-serif text-2xl font-bold tracking-tight ">
-      
-       Log in to your Holidaze Account
+      <h1 className="text-center text-navy-900 font-serif text-2xl font-bold tracking-tight">
+        Log in to your Holidaze Account
       </h1>
-    
 
       <form
         onSubmit={handleSubmit}
@@ -79,13 +77,22 @@ export default function LoginForm({
             value={values.email}
             onChange={handleChange}
             aria-required="true"
-            aria-describedby={errors.email ? "email-error" : undefined}
+            aria-describedby={errors.email ? "email-error" : "email-hint"}
             aria-invalid={!!errors.email}
             className="w-full rounded-sm border border-input bg-background px-4 py-2"
           />
-          <p id="email-error" role="alert" className="text-sm text-destructive">
-            {errors.email}
+          <p id="email-hint" className="text-xs text-grey-600">
+            Please use your stud.noroff.no mail to log in
           </p>
+          {errors.email && (
+            <span
+              id="email-error"
+              role="alert"
+              className="text-sm text-destructive"
+            >
+              {errors.email}
+            </span>
+          )}
         </div>
 
         <div className="flex flex-col gap-1">
@@ -98,13 +105,19 @@ export default function LoginForm({
             value={values.password}
             onChange={handleChange}
             placeholder="••••••••••••"
-             aria-required="true"
+            aria-required="true"
             aria-describedby={errors.password ? "password-error" : undefined}
             aria-invalid={!!errors.password}
             className="w-full rounded-sm border border-input bg-background px-4 py-2"
           />
           {errors.password && (
-            <span className="text-sm text-destructive">{errors.password}</span>
+            <span
+              id="password-error"
+              role="alert"
+              className="text-sm text-destructive"
+            >
+              {errors.password}
+            </span>
           )}
         </div>
 
@@ -114,6 +127,7 @@ export default function LoginForm({
           className="mt-2 w-full"
           aria-busy={isLoading}
           disabled={isLoading}
+          aria-live="polite"
         >
           {isLoading ? "Logging in..." : "Log in"}
         </Button>
