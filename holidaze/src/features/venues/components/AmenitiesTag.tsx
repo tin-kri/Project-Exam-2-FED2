@@ -1,4 +1,4 @@
-import type { VenueMeta } from "@/types/types";
+import type { VenueMeta } from "../types/venue.types";
 
 type AmenitiesTagProps = {
   meta: VenueMeta;
@@ -18,7 +18,7 @@ export default function AmenitiesTag({ meta }: AmenitiesTagProps) {
       {amenities.map((amenity) => (
         <li
           key={amenity}
-          className="rounded-4xl  bg-light-blue py-1 px-3 space font-medium text-xs leading-5 text-blue"
+          className="rounded-4xl bg-light-blue px-3 py-1 text-xs font-medium leading-5 text-blue"
         >
           {amenity}
         </li>
