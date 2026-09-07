@@ -43,10 +43,6 @@ export interface AuthRegisterValues {
   };
 }
 
-
-
-
-
 export interface AuthResponse {
   data:  User;
 }

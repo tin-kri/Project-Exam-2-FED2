@@ -48,7 +48,6 @@ export function loginUser(values: LoginFormValues): Promise<AuthResponse> {
  * resolves and the caller updates state again with the full merged result.
  */
 export async function loginWithProfile(values: LoginFormValues): Promise<User> {
-
   const loginResponse = await loginUser(values);
   const userData = loginResponse.data;
 
