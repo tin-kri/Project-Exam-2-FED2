@@ -12,7 +12,12 @@ interface RegisterFormProps {
 
 function validate(values: AuthRegisterValues): RegisterErrors {
   const errors: RegisterErrors = {};
-  if (!values.name.trim()) errors.name = "Full name is required.";
+  if (!values.name.trim()) {
+    errors.name = "Username is required.";
+  } else if (!/^[a-zA-Z0-9_]+$/.test(values.name)) {
+    errors.name =
+      "Username can only contain letters, numbers, and underscores. No spaces";
+  }
   if (!values.email) errors.email = "Email is required.";
   else if (!values.email.endsWith("@stud.noroff.no"))
     errors.email = "Email must be a stud.noroff.no address.";
@@ -67,21 +72,39 @@ export default function RegisterForm({
         className="mt-4 flex flex-col gap-4 text-navy-800"
         noValidate
       >
-        {error && <p className="text-destructive">{error}</p>}
+        {error && (
+          <p role="alert" className="text-destructive">
+            {error}
+          </p>
+        )}
 
         <div className="flex flex-col gap-1">
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name">Username</label>
           <input
             id="name"
             name="name"
             type="text"
-            autoComplete="name"
+            placeholder="exampleusername"
+            autoComplete="username"
             value={values.name}
             onChange={handleChange}
+            aria-required="true"
+            aria-describedby={errors.name ? "name-error" : "name-hint"}
+            aria-invalid={!!errors.name}
             className="w-full rounded-sm border border-input bg-background px-4 py-2"
           />
+          <p id="name-hint" className="text-xs text-grey-600">
+            This will be your unique profile name. Letters, numbers, underscores
+            only and no spaces
+          </p>
           {errors.name && (
-            <span className="text-sm text-destructive">{errors.name}</span>
+            <span
+              id="name-error"
+              role="alert"
+              className="text-sm text-destructive"
+            >
+              {errors.name}
+            </span>
           )}
         </div>
 
@@ -91,13 +114,26 @@ export default function RegisterForm({
             id="email"
             name="email"
             type="email"
+            placeholder="examplemail@stud.noroff.no"
             autoComplete="email"
             value={values.email}
             onChange={handleChange}
+            aria-required="true"
+            aria-describedby={errors.email ? "email-error" : "email-hint"}
+            aria-invalid={!!errors.email}
             className="w-full rounded-sm border border-input bg-background px-4 py-2"
           />
+          <p id="email-hint" className="text-xs text-grey-600">
+            Email must end with @stud.noroff.no
+          </p>
           {errors.email && (
-            <span className="text-sm text-destructive">{errors.email}</span>
+            <span
+              id="email-error"
+              role="alert"
+              className="text-sm text-destructive"
+            >
+              {errors.email}
+            </span>
           )}
         </div>
 
@@ -111,29 +147,49 @@ export default function RegisterForm({
             value={values.password}
             onChange={handleChange}
             placeholder="••••••••••••"
+            aria-required="true"
+            aria-describedby={
+              errors.password ? "password-error" : "password-hint"
+            }
+            aria-invalid={!!errors.password}
             className="w-full rounded-sm border border-input bg-background px-4 py-2"
           />
+          <p id="password-hint" className="text-xs text-grey-600">
+            At least 8 characters
+          </p>
           {errors.password && (
-            <span className="text-sm text-destructive">{errors.password}</span>
+            <span
+              id="password-error"
+              role="alert"
+              className="text-sm text-destructive"
+            >
+              {errors.password}
+            </span>
           )}
         </div>
-
-        <div className="flex items-center gap-2">
-          <input
-            id="venueManager"
-            name="venueManager"
-            type="checkbox"
-            checked={values.venueManager}
-            onChange={handleChange}
-          />
-          <label htmlFor="venueManager">Register as Venue Manager?</label>
+        <div className="flex flex-col gap-1">
+          <div className="flex items-center gap-2 mt-6">
+            <input
+              id="venueManager"
+              name="venueManager"
+              type="checkbox"
+              checked={values.venueManager}
+              onChange={handleChange}
+              aria-describedby="venueManager-hint"
+            />
+            <label htmlFor="venueManager">Register as Venue Manager?</label>
+          </div>
+          <p id="venueManager-hint" className="text-xs text-grey-600">
+            Venue managers can list and manage their own venues.
+          </p>
         </div>
-
         <Button
           type="submit"
           variant="outline"
           className="mt-2 w-full"
           disabled={isLoading}
+          aria-busy={isLoading}
+          aria-live="polite"
         >
           {isLoading ? "Creating Account..." : "Create Account"}
         </Button>
