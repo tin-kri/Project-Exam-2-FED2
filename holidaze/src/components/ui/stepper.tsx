@@ -1,6 +1,5 @@
-import { Minus, Plus  } from "lucide-react";
+import { Minus, Plus } from "lucide-react";
 import { Button } from "./button";
-
 
 interface StepperProps {
   value: number;
@@ -21,11 +20,13 @@ export default function Stepper({
   const increase = () => onChange(Math.min(max, value + 1));
 
   return (
-    <div className="flex flex-col gap-1">
-     
-      <div className="flex items-center gap-4" role="group" aria-labelledby="stepper-label">
+    <div className="flex flex-col ">
+      <div
+        className="flex items-center gap-4"
+        role="group"
+        aria-labelledby="stepper-label"
+      >
         <Button
-        
           variant="outline"
           size="icon-sm"
           onClick={decrease}

@@ -20,7 +20,6 @@ export default function VenueImageCarousel({
   const { current, count, setApi } = useCarouselState();
   if (!media || media.length === 0) return null;
 
-  
   return (
     <div className="">
       <Carousel setApi={setApi} className="w-full">
@@ -36,18 +35,21 @@ export default function VenueImageCarousel({
           ))}
         </CarouselContent>
 
+       
         {media.length > 1 && (
-          <>
-            <CarouselPrevious className="left-2 rounded-2xl" />
-            <CarouselNext className="right-2 rounded-2xl" />
-          </>
+          <div className="mt-2 flex items-center justify-center gap-4">
+            <CarouselPrevious
+              variant="ghost"
+              className="static translate-y-0"
+            />
+            <span className="text-sm text-grey-900">
+              Slide {current} of {count}
+            </span>
+            <CarouselNext variant="ghost" className="static translate-y-0" />
+          </div>
         )}
       </Carousel>
-      {media.length > 1 && (
-        <div className="py-2 text-center text-sm text-grey-900">
-          Slide {current} of {count}
-        </div>
-      )}
+      
     </div>
   );
 }

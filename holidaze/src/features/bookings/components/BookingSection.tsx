@@ -43,75 +43,65 @@ export default function BookingSection({
       venueId: venue.id,
     };
 
-    await onSubmit(bookingValues); 
+    await onSubmit(bookingValues);
   }
+
   return (
-    <div className="mt-4 border-t border-grey-200 pt-8 rounded-lg px-3 py-4 ">
-      <div className="flex flex-col gap-8 md:flex-row md:items-start md:gap-12 ">
-        {/* left — always visible */}
-        <section className="flex-1 ">
-          <h2 className=" mb-2 font-serif text-xl font-bold text-navy-800">
-            Plan Your Stay
-          </h2>
-          <p className="mb-2 text-sm font-medium text-navy-800">
-            Select number of guests
-          </p>
-          <Stepper value={guests} onChange={setGuests} max={venue.maxGuests} />
+    <div className="rounded-md border border-grey-200 bg-bg-card p-5">
+      <h2 className="mb-4 text-center font-serif text-2xl font-bold text-navy-800">
+        Plan Your Stay
+      </h2>
 
-          {/* //GUEST STEPPER */}
+      <div className="flex flex-col gap-4 md:items-start ">
+        <div className="w-full md:w-auto">
+          <p className="mb-2 text-center md:text-left text-sm font-medium text-navy-800">Select dates</p>
+             <div className="flex justify-center md:justify-start">
+          <DateRangePicker
+            date={date}
+            onSelect={setDate}
+            disabledDates={bookedDays}
+          /></div>
+        </div>
 
-          <div className="mt-4">
-            <p className="mb-2 text-sm font-medium text-navy-800">
-              Select dates
-            </p>
-            <DateRangePicker
-              date={date}
-              onSelect={setDate}
-              disabledDates={bookedDays}
-            />
-          </div>
-        </section>
-
-        {/* only show when range is picked */}
-        {date?.from && nights > 0 && (
-          <section className="flex-1 ">
-            <h2 className="font-serif text-xl font-bold text-navy-800">
-              My booking
-            </h2>
-            <BookingSummary
-              date={date}
-              total={total}
-              nights={nights}
-              guests={guests}
-            />
-{error && (
-        <p role="alert" className="text-sm text-destructive">
-          {error}
-        </p>
-      )}
-            {user ? (
-              <Button
-                type="submit"
-                onClick={handleBook}
-                className="mt-4 w-full"
-                disabled={(nights === 0 || isLoading)}
-              >
-                {isLoading ? "Booking..." : "Book Now"}
-              </Button>
-            ) : (
-              <Button
-                className="mt-4 w-full"
-                onClick={() =>
-                  navigate("/login", { state: { from: location } })
-                }
-              >
-                Log in to Book
-              </Button>
-            )}
-    
-          </section>
-        )}
+         <div className="w-full md:w-auto">
+          <p className="mb-2 text-sm text-center md:text-left font-medium text-navy-800">Guests</p>
+ <div className="flex justify-center md:justify-start">
+      <Stepper value={guests} onChange={setGuests} max={venue.maxGuests} />
+    </div>        </div>
       </div>
+
+      {date?.from && nights > 0 && (
+        <div className="mt-6 flex flex-col gap-4 border-t border-grey-200 pt-6">
+          <BookingSummary
+            date={date}
+            total={total}
+            nights={nights}
+            guests={guests}
+          />
+          {error && (
+            <p role="alert" className="text-sm text-destructive">
+              {error}
+            </p>
+          )}
+          {user ? (
+            <Button
+              type="submit"
+              onClick={handleBook}
+              className="w-full"
+              disabled={nights === 0 || isLoading}
+            >
+              {isLoading ? "Booking..." : "Book Now"}
+            </Button>
+          ) : (
+            <Button
+              className="w-full"
+              onClick={() => navigate("/login", { state: { from: location } })}
+            >
+              Log in to Book
+            </Button>
+          )}
+        </div>
+      )}
     </div>
   );
 }

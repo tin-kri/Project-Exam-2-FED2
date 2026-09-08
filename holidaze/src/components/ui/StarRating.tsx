@@ -45,6 +45,8 @@ function Star({ type }: { type: StarType }) {
 }
 
 export default function RatingSection({ rating = 0 }: RatingSectionProps) {
+  if (!rating) return null;
+
   const decimal = rating % 1;
 
   let fullStars = Math.floor(rating);
@@ -58,7 +60,7 @@ export default function RatingSection({ rating = 0 }: RatingSectionProps) {
 
   return (
     <div>
-      <div className="flex items-center gap-1 mt-3 text-star">
+      <div className="flex items-center gap-1  text-star">
         {Array.from({ length: fullStars }).map((_, i) => (
           <Star key={`full-${i}`} type="full" />
         ))}
