@@ -40,7 +40,6 @@ export default function VenueInformation() {
       <Accordion
         type="single"
         collapsible
-        defaultValue="item-1"
         className=" "
       >
         {items.map((item) => (

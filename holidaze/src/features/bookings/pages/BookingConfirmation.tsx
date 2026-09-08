@@ -8,6 +8,7 @@ import {
   calculateTotal,
   formatBookingDate,
 } from "../utils/booking";
+import Breadcrumbs from "@/components/layout/HolidazeBreadcrumbs";
 
 export default function BookingConfirmationPage() {
   const location = useLocation();
@@ -24,6 +25,14 @@ export default function BookingConfirmationPage() {
 
   return (
     <PageWrapper>
+      {" "}
+      <Breadcrumbs
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Venues", href: "/venues" },
+          { label: `Booking confirmation ${venue.name}` },
+        ]}
+      />
       <section className=" rounded-md bg-bg-card">
         <div className="flex flex-col items-center gap-3 px-6 pt-10 pb-8 text-center">
           <span className="flex h-14 w-14 items-center justify-center rounded-full">
