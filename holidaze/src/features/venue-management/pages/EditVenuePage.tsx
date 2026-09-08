@@ -5,6 +5,8 @@ import type { CreateVenueValues } from "../schema/venueManagementSchema";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "sonner";
 import { useVenue } from "@/features/venues/hooks/useVenue";
+import Breadcrumbs from "@/components/layout/HolidazeBreadcrumbs";
+
 export default function EditVenuePage() {
   const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
@@ -55,6 +57,13 @@ export default function EditVenuePage() {
 
   return (
     <PageWrapper>
+      <Breadcrumbs
+  items={[
+    { label: "Home", href: "/" },
+    { label: "Profile", href: "/profile" },
+    { label: `Edit ${venue.name}` },
+  ]}
+/>
       <VenueForm
         title="Edit Venue"
         initialValues={initialValues}

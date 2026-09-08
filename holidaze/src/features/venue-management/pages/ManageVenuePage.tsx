@@ -4,7 +4,7 @@ import VenueDetailsCard from "@/features/venues/components/VenueDetailsCard";
 import { useVenue } from "@/features/venues/hooks/useVenue";
 import type { VenueBooking } from "../types/venueManagement.types";
 import VenueBookingsList from "../components/VenueBookingList";
-
+import Breadcrumbs from "@/components/layout/HolidazeBreadcrumbs";
 export default function ManageVenuePage() {
   const { id } = useParams<{ id: string }>();
   const { venue, isLoading, error } = useVenue(id);
@@ -23,6 +23,13 @@ export default function ManageVenuePage() {
 
   return (
     <PageWrapper>
+      <Breadcrumbs
+  items={[
+    { label: "Home", href: "/" },
+    { label: "Profile", href: "/profile" },
+   { label: `Manage ${venue.name}` },
+  ]}
+/>
       <VenueDetailsCard venue={venue} />
 
       {/* do i need a delete and edit section here? i have it on the main page.. */}
