@@ -93,7 +93,7 @@ export default function VenueForm({
   return (
     <section className="rounded-sm bg-bg-card px-6 py-8">
       <h1 className="mb-6 font-serif text-2xl font-bold text-navy-800">
-        {title ?? "Create a Venue"}
+        {title ?? "Create New Venue"}
       </h1>
 
       {error && (

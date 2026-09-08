@@ -7,7 +7,7 @@ import type { CreateBookingValues } from "@/features/bookings/types/booking.type
 import { useCreateBooking } from "@/features/bookings/hooks/useCreateBooking.ts";
 import { useNavigate } from "react-router-dom";
 import VenueInformation from "../components/VenueInformation";
-
+import Breadcrumbs from "@/components/layout/HolidazeBreadcrumbs";
 export default function VenueDetailPage() {
   const { id } = useParams<{ id: string }>();
   const { venue, isLoading: isVenueLoading, error: venueError } = useVenue(id);
@@ -32,6 +32,14 @@ export default function VenueDetailPage() {
 
   return (
     <PageWrapper>
+        
+            <Breadcrumbs
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Venues", href: "/venues" },
+          { label: venue.name },
+        ]}
+      />
       <div className="flex flex-col gap-8 md:flex-row md:items-start">
         <div className="md:flex-1">
           <VenueDetailsCard venue={venue} />

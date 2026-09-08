@@ -10,6 +10,7 @@ import {
   type SortOrder,
 } from "@/features/venues/utils/sortVenues";
 import { useSearchParams } from "react-router-dom";
+import Breadcrumbs from "@/components/layout/HolidazeBreadcrumbs";
 
 /**
  * Displays the venue listing page.
@@ -70,7 +71,15 @@ export default function VenuesPage() {
   }
 
   return (
+   
     <PageWrapper>
+      <Breadcrumbs
+  items={[
+    { label: "Home", href: "/" },
+    { label: "Venues", href: "/venues" },
+    
+  ]}
+/>
       <SearchBar value={query} onChange={handleQueryChange} />
       <VenueSort
         sort={sort}
@@ -107,6 +116,7 @@ export default function VenuesPage() {
           onPrevious={() => previousPage(meta)}
         />
       )}
+       
     </PageWrapper>
   );
 }
