@@ -22,17 +22,32 @@ export function registerUser(
 }
 
 export function loginUser(values: LoginFormValues): Promise<AuthResponse> {
-  return baseFetch<AuthResponse>("auth/login", {
-    method: "POST",
-    body: JSON.stringify({
-      email: values.email,
-      password: values.password,
-    }),
-  });
+  return baseFetch<AuthResponse>(
+    "auth/login",
+    {
+      method: "POST",
+      body: JSON.stringify({
+        email: values.email,
+        password: values.password,
+      }),
+    },
+    { skipSessionHandling: true },
+  );
 }
 
+/**
+ * Logs a user in and returns their full profile.
+ *
+ * The login endpoint only returns basic auth data (name, email, accessToken),
+ * so this makes a second request to fetch profile details (venueManager status,
+ * avatar, banner, bio) and merges them into a single User object.
+ *
+ * Note: the auth store is updated with the login response immediately, before
+ * the profile fetch resolves — so there's a brief window where `user` in the
+ * store lacks profile fields (venueManager, avatar, etc.) until this promise
+ * resolves and the caller updates state again with the full merged result.
+ */
 export async function loginWithProfile(values: LoginFormValues): Promise<User> {
-  // step 1 — get token
   const loginResponse = await loginUser(values);
   const userData = loginResponse.data;
 

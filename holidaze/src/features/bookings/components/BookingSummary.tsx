@@ -1,5 +1,5 @@
-import { format } from "date-fns";
 import { type DateRange } from "react-day-picker";
+import { formatBookingDate } from "../utils/booking";
 
 
 type BookingSummaryProps = {
@@ -23,12 +23,12 @@ export default function BookingSummary({
       <div className="mt-3 space-y-2">
         <div className="flex gap-4 text-sm">
           <span className="w-24 font-bold text-navy-800">Arrival</span>
-          <span className="text-grey-900">{format(date.from, "d/M/yyyy")}</span>
+          <span className="text-grey-900">{formatBookingDate(date.from.toISOString())}</span>
         </div>
         {date.to && (
           <div className="flex gap-4 text-sm">
             <span className="w-24 font-bold text-navy-800">Departure</span>
-            <span className="text-grey-900">{format(date.to, "d/M/yyyy")}</span>
+            <span className="text-grey-900">{formatBookingDate(date.to.toISOString())}</span>
           </div>
         )}
         {nights > 0 && (

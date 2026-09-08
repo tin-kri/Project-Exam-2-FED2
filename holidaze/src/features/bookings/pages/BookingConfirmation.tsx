@@ -3,6 +3,12 @@ import PageWrapper from "@/components/layout/PageWrapper";
 import type { Booking } from "../types/booking.types";
 import type { VenueApiData } from "@/features/venues/types/venue.types";
 import { CircleCheck } from "lucide-react";
+import {
+  calculateNights,
+  calculateTotal,
+  formatBookingDate,
+} from "../utils/booking";
+import Breadcrumbs from "@/components/layout/HolidazeBreadcrumbs";
 
 export default function BookingConfirmationPage() {
   const location = useLocation();
@@ -14,23 +20,19 @@ export default function BookingConfirmationPage() {
   if (!state?.booking) return <Navigate to="/profile" replace />;
 
   const { booking, venue } = state;
-  const nights = Math.round(
-    (new Date(booking.dateTo).getTime() -
-      new Date(booking.dateFrom).getTime()) /
-      (1000 * 60 * 60 * 24),
-  );
-  const total = nights * venue.price;
-
-  const fmt = (iso: string) =>
-    new Date(iso).toLocaleDateString("en-GB", {
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-    });
+  const nights = calculateNights(booking.dateFrom, booking.dateTo);
+  const total = calculateTotal(nights, venue.price);
 
   return (
     <PageWrapper>
-      
+      {" "}
+      <Breadcrumbs
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Venues", href: "/venues" },
+          { label: `Booking confirmation ${venue.name}` },
+        ]}
+      />
       <section className=" rounded-md bg-bg-card">
         <div className="flex flex-col items-center gap-3 px-6 pt-10 pb-8 text-center">
           <span className="flex h-14 w-14 items-center justify-center rounded-full">
@@ -46,16 +48,25 @@ export default function BookingConfirmationPage() {
           </p>
         </div>
 
-
         <div className="flex flex-col gap-3 px-6 py-6  text-navy-800">
           <p>
-            <span className="font-semibold">Dates:</span>
-             From {fmt(booking.dateFrom)} to {fmt(booking.dateTo)}
+            <span className="font-semibold">Dates:</span>{" "}
+            {formatBookingDate(booking.dateFrom)} to{" "}
+            {formatBookingDate(booking.dateTo)}
           </p>
-          <p> <span className="font-semibold">Nights:</span> {nights}</p>
-          <p> <span className="font-semibold">Guests:</span>{booking.guests}</p>
-          <p> <span className="font-semibold">Total:</span> $ {total}</p>
-          <p> <span className="font-semibold">Booking Reference:</span> {booking.id}</p>
+          <p>
+            <span className="font-semibold">Nights:</span> {nights}
+          </p>
+          <p>
+            <span className="font-semibold">Guests:</span> {booking.guests}
+          </p>
+          <p>
+            <span className="font-semibold">Total:</span> ${total}
+          </p>
+          <p>
+            <span className="font-semibold">Booking Reference:</span>{" "}
+            {booking.id}
+          </p>
         </div>
 
         <div className="mt-6 flex flex-col gap-2 px-6 py-6 ">

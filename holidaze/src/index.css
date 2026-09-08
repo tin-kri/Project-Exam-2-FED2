@@ -48,8 +48,6 @@
   --font-sans: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Source Serif 4", ui-serif, Georgia, serif;
 
-  --radius-sm: 5px;
-
   --tracking-tight: -0.045em;
 
   --radius-sm: calc(var(--radius) * 0.6);
@@ -97,6 +95,8 @@
   html {
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
-    background-color: #fefaf7;
+    background-color: var(--color-page-bg);
+
+    scrollbar-gutter: stable;
   }
 }

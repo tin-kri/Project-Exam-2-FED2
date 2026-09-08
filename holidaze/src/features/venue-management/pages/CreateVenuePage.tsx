@@ -4,7 +4,7 @@ import { useCreateVenue } from "../hooks/useCreateVenue";
 import type { CreateVenueValues } from "../schema/venueManagementSchema";
  import { useNavigate } from "react-router-dom";
 import {  toast } from 'sonner'
-
+import Breadcrumbs from "@/components/layout/HolidazeBreadcrumbs";
 export default function CreateVenuePage() {
 
 const navigate= useNavigate();
@@ -22,7 +22,13 @@ const {handleCreateVenue, isLoading, error} = useCreateVenue();
 
   return (
     <PageWrapper>
-
+      <Breadcrumbs
+  items={[
+    { label: "Home", href: "/" },
+    { label: "Profile", href: "/profile" },
+    { label: "Create new venue" },
+  ]}
+/>
    <VenueForm 
   
    onSubmit={handleSubmit}  
