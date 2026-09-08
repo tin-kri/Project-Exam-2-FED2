@@ -13,9 +13,9 @@ export default function VenueDetailsCard({ venue }: VenueDetailsCardProps) {
   return (
     <article className="overflow-hidden h-full ">
       {/* photo */}
-     
-        <VenueImageCarousel media={venue.media} venueName={venue.name} />
-     
+
+      <VenueImageCarousel media={venue.media} venueName={venue.name} />
+
       {/* card body */}
       <div className="px-4 pt-5 pb-4">
         <h1 className="font-serif text-2xl font-semibold tracking-tight text-navy-800">
@@ -26,7 +26,6 @@ export default function VenueDetailsCard({ venue }: VenueDetailsCardProps) {
         </p>
         <div className="mt-2">
           <RatingSection rating={venue.rating} />
-          
         </div>
       </div>
       <div className="flex items-center gap-6 border-t border-grey-200 px-4 py-4 text-sm text-grey-900">
@@ -49,8 +48,8 @@ export default function VenueDetailsCard({ venue }: VenueDetailsCardProps) {
         <p className="text-sm leading-relaxed text-grey-900">
           {venue.description}
         </p>
+       
       </div>
     </article>
   );
 }
-

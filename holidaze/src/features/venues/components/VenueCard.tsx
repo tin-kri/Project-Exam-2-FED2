@@ -14,7 +14,7 @@ export default function VenueCard({ venue }: VenueCardProps) {
   const imageAlt = media?.[0]?.alt ?? name;
 
   return (
-    <article className="overflow-hidden h-full rounded-sm bg-bg-card">
+    <article className="overflow-hidden h-full rounded-sm shadow-sm">
       {/* photo */}
       <Link to={`/venues/${id}`}>
         <img src={image} alt={imageAlt} className="h-48 w-full object-cover" />
