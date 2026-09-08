@@ -46,6 +46,7 @@ export default function VenueDetailPage() {
           />
         </div>
       </div>
+      
       <VenueInformation/>
     </PageWrapper>
   );

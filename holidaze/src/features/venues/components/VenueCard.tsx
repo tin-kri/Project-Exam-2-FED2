@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import type { VenueApiData } from "../types/venue.types";
 import RatingSection from "@/components/ui/StarRating";
-import AmenitiesTag from "./AmenitiesTag";
+
 
 interface VenueCardProps {
   venue: VenueApiData;
@@ -17,7 +17,7 @@ export default function VenueCard({ venue }: VenueCardProps) {
     <article className="overflow-hidden h-full rounded-sm shadow-sm">
       {/* photo */}
       <Link to={`/venues/${id}`}>
-        <img src={image} alt={imageAlt} className="h-48 w-full object-cover" />
+        <img src={image} alt={imageAlt} className="h-48 w-full object-cover " />
       </Link>
 
       {/* card body */}
@@ -27,12 +27,9 @@ export default function VenueCard({ venue }: VenueCardProps) {
           {name}
         </h3>
         <p className="mt-0.5 text-sm text-grey-600">
-          {location?.city}, {location?.country}
+          <RatingSection rating={venue.rating} /> {location?.city},{" "}
+          {location?.country}
         </p>
-
-        <AmenitiesTag meta={venue.meta} />
-
-        <RatingSection rating={venue.rating} />
 
         {/* price */}
 
@@ -41,6 +38,7 @@ export default function VenueCard({ venue }: VenueCardProps) {
             ${price}
             <span className="text-sm font-normal text-grey-900"> /night</span>
           </p>
+
           <Link
             to={`/venues/${id}`}
             className="text-sm font-bold text-navy-800  underline underline-offset-4 hover:text-navy-500"
