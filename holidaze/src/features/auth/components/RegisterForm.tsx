@@ -73,9 +73,12 @@ export default function RegisterForm({
         noValidate
       >
         {error && (
-          <p role="alert" className="text-destructive">
+          <div
+            role="alert"
+            className="rounded-sm border border-destructive bg-background px-4 py-3 text-sm text-destructive"
+          >
             {error}
-          </p>
+          </div>
         )}
 
         <div className="flex flex-col gap-1">
