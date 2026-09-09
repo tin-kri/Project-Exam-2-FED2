@@ -1,5 +1,5 @@
 import { Minus, Plus } from "lucide-react";
-import { Button } from "./button";
+import { Button } from "../vendor/button";
 
 interface StepperProps {
   value: number;

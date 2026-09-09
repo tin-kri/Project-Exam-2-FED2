@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/vendor/button";
 import { useState } from "react";
 import type { LoginFormValues } from "../types/auth.types";
 

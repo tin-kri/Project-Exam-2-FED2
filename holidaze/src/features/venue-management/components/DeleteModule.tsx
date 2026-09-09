@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/vendor/button";
 import { useDeleteVenue } from "../hooks/useDeleteVenue";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
@@ -19,7 +19,7 @@ export default function DeleteModule({ venue, onClose }: DeleteModuleProps) {
       toast.success("Successfully deleted venue.");
       onClose();
       navigate("/");
-//    Need to check out was to redirect to a fresh profile page ref?
+      //    Need to check out was to redirect to a fresh profile page ref?
     }
   }
 

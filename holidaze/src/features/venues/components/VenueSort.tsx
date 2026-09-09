@@ -6,7 +6,7 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "@/components/vendor/select";
 import {
   SORT_OPTIONS,
   type SortField,

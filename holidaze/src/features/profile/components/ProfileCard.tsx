@@ -1,5 +1,5 @@
 import type { Profile } from "../types/profile.types";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/vendor/button";
 
 interface ProfileProps {
   profile: Profile;
@@ -16,7 +16,8 @@ export default function ProfileCard({ profile, onChangeAvatar }: ProfileProps) {
           <span className=" rounded-full bg-sky-100 px-3 py-1 text-sm font-medium text-navy-800">
             Venue Manger
           </span>
-        )}   <p className="text-grey-900 text-base ">{profile.email}</p>
+        )}{" "}
+        <p className="text-grey-900 text-base ">{profile.email}</p>
         <img
           src={profile.avatar?.url}
           alt={profile.avatar?.alt}
@@ -25,7 +26,6 @@ export default function ProfileCard({ profile, onChangeAvatar }: ProfileProps) {
         <Button variant="outline" className="mt-3" onClick={onChangeAvatar}>
           Change Avatar
         </Button>
-     
       </div>
     </section>
   );

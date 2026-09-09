@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Search } from "lucide-react";
 import { useVenueSearch } from "@/features/venues/hooks/useVenueSearch";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/vendor/button";
 import { useClickOutside } from "@/hooks/useClickOutside";
 
 export default function LandingSearch() {

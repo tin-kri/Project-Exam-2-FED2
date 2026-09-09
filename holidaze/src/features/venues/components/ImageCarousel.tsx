@@ -4,9 +4,9 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel";
+} from "@/components/vendor/carousel";
 import type { Media } from "@/features/venues/types/venue.types";
-import { useCarouselState } from "@/hooks/UseCarousel";
+import { useCarouselState } from "@/hooks/useCarousel";
 
 type VenueImageCarouselProps = {
   media?: Media[];
@@ -35,7 +35,6 @@ export default function VenueImageCarousel({
           ))}
         </CarouselContent>
 
-       
         {media.length > 1 && (
           <div className="mt-2 flex items-center justify-center gap-4">
             <CarouselPrevious
@@ -49,7 +48,6 @@ export default function VenueImageCarousel({
           </div>
         )}
       </Carousel>
-      
     </div>
   );
 }
