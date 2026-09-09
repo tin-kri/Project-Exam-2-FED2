@@ -80,6 +80,9 @@ export default function VenuesPage() {
     
   ]}
 />
+<h1 className="font-serif text-2xl font-semibold tracking-tight text-navy-800">
+    Search Venues
+  </h1>
       <SearchBar value={query} onChange={handleQueryChange} />
       <VenueSort
         sort={sort}
