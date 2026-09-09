@@ -61,14 +61,14 @@ export default function LoginForm({
         noValidate
         className="mt-4 flex flex-col gap-4 text-navy-800"
       >
-      {error && (
-  <div
-    role="alert"
-    className="rounded-sm border border-destructive bg-background px-4 py-3 text-sm text-destructive"
-  >
-    {error}
-  </div>
-)}
+        {error && (
+          <div
+            role="alert"
+            className="rounded-sm border border-destructive bg-background px-4 py-3 text-sm text-destructive"
+          >
+            {error}
+          </div>
+        )}
         <div className="flex flex-col gap-1">
           <label htmlFor="email">Email</label>
           <input
