@@ -14,17 +14,9 @@ export interface User {
   accessToken: string;
 }
 
-export interface LoginFormValues{
+export interface LoginFormValues {
   email: string;
   password: string;
-}
-
-
-export interface RegisterForm {
-  name: string;
-  email: string;
-  password: string;
-  venueManager: boolean;
 }
 
 export interface AuthRegisterValues {
@@ -44,5 +36,5 @@ export interface AuthRegisterValues {
 }
 
 export interface AuthResponse {
-  data:  User;
+  data: User;
 }
