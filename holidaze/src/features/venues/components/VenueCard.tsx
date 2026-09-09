@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import type { VenueApiData } from "../types/venue.types";
 import RatingSection from "@/components/ui/StarRating";
-
+import VenueImage from "./VenueImage";
 
 interface VenueCardProps {
   venue: VenueApiData;
@@ -17,8 +17,7 @@ export default function VenueCard({ venue }: VenueCardProps) {
     <article className="overflow-hidden h-full rounded-sm shadow-sm">
       {/* photo */}
       <Link to={`/venues/${id}`}>
-        <img src={image} alt={imageAlt} className="h-48 w-full object-cover " />
-      </Link>
+<VenueImage src={image} alt={imageAlt} className="h-48 w-full object-cover" />     </Link>
 
       {/* card body */}
       <div className="px-4 py-3">

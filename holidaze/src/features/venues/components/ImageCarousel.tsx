@@ -7,6 +7,7 @@ import {
 } from "@/components/vendor/carousel";
 import type { Media } from "@/features/venues/types/venue.types";
 import { useCarouselState } from "@/hooks/useCarousel";
+import VenueImage from "./VenueImage";
 
 type VenueImageCarouselProps = {
   media?: Media[];
@@ -18,7 +19,15 @@ export default function VenueImageCarousel({
   venueName,
 }: VenueImageCarouselProps) {
   const { current, count, setApi } = useCarouselState();
-  if (!media || media.length === 0) return null;
+  if (!media || media.length === 0) {
+    return (
+      <VenueImage
+        src={undefined}
+        alt={`${venueName} — no photos available`}
+        className="aspect-video w-full rounded-sm object-cover"
+      />
+    );
+  }
 
   return (
     <div className="">
@@ -26,7 +35,7 @@ export default function VenueImageCarousel({
         <CarouselContent>
           {media.map((image, index) => (
             <CarouselItem key={index}>
-              <img
+              <VenueImage
                 src={image.url}
                 alt={image.alt || `${venueName} photo ${index + 1}`}
                 className="aspect-video w-full rounded-sm object-cover"
