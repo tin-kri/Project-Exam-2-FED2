@@ -6,7 +6,7 @@ import { Button } from "@/components/vendor/button";
 import { useBookingCalculation } from "../hooks/useCalculations";
 import BookingSummary from "./BookingSummary";
 import { useBookedDates } from "@/features/venues/hooks/useBookingDays";
-import Stepper from "@/components/ui/stepper";
+import Stepper from "@/components/vendor/stepper";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useAuthStore } from "@/features/auth/stores/authStore";
 import type { CreateBookingValues } from "../types/booking.types";

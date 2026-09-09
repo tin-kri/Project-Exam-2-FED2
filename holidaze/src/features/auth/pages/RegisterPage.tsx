@@ -12,7 +12,6 @@ export default function RegisterPage() {
   const {register, isLoading, error} = useRegister();
 
  async function handleSubmit(values: AuthRegisterValues) {
-   console.log("Submitting:", values);
   const success = await register(values);
   if (success) {
     navigate("/login");
