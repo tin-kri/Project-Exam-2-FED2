@@ -95,7 +95,7 @@ export default function BookingSection({
           )}
           {user ? (
             <Button
-              type="submit"
+              type="button"
               onClick={handleBook}
               className="w-full"
               disabled={nights === 0 || isLoading}
