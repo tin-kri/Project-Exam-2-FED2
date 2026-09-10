@@ -27,7 +27,7 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
           return (
             <BreadcrumbItem key={item.label}>
               {isLast || !item.href ? (
-                <BreadcrumbPage className="underline ">
+                <BreadcrumbPage>
                   {item.label}
                 </BreadcrumbPage>
               ) : (

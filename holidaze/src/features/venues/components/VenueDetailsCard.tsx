@@ -17,16 +17,18 @@ export default function VenueDetailsCard({ venue }: VenueDetailsCardProps) {
       <VenueImageCarousel media={venue.media} venueName={venue.name} />
 
       {/* card body */}
-     <div className="px-4 pt-5 pb-4">
-  <h1 className="font-serif text-2xl font-semibold tracking-tight text-navy-800">
-    {name}
-  </h1>
-  <div className="mt-1 flex items-center gap-2 text-base text-grey-600">
-    <RatingSection rating={venue.rating} />
-    
-    <span>{location?.city}, {location?.country}</span>
-  </div>
-</div>
+      <div className="px-4 pt-5 pb-4">
+        <h1 className="font-serif text-2xl font-semibold tracking-tight text-navy-800">
+          {name}
+        </h1>
+        <div className="mt-1 flex items-center gap-2 text-base text-grey-600">
+          <RatingSection rating={venue.rating} />
+
+          <span>
+            {location?.city}, {location?.country}
+          </span>
+        </div>
+      </div>
       <div className="flex items-center gap-6 border-t border-grey-200 px-4 py-4 text-sm text-grey-900">
         <span className="text-base font-semibold text-navy-800">
           <span className="font-bold">${price}</span> / Night
@@ -48,6 +50,6 @@ export default function VenueDetailsCard({ venue }: VenueDetailsCardProps) {
           {venue.description}
         </p>
       </div>
-    </article >
+    </article>
   );
 }

@@ -34,7 +34,7 @@ export default function VenueImageCarousel({
       <Carousel setApi={setApi} className="w-full">
         <CarouselContent>
           {media.map((image, index) => (
-            <CarouselItem key={index}>
+            <CarouselItem key={image.url}>
               <VenueImage
                 src={image.url}
                 alt={image.alt || `${venueName} photo ${index + 1}`}
