@@ -75,7 +75,7 @@ export default function VenuesPage() {
       <Breadcrumbs
         items={[
           { label: "Home", href: "/" },
-          { label: "Venues", href: "/venues" },
+          { label: "Venues" }
         ]}
       />
       <h1 className="font-serif text-2xl font-semibold tracking-tight text-navy-800">
