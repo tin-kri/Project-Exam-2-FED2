@@ -209,9 +209,10 @@ export default function VenueForm({
 
         <Button
           type="submit"
-          className="mt-2 w-full"
+          variant="default"
           disabled={isLoading}
           aria-busy={isLoading}
+          className="mt-2"
         >
           {isLoading
             ? (loadingLabel ?? "Creating...")

@@ -22,7 +22,7 @@ export default function VenueManagerSection() {
         )}
 
         {error && (
-          <p role="alert" className="text-center text-base text-red-600">
+          <p role="alert" className="text-center text-base text-destructive">
             {error}
           </p>
         )}

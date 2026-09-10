@@ -10,7 +10,7 @@ export default function CreateVenueCTA() {
         Rent out your venue by registering a venue here
       </p>
       <Link
-        to="/manage-venues/"
+        to="/manage-venues"
         className="mt-4 inline-block font-semibold text-white underline underline-offset-4 hover:text-sky-300"
       >
         Create a New Venue

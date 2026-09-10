@@ -31,9 +31,6 @@ export default function ManageVenuePage() {
         ]}
       />
       <VenueDetailsCard venue={venue} />
-
-      {/* do i need a delete and edit section here? i have it on the main page.. */}
-
       <VenueBookingsList bookings={bookings} price={venue.price} />
     </PageWrapper>
   );
