@@ -7,7 +7,7 @@ import {
 } from "@/components/vendor/carousel";
 import type { Media } from "@/features/venues/types/venue.types";
 import { useCarouselState } from "@/hooks/useCarousel";
-import VenueImage from "../../../components/ui/VenueImage";
+import VenueImage from "@/components/ui/VenueImage";
 
 type VenueImageCarouselProps = {
   media?: Media[];

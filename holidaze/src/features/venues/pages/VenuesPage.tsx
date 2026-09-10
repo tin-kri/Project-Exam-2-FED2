@@ -71,18 +71,16 @@ export default function VenuesPage() {
   }
 
   return (
-   
     <PageWrapper>
       <Breadcrumbs
-  items={[
-    { label: "Home", href: "/" },
-    { label: "Venues", href: "/venues" },
-    
-  ]}
-/>
-<h1 className="font-serif text-2xl font-semibold tracking-tight text-navy-800">
-    Search Venues
-  </h1>
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Venues", href: "/venues" },
+        ]}
+      />
+      <h1 className="font-serif text-2xl font-semibold tracking-tight text-navy-800">
+        Search Venues
+      </h1>
       <SearchBar value={query} onChange={handleQueryChange} />
       <VenueSort
         sort={sort}
@@ -119,7 +117,6 @@ export default function VenuesPage() {
           onPrevious={() => previousPage(meta)}
         />
       )}
-       
     </PageWrapper>
   );
 }
