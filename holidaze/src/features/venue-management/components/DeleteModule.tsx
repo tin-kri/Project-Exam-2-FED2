@@ -19,7 +19,6 @@ export default function DeleteModule({ venue, onClose }: DeleteModuleProps) {
       toast.success("Successfully deleted venue.");
       onClose();
       navigate("/");
-      //    Need to check out was to redirect to a fresh profile page ref?
     }
   }
 

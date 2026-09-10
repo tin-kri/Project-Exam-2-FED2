@@ -37,9 +37,9 @@ export default function EditVenuePage() {
       </PageWrapper>
     );
 
-      const initialValues = {
+  const initialValues = {
     ...venue,
-     meta: {
+    meta: {
       wifi: venue.meta?.wifi ?? false,
       parking: venue.meta?.parking ?? false,
       breakfast: venue.meta?.breakfast ?? false,
@@ -58,12 +58,12 @@ export default function EditVenuePage() {
   return (
     <PageWrapper>
       <Breadcrumbs
-  items={[
-    { label: "Home", href: "/" },
-    { label: "Profile", href: "/profile" },
-    { label: `Edit ${venue.name}` },
-  ]}
-/>
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Profile", href: "/profile" },
+          { label: `Edit ${venue.name}` },
+        ]}
+      />
       <VenueForm
         title="Edit Venue"
         initialValues={initialValues}

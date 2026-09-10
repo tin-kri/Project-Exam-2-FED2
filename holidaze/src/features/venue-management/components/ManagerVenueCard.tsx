@@ -3,10 +3,13 @@ import type { VenueApiData } from "@/features/venues/types/venue.types";
 
 interface ManagerVenueCardProps {
   venue: VenueApiData;
-  onDelete: (venue: VenueApiData) =>void;
+  onDelete: (venue: VenueApiData) => void;
 }
 
-export default function ManagerVenueCard({ venue, onDelete }: ManagerVenueCardProps) {
+export default function ManagerVenueCard({
+  venue,
+  onDelete,
+}: ManagerVenueCardProps) {
   const image = venue.media?.[0];
 
   return (
@@ -27,12 +30,12 @@ export default function ManagerVenueCard({ venue, onDelete }: ManagerVenueCardPr
         >
           {venue.name}
         </Link>
-        <p className="mt-0.5 text-sm text-grey-900">This venue has {venue.bookings?.length ?? 0} booked periods </p>
+        <p className="mt-0.5 text-sm text-grey-900">
+          This venue has {venue.bookings?.length ?? 0} booked periods{" "}
+        </p>
         {/* <p className="mt-0.5 text-sm text-grey-900">
           {venue.location?.city}, {venue.location?.country}
         </p> */}
-
-
       </div>
 
       <div className="flex items-center justify-between border-t border-grey-200 px-4 py-3">

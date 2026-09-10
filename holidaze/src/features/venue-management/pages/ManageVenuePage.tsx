@@ -24,12 +24,12 @@ export default function ManageVenuePage() {
   return (
     <PageWrapper>
       <Breadcrumbs
-  items={[
-    { label: "Home", href: "/" },
-    { label: "Profile", href: "/profile" },
-   { label: `Manage ${venue.name}` },
-  ]}
-/>
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Profile", href: "/profile" },
+          { label: `Manage ${venue.name}` },
+        ]}
+      />
       <VenueDetailsCard venue={venue} />
 
       {/* do i need a delete and edit section here? i have it on the main page.. */}
