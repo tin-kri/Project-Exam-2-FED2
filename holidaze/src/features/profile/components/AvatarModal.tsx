@@ -17,7 +17,7 @@ export default function AvatarModal({
   const [alt, setAlt] = useState(currentAlt ?? "");
   const { handleChangeAvatar, isLoading, error } = useChangeAvatar();
 
-  async function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
     const success = await handleChangeAvatar(url, alt);
     if (success) onClose();
@@ -86,7 +86,11 @@ export default function AvatarModal({
           </div>
 
           {error && (
-            <p id="avatar-error" role="alert" className="text-sm text-red-600">
+            <p
+              id="avatar-error"
+              role="alert"
+              className="text-sm text-destructive"
+            >
               {error}
             </p>
           )}
@@ -94,7 +98,7 @@ export default function AvatarModal({
             <Button type="button" onClick={onClose} variant="destructive">
               Cancel
             </Button>
-            <Button type="submit" disabled={isLoading} variant="outline">
+            <Button type="submit" disabled={isLoading} variant="default">
               {isLoading ? "Saving…" : "Save"}
             </Button>
           </div>

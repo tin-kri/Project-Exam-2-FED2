@@ -11,19 +11,19 @@ export default function ProfileCard({ profile, onChangeAvatar }: ProfileProps) {
       <div className="flex flex-col items-center gap-2  py-8">
         <h1 className="font-serif text-2xl font-semibold tracking-tight text-navy-800">
           Hello {profile.name}
-        </h1>{" "}
+        </h1>
         {profile.venueManager && (
           <span className=" rounded-full bg-sky-100 px-3 py-1 text-sm font-medium text-navy-800">
-            Venue Manger
+            Venue Manager
           </span>
-        )}{" "}
+        )}
         <p className="text-grey-900 text-base ">{profile.email}</p>
         <img
           src={profile.avatar?.url}
           alt={profile.avatar?.alt}
           className="h-25 w-25 rounded-sm mt-3"
         />
-        <Button variant="outline" className="mt-3" onClick={onChangeAvatar}>
+        <Button variant="default" className="mt-3" onClick={onChangeAvatar}>
           Change Avatar
         </Button>
       </div>

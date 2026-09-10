@@ -2,7 +2,7 @@ import { useState } from "react";
 import PageWrapper from "@/components/layout/PageWrapper";
 import ProfileCard from "../components/ProfileCard";
 import useProfile from "../hooks/useProfile";
-import AvatarModal from "../components/AvatarModule";
+import AvatarModal from "../components/AvatarModal";
 import UserBookings from "../components/UserBookings";
 import VenueManagerSection from "@/features/venue-management/components/VenueManagerSection";
 import Breadcrumbs from "@/components/layout/HolidazeBreadcrumbs";
@@ -14,16 +14,19 @@ export default function ProfilePage() {
   if (isLoading)
     return (
       <PageWrapper>
-        <p>Loading…</p>
+        <p className="text-grey-900 text-center text-base">Loading…</p>
       </PageWrapper>
     );
   if (error)
     return (
       <PageWrapper>
-        <p role="alert">{error}</p>
+        <p role="alert" className="text-center text-base text-destructive">
+          {error}
+        </p>
       </PageWrapper>
     );
   if (!profile) return null;
+
   return (
     <PageWrapper>
       <Breadcrumbs
