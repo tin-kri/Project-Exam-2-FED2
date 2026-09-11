@@ -47,7 +47,7 @@ export default function BookingSummary({
         )}
         {nights > 0 && (
           <div className="flex gap-4 text-sm">
-            <dl className="w-24 font-bold text-navy-800">Price</dl>
+            <dt className="w-24 font-bold text-navy-800">Price</dt>
             <dd className="m-0 text-grey-900">${total}</dd>
           </div>
         )}
