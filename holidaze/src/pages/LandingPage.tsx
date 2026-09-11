@@ -27,9 +27,9 @@ export default function LandingPage() {
         <PopularVenues />
         <hr className="mt-12 border-t border-grey-200" />
         <section>
-          <p className="font-serif text-center text-3xl font-bold tracking-tight text-primary mt-6">
+          <h2 className="font-serif text-center text-3xl font-bold tracking-tight text-primary mt-6">
             Holidaze
-          </p>
+          </h2>
           <p className=" text-center font-sans text-xl text-foreground mt-3">
             Whether you're planning a weekend escape, a family holiday, or a
             dream retreat — Holidaze connects you with unique venues for

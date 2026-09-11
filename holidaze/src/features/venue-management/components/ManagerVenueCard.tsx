@@ -15,10 +15,10 @@ export default function ManagerVenueCard({
 
   return (
     <article className="overflow-hidden rounded-sm bg-white">
-      <Link to={`/venues/${venue.id}`}>
+      <Link to={`/venues/${venue.id}`}aria-label={`View ${venue.name}`}>
         <VenueImage
-          src={image?.url ?? "/placeholder.svg"}
-          alt={image?.alt ?? venue.name}
+          src={image?.url}
+          alt={image?.alt || ""}
           className="aspect-video w-full object-cover"
         />
       </Link>
@@ -31,7 +31,7 @@ export default function ManagerVenueCard({
           {venue.name}
         </Link>
         <p className="mt-0.5 text-sm text-grey-900">
-          This venue has {venue.bookings?.length ?? 0} booked periods{" "}
+          This venue has {venue.bookings?.length ?? 0} booked periods
         </p>
       </div>
 

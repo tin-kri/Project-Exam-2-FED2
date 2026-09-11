@@ -16,7 +16,7 @@ export default function BookingCard({ booking }: BookingCardProps) {
       <article className="flex gap-4 rounded-sm bg-white p-3">
         <VenueImage
           src={image?.url}
-          alt={image?.alt || venue?.name || "Venue"}
+          alt={image?.alt || ""}
           className="h-16 w-20 shrink-0 rounded-sm object-cover"
         />
         <div className="flex flex-col gap-1">
