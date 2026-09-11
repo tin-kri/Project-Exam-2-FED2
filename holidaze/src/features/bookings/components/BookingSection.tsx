@@ -76,7 +76,7 @@ export default function BookingSection({
               onChange={setGuests}
               max={venue.maxGuests}
             />
-          </div>{" "}
+          </div>
         </div>
       </div>
 

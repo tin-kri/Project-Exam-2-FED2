@@ -11,8 +11,16 @@ export default function AmenitiesTag({ meta }: AmenitiesTagProps) {
     meta?.pets && "Pets allowed",
   ].filter(Boolean) as string[];
 
-  if (amenities.length === 0) return null;
+  const disclosure = "No amenities available";
 
+  if (amenities.length === 0)
+    return (
+      <ul className="mt-2 flex list-none flex-wrap gap-1.5">
+        <li className="rounded-md bg-destructive px-3 py-1 text-xs font-medium leading-5 text-white">
+          {disclosure}
+        </li>
+      </ul>
+    );
   return (
     <ul className="mt-2 flex list-none flex-wrap gap-1.5">
       {amenities.map((amenity) => (
