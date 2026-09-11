@@ -49,8 +49,10 @@ export default function LandingSearch() {
         <input
           id="landing-search"
           type="text"
+          role="combobox"
           aria-expanded={showListSuggestions}
           aria-controls="search-listbox"
+          aria-haspopup="listbox"
           aria-autocomplete="list"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
@@ -68,8 +70,12 @@ export default function LandingSearch() {
           Search
         </Button>
       </form>
-            {showListSuggestions && (
-        <ul className="absolute left-0 right-0 top-full z-50 overflow-hidden rounded-md border border-grey-200 bg-white shadow-lg">
+      {showListSuggestions && (
+        <ul
+          id="search-listbox"
+          role="listbox"
+          className="absolute left-0 right-0 top-full z-50 overflow-hidden rounded-md border border-grey-200 bg-white shadow-lg"
+        >
           {results.slice(0, 3).map((venue) => (
             <li key={venue.id}>
               <button
