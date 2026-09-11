@@ -11,31 +11,35 @@ export default function EditVenuePage() {
   const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
   const { handleEditVenue, isLoading, error } = useEditVenue();
-
   const { venue, isLoading: isVenueLoading, error: venueError } = useVenue(id);
 
-  if (isVenueLoading)
+  if (isVenueLoading) {
     return (
       <PageWrapper>
-        <p className="text-center text-grey-900">Loading...</p>
+        <p className="mt-8 text-center text-sm text-grey-900">Loading...</p>
       </PageWrapper>
     );
+  }
 
-  if (venueError)
+  if (venueError) {
     return (
       <PageWrapper>
-        <p role="alert" className="text-center text-destructive">
-          {venueError}
+        <p role="alert" className="mt-8 text-center text-sm text-destructive">
+          Something went wrong: {venueError}
         </p>
       </PageWrapper>
     );
+  }
 
-  if (!venue)
+  if (!venue) {
     return (
       <PageWrapper>
-        <p className="text-center text-grey-900">Venue not found.</p>
+        <p className="mt-8 text-center text-sm text-grey-900">
+          Venue not found.
+        </p>
       </PageWrapper>
     );
+  }
 
   const initialValues = {
     ...venue,

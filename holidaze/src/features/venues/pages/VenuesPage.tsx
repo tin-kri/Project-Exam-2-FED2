@@ -55,7 +55,7 @@ export default function VenuesPage() {
         }
         return prev;
       },
-      { replace: true }, // replace so typing doesn't spam browser history
+      { replace: true },
     );
   }
 
@@ -73,10 +73,7 @@ export default function VenuesPage() {
   return (
     <PageWrapper>
       <Breadcrumbs
-        items={[
-          { label: "Home", href: "/" },
-          { label: "Venues" }
-        ]}
+        items={[{ label: "Home", href: "/" }, { label: "Venues" }]}
       />
       <h1 className="font-serif text-2xl font-semibold tracking-tight text-navy-800">
         Search Venues
@@ -92,7 +89,7 @@ export default function VenuesPage() {
         <p className="mt-8 text-sm text-grey-900">Loading venues...</p>
       )}
       {error && (
-        <p className="mt-8 text-sm text-destructive">
+        <p role="alert" className="mt-8 text-sm text-destructive">
           Something went wrong: {error}
         </p>
       )}

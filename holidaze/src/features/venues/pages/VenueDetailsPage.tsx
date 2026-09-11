@@ -27,9 +27,33 @@ export default function VenueDetailPage() {
     }
     return false;
   }
-  if (isVenueLoading) return <p>Loading...</p>;
-  if (venueError) return <p>Something went wrong: {venueError}</p>;
-  if (!venue) return <p>Venue not found.</p>;
+  if (isVenueLoading) {
+    return (
+      <PageWrapper>
+        <p className="mt-8 text-center text-sm text-grey-900">Loading...</p>
+      </PageWrapper>
+    );
+  }
+
+  if (venueError) {
+    return (
+      <PageWrapper>
+        <p role="alert" className="mt-8 text-center text-sm text-destructive">
+          Something went wrong: {venueError}
+        </p>
+      </PageWrapper>
+    );
+  }
+
+  if (!venue) {
+    return (
+      <PageWrapper>
+        <p className="mt-8 text-center text-sm text-grey-900">
+          Venue not found.
+        </p>
+      </PageWrapper>
+    );
+  }
 
   return (
     <PageWrapper>
