@@ -60,7 +60,6 @@ export default function LandingSearch() {
           autoComplete="off"
           className="w-full bg-transparent text-base text-navy-900 outline-none placeholder:text-sm placeholder:text-grey-600"
         />
-
         <Button
           type="submit"
           variant="default"
