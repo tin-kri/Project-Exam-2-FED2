@@ -95,7 +95,7 @@ export default function AvatarModal({
             </p>
           )}
           <div className="flex justify-end gap-3">
-            <Button type="button" onClick={onClose} variant="destructive">
+            <Button type="button" onClick={onClose} variant="outline">
               Cancel
             </Button>
             <Button type="submit" disabled={isLoading} variant="default">
