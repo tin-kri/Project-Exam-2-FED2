@@ -11,9 +11,9 @@ export default function Footer() {
   return (
     <footer className="bg-primary">
       <div className="mx-auto flex w-full max-w-7xl flex-col items-start px-4 pt-16">
-        <p className="font-serif text-2xl font-bold tracking-tight text-background">
+        <h2 className="font-serif text-2xl font-bold tracking-tight text-background">
           Holidaze
-        </p>
+        </h2>
         <nav
           className="mt-6 flex flex-wrap gap-x-6 gap-y-3 text-xs"
           aria-label="Footer navigation"

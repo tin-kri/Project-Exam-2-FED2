@@ -20,7 +20,7 @@ export default function PopularVenueCard({ popularVenue }: PopularVenueProps) {
         className=" h-50 w-full object-cover"
       />
       <div className="py-3 text-xl text-start text-primary">
-        <p className="font-serif font-bold ">{name}</p>
+        <h3 className="font-serif font-bold ">{name}</h3>
         <p className="text-sm text-accent-foreground">
           {location?.city}, {location?.country}
         </p>
