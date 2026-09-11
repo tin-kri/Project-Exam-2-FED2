@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import type { VenueApiData } from "@/features/venues/types/venue.types";
+import VenueImage from "@/components/ui/VenueImage";
 
 interface ManagerVenueCardProps {
   venue: VenueApiData;
@@ -14,9 +15,8 @@ export default function ManagerVenueCard({
 
   return (
     <article className="overflow-hidden rounded-sm bg-white">
-      {/* clickable image */}
       <Link to={`/venues/${venue.id}`}>
-        <img
+        <VenueImage
           src={image?.url ?? "/placeholder.svg"}
           alt={image?.alt ?? venue.name}
           className="aspect-video w-full object-cover"

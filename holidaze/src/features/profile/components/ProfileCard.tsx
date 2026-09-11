@@ -1,3 +1,4 @@
+import VenueImage from "@/components/ui/VenueImage";
 import type { Profile } from "../types/profile.types";
 import { Button } from "@/components/vendor/button";
 
@@ -18,11 +19,9 @@ export default function ProfileCard({ profile, onChangeAvatar }: ProfileProps) {
           </span>
         )}
         <p className="text-grey-900 text-base ">{profile.email}</p>
-        <img
-          src={profile.avatar?.url}
-          alt={profile.avatar?.alt}
-          className="h-25 w-25 rounded-sm mt-3"
-        />
+       <VenueImage src={profile.avatar?.url}
+          alt={profile.avatar?.alt?? "profile avatar"}
+          className="h-25 w-25 rounded-sm mt-3"/>
         <Button variant="default" className="mt-3" onClick={onChangeAvatar}>
           Change Avatar
         </Button>

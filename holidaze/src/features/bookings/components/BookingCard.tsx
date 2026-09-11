@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import type { BookingVenue } from "../types/booking.types";
 import { formatBookingDate } from "../utils/booking";
+import VenueImage from "@/components/ui/VenueImage";
 
 interface BookingCardProps {
   booking: BookingVenue;
@@ -13,7 +14,7 @@ export default function BookingCard({ booking }: BookingCardProps) {
   return (
     <Link to={`/venues/${venue.id}`}>
       <article className="flex gap-4 rounded-sm bg-white p-3">
-        <img
+        <VenueImage
           src={image?.url}
           alt={image?.alt || venue?.name || "Venue"}
           className="h-16 w-20 shrink-0 rounded-sm object-cover"
