@@ -36,9 +36,9 @@ export default function VenueDetailsCard({ venue }: VenueDetailsCardProps) {
         <AmenitiesTag meta={venue.meta} />
       </div>
       <div className="border-t border-grey-200 px-4 py-6">
-        <h3 className="font-serif text-lg font-bold text-navy-800 mb-2">
+        <h2 className="font-serif text-lg font-bold text-navy-800 mb-2">
           About this venue
-        </h3>
+        </h2>
         <p className="text-sm leading-relaxed text-grey-900">
           {venue.description}
         </p>
