@@ -1,7 +1,6 @@
 import { holidazeFetch } from "@/api/base";
-import type { ApiResponse } from "@/types/types"; 
+import type { ApiResponse } from "@/types/types";
 import type { VenueApiData, VenueQueryParams } from "../types/venue.types";
- 
 
 export function getVenues(
   params: VenueQueryParams = {},
@@ -23,14 +22,15 @@ export function getVenueById(id: string): Promise<ApiResponse<VenueApiData>> {
   return holidazeFetch<ApiResponse<VenueApiData>>(`venues/${id}`);
 }
 
-// search
 export function searchVenues(q: string): Promise<ApiResponse<VenueApiData[]>> {
   const params = new URLSearchParams({ q });
   return holidazeFetch<ApiResponse<VenueApiData[]>>(`venues/search?${params}`);
 }
 
-//  venue bookings availability 
-export function getBookingByVenue(id: string): Promise<ApiResponse<VenueApiData>> {
- 
-     return holidazeFetch<ApiResponse<VenueApiData>>(`venues/${id}?_bookings=true`);
+export function getBookingByVenue(
+  id: string,
+): Promise<ApiResponse<VenueApiData>> {
+  return holidazeFetch<ApiResponse<VenueApiData>>(
+    `venues/${id}?_bookings=true`,
+  );
 }

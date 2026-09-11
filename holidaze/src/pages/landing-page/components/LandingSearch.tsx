@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Search } from "lucide-react";
 import { useVenueSearch } from "@/features/venues/hooks/useVenueSearch";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/vendor/button";
 import { useClickOutside } from "@/hooks/useClickOutside";
 
 export default function LandingSearch() {
@@ -61,42 +61,35 @@ export default function LandingSearch() {
 
         <Button
           type="submit"
+          variant="default"
           aria-label="Search venues"
           className="cursor-pointer"
         >
           Search
         </Button>
       </form>
-
-      {showListSuggestions && (
-        <ul
-          id="search-listbox"
-          role="listbox"
-          className="absolute left-0 right-0 top-full z-50  overflow-hidden rounded-md border border-grey-200 bg-white shadow-lg"
-        >
+            {showListSuggestions && (
+        <ul className="absolute left-0 right-0 top-full z-50 overflow-hidden rounded-md border border-grey-200 bg-white shadow-lg">
           {results.slice(0, 3).map((venue) => (
-            <li
-              key={venue.id}
-              role="option"
-              aria-selected="false"
-              onClick={() => handleSelect(venue.id)}
-              onKeyDown={(e) => e.key === "Enter" && handleSelect(venue.id)}
-              className="flex cursor-pointer items-center gap-3 px-4 py-3 hover:bg-grey-100"
-            >
-              <div className="flex flex-col">
+            <li key={venue.id}>
+              <button
+                type="button"
+                onClick={() => handleSelect(venue.id)}
+                className="flex w-full cursor-pointer items-center gap-3 px-4 py-3 text-left hover:bg-grey-100"
+              >
                 <span className="text-sm font-medium text-navy-800">
                   {venue.name}
                 </span>
-              </div>
+              </button>
             </li>
           ))}
-          <li className="border-t border-grey-200 ">
+          <li className="border-t border-grey-200">
             <Button
               type="button"
-              aria-label="Search for venues"
+              aria-label={`See all results for ${query}`}
               variant="link"
               onClick={handleSubmit}
-              className=" cursor-pointer "
+              className="cursor-pointer"
             >
               See all results for "{query}"
             </Button>

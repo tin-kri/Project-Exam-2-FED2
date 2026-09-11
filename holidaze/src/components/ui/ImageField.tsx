@@ -1,5 +1,5 @@
 import FormField from "@/components/ui/FormField";
-import { Button } from "./button";
+import { Button } from "../vendor/button";
 import { Trash2 } from "lucide-react";
 import { Plus } from "lucide-react";
 

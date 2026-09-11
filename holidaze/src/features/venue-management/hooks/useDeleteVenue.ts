@@ -5,11 +5,11 @@ export function useDeleteVenue() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  async function handleDeleteVenue(id:string): Promise<boolean> {
+  async function handleDeleteVenue(id: string): Promise<boolean> {
     setError(null);
     setIsLoading(true);
     try {
-     await deleteVenue(id);
+      await deleteVenue(id);
       return true;
     } catch (error: unknown) {
       setError(
@@ -17,7 +17,7 @@ export function useDeleteVenue() {
           ? error.message
           : "Failed to delete venue. Please try again!",
       );
-      return (false);
+      return false;
     } finally {
       setIsLoading(false);
     }

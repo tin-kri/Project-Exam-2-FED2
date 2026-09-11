@@ -1,7 +1,6 @@
 import { useState } from "react";
 import type { ApiMeta } from "@/types/types";
 
-
 export function useVenuePagination() {
   const [page, setPage] = useState(1);
 
@@ -17,5 +16,5 @@ export function useVenuePagination() {
     setPage(1);
   }
 
-  return {page, nextPage, previousPage, reset}
+  return { page, nextPage, previousPage, reset };
 }

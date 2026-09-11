@@ -55,5 +55,3 @@ export const createVenueSchema = z.object({
 });
 
 export type CreateVenueValues = z.infer<typeof createVenueSchema>;
-export const updateVenueSchema = createVenueSchema.partial();
-export type UpdateVenueValues = z.infer<typeof updateVenueSchema>;

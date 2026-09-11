@@ -3,7 +3,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
+} from "@/components/vendor/accordion";
 
 type PolicyItem = {
   value: string;
@@ -37,14 +37,14 @@ export default function VenueInformation() {
       <h3 className="mb-2 font-serif text-lg font-bold text-navy-800">
         Venue Policies
       </h3>
-      <Accordion
-        type="single"
-        collapsible
-        className=" "
-      >
+      <Accordion type="single" collapsible>
         {items.map((item) => (
-          <AccordionItem key={item.value} value={item.value} className="border-grey-200">
-            <AccordionTrigger className="font-serif text-secondary-foreground ">
+          <AccordionItem
+            key={item.value}
+            value={item.value}
+            className="border-grey-200"
+          >
+            <AccordionTrigger className="font-serif text-secondary-foreground">
               {item.trigger}
             </AccordionTrigger>
             <AccordionContent className="text-sm leading-relaxed text-grey-900">

@@ -12,7 +12,7 @@ export function useVenue(id: string | undefined) {
 
     let active = true;
 
-     getBookingByVenue(id)
+    getBookingByVenue(id)
       .then((res) => {
         if (!active) return;
         setVenue(res.data);

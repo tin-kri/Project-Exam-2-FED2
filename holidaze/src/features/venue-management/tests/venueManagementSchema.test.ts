@@ -1,7 +1,6 @@
 import { describe, test, expect } from "vitest";
 import {
   createVenueSchema,
-  updateVenueSchema,
 } from "../schema/venueManagementSchema";
 
 const testVenue = {
@@ -34,18 +33,6 @@ describe("createVenueSchema", () => {
       ...testVenue,
       name: "abc".repeat(25),
     });
-    expect(result.success).toBe(true);
-  });
-});
-
-describe("updateVenueSchema", () => {
-  test("accepts an empty object when all fields are optional in update mode", () => {
-    const result = updateVenueSchema.safeParse({});
-    expect(result.success).toBe(true);
-  });
-
-  test("accepts a small update with just a price change", () => {
-    const result = updateVenueSchema.safeParse({ price: 300 });
     expect(result.success).toBe(true);
   });
 });

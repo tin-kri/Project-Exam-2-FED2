@@ -13,9 +13,11 @@ export function useCreateBooking() {
     setIsLoading(true);
     try {
       const response = await createBooking(values);
-      return response.data; 
+      return response.data;
     } catch (error) {
-      setError(error instanceof Error ? error.message : "Failed to create booking");
+      setError(
+        error instanceof Error ? error.message : "Failed to create booking",
+      );
       return null;
     } finally {
       setIsLoading(false);
@@ -24,5 +26,3 @@ export function useCreateBooking() {
 
   return { handleCreateBooking, isLoading, error };
 }
- 
-  

@@ -1,4 +1,3 @@
-// src/components/layout/Breadcrumbs.tsx
 import { Link } from "react-router-dom";
 import {
   Breadcrumb,
@@ -7,7 +6,7 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
+} from "@/components/vendor/breadcrumb";
 
 type BreadcrumbEntry = {
   label: string;
@@ -27,7 +26,7 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
           return (
             <BreadcrumbItem key={item.label}>
               {isLast || !item.href ? (
-                <BreadcrumbPage className="underline ">
+                <BreadcrumbPage>
                   {item.label}
                 </BreadcrumbPage>
               ) : (

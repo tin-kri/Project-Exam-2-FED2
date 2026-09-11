@@ -14,7 +14,6 @@ export default function Footer() {
         <p className="font-serif text-2xl font-bold tracking-tight text-background">
           Holidaze
         </p>
-
         <nav
           className="mt-6 flex flex-wrap gap-x-6 gap-y-3 text-xs"
           aria-label="Footer navigation"

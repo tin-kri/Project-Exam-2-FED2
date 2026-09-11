@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/vendor/button";
 import {
   createVenueSchema,
   type CreateVenueValues,
@@ -209,9 +209,10 @@ export default function VenueForm({
 
         <Button
           type="submit"
-          className="mt-2 w-full"
+          variant="default"
           disabled={isLoading}
           aria-busy={isLoading}
+          className="mt-2"
         >
           {isLoading
             ? (loadingLabel ?? "Creating...")

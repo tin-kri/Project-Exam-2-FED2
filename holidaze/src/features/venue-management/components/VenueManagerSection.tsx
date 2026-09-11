@@ -7,7 +7,7 @@ import DeleteModule from "./DeleteModule";
 
 export default function VenueManagerSection() {
   const { venues, isLoading, error } = useManagerVenues();
-const [venueDelete, setVenueDelete] =useState<VenueApiData|null>(null)
+  const [venueDelete, setVenueDelete] = useState<VenueApiData | null>(null);
   return (
     <section className="mt-12 rounded-sm bg-bg-card">
       <div className="flex flex-col gap-4 px-6 py-8">
@@ -22,7 +22,7 @@ const [venueDelete, setVenueDelete] =useState<VenueApiData|null>(null)
         )}
 
         {error && (
-          <p role="alert" className="text-center text-base text-red-600">
+          <p role="alert" className="text-center text-base text-destructive">
             {error}
           </p>
         )}
@@ -36,22 +36,23 @@ const [venueDelete, setVenueDelete] =useState<VenueApiData|null>(null)
         {venues.length > 0 && (
           <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
             {venues.map((venue) => (
-              <ManagerVenueCard key={venue.id} venue={venue} onDelete={(venue) =>setVenueDelete(venue)}/>
-            ))} 
+              <ManagerVenueCard
+                key={venue.id}
+                venue={venue}
+                onDelete={(venue) => setVenueDelete(venue)}
+              />
+            ))}
           </div>
         )}
 
         <CreateVenueCTA />
-    
       </div>
-            {venueDelete && (
+      {venueDelete && (
         <DeleteModule
           venue={venueDelete}
           onClose={() => setVenueDelete(null)}
         />
       )}
-
     </section>
-    
   );
 }

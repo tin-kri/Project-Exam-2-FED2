@@ -1,6 +1,5 @@
 import { useState } from "react";
-
-import { Calendar } from "@/components/ui/calendar";
+import { Calendar } from "@/components/vendor/calendar";
 import { type DateRange } from "react-day-picker";
 
 type DateRangePickerProps = {
@@ -25,7 +24,7 @@ export default function DateRangePicker({
       onSelect={onSelect}
       numberOfMonths={1}
       disabled={[{ before: new Date() }, ...disabledDates]}
-     className="[--cell-size:--spacing(10)] md:[--cell-size:--spacing(11)]  rounded-md shadow-sm"
+      className="[--cell-size:--spacing(10)] md:[--cell-size:--spacing(11)]  rounded-md shadow-sm"
     />
   );
 }
