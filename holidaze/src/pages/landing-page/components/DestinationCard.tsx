@@ -19,12 +19,12 @@ export default function DestinationCard({ destination }: DestinationCardProps) {
     >
       <img
         src={destination.image}
-        alt={destination.city}
-        className=" h-40 w-full object-cover  "
+        alt={destination.alt}
+        className="h-40 w-full object-cover"
       />
-      <div className="  py-3 text-xl text-start">
+      <div className="py-3 text-xl text-start">
         <p className="font-serif font-bold text-navy-800">{destination.city}</p>
-        <p className="text-base text-light text-foreground">
+        <p className="text-base text-accent-foreground">
           {destination.description}
         </p>
       </div>

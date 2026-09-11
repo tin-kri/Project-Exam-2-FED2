@@ -2,7 +2,7 @@ import { useState } from "react";
 import PageWrapper from "@/components/layout/PageWrapper";
 import ProfileCard from "../components/ProfileCard";
 import useProfile from "../hooks/useProfile";
-import AvatarModal from "../components/AvatarModule";
+import AvatarModal from "../components/AvatarModal";
 import UserBookings from "../components/UserBookings";
 import VenueManagerSection from "@/features/venue-management/components/VenueManagerSection";
 import Breadcrumbs from "@/components/layout/HolidazeBreadcrumbs";
@@ -11,19 +11,26 @@ export default function ProfilePage() {
   const { profile, isLoading, error } = useProfile();
   const [isAvatarModalOpen, setIsAvatarModalOpen] = useState(false);
 
-  if (isLoading)
+  if (isLoading) {
     return (
       <PageWrapper>
-        <p>Loading…</p>
+        <p className="mt-8 text-center text-sm text-grey-900">Loading...</p>
       </PageWrapper>
     );
-  if (error)
+  }
+
+  if (error) {
     return (
       <PageWrapper>
-        <p role="alert">{error}</p>
+        <p role="alert" className="mt-8 text-center text-sm text-destructive">
+          Something went wrong: {error}
+        </p>
       </PageWrapper>
     );
+  }
+
   if (!profile) return null;
+
   return (
     <PageWrapper>
       <Breadcrumbs

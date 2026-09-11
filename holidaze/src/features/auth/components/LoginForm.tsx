@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/vendor/button";
 import { useState } from "react";
 import type { LoginFormValues } from "../types/auth.types";
 
@@ -62,11 +62,13 @@ export default function LoginForm({
         className="mt-4 flex flex-col gap-4 text-navy-800"
       >
         {error && (
-          <p role="alert" className="text-destructive">
+          <div
+            role="alert"
+            className="rounded-sm border border-destructive bg-background px-4 py-3 text-sm text-destructive"
+          >
             {error}
-          </p>
+          </div>
         )}
-
         <div className="flex flex-col gap-1">
           <label htmlFor="email">Email</label>
           <input
@@ -123,7 +125,7 @@ export default function LoginForm({
 
         <Button
           type="submit"
-          variant="outline"
+          variant="default"
           className="mt-2 w-full"
           aria-busy={isLoading}
           disabled={isLoading}

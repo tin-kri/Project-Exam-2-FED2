@@ -6,7 +6,7 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "@/components/vendor/select";
 import {
   SORT_OPTIONS,
   type SortField,
@@ -69,37 +69,3 @@ export default function VenueSort({
     </Select>
   );
 }
-// import { SORT_OPTIONS, type SortField, type SortOrder } from "@/features/venues/utils/sortVenues";
-
-// type SortSelectProps = {
-//   sort: SortField;
-//   sortOrder: SortOrder;
-//   onChange: (sort: SortField, sortOrder: SortOrder) => void;
-// };
-
-// export default function SortSelect({ sort, sortOrder, onChange }: SortSelectProps) {
-//   const value = `${sort}:${sortOrder}`;
-//   return (
-//     <div>
-//     <label className="relative flex items-center">
-//       <select
-//         value={value}
-//         onChange={(e) => {
-//           const [nextSort, nextOrder] = e.target.value.split(":") as [SortField, SortOrder];
-//           onChange(nextSort, nextOrder);
-//         }}
-//         className="appearance-none rounded-md border border-grey-200 bg-white py-3 pl-4 pr-10 text-base text-navy-900 outline-none transition-colors focus:border-navy-800"
-//       >
-//       <span className="sr-only">Sort venues</span>
-//         {SORT_OPTIONS.map((o) => (
-//           <option key={`${o.sort}:${o.sortOrder}`} value={`${o.sort}:${o.sortOrder}`}>
-//             {o.label}
-//           </option>
-//         ))}
-
-//       </select>
-
-//     </label>
-//     </div>
-//   );
-// }

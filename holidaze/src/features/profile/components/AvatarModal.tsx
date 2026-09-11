@@ -1,6 +1,6 @@
-import {  useState } from "react";
+import { useState } from "react";
 import useChangeAvatar from "../hooks/useChangeAvatar";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/vendor/button";
 
 interface AvatarModalProps {
   currentUrl?: string;
@@ -17,7 +17,7 @@ export default function AvatarModal({
   const [alt, setAlt] = useState(currentAlt ?? "");
   const { handleChangeAvatar, isLoading, error } = useChangeAvatar();
 
-  async function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
     const success = await handleChangeAvatar(url, alt);
     if (success) onClose();
@@ -26,14 +26,14 @@ export default function AvatarModal({
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-navy-800/50 p-4"
-      onClick={onClose} 
+      onClick={onClose}
     >
       <div
         role="dialog"
         aria-modal="true"
         aria-labelledby="avatar-modal-title"
         className="w-full max-w-md rounded-lg bg-white p-6"
-        onClick={(e) => e.stopPropagation()} 
+        onClick={(e) => e.stopPropagation()}
       >
         <h2
           id="avatar-modal-title"
@@ -42,9 +42,12 @@ export default function AvatarModal({
           Change Avatar
         </h2>
 
-        <form onSubmit={handleSubmit} className="mt-4 flex flex-col gap-4"> 
+        <form onSubmit={handleSubmit} className="mt-4 flex flex-col gap-4">
           <div className="flex flex-col gap-1">
-            <label htmlFor="avatar-url" className="text-sm font-medium text-navy-800">
+            <label
+              htmlFor="avatar-url"
+              className="text-sm font-medium text-navy-800"
+            >
               Image URL
             </label>
             <input
@@ -58,15 +61,13 @@ export default function AvatarModal({
               aria-describedby={error ? "avatar-error" : undefined}
               className="rounded-md border border-grey-200 bg-white px-4 py-3 text-sm text-grey-900 outline-none placeholder:text-grey-200 focus:border-navy-800 focus:ring-2 focus:ring-navy-800/20 aria-invalid:border-red-500"
             />
-
-            
           </div>
 
           <div className="flex flex-col gap-1">
             <label
               htmlFor="avatar-alt-text"
-              className="text-sm font-medium text-navy-800">
-            
+              className="text-sm font-medium text-navy-800"
+            >
               Alt text{" "}
               <span className="ml-1 text-xs font-normal text-grey-600">
                 (optional)
@@ -85,15 +86,19 @@ export default function AvatarModal({
           </div>
 
           {error && (
-            <p id="avatar-error" role="alert" className="text-sm text-red-600">
+            <p
+              id="avatar-error"
+              role="alert"
+              className="text-sm text-destructive"
+            >
               {error}
             </p>
           )}
           <div className="flex justify-end gap-3">
-            <Button type="button" onClick={onClose} variant="destructive">
+            <Button type="button" onClick={onClose} variant="outline">
               Cancel
             </Button>
-            <Button type="submit" disabled={isLoading} variant="outline">
+            <Button type="submit" disabled={isLoading} variant="default">
               {isLoading ? "Saving…" : "Save"}
             </Button>
           </div>

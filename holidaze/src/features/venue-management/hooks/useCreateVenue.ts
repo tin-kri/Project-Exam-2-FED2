@@ -16,7 +16,11 @@ export function useCreateVenue() {
       const response = await createVenue(values);
       return response.data;
     } catch (error: unknown) {
-      setError(error instanceof Error ? error.message : "Failed to create your new venue. Please try again!");
+      setError(
+        error instanceof Error
+          ? error.message
+          : "Failed to create your new venue. Please try again!",
+      );
       return null;
     } finally {
       setIsLoading(false);

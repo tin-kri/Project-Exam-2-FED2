@@ -12,8 +12,9 @@ import {
 
 const LIMIT = 24;
 
-
-export function useVenuesPage(query: string, sort: SortField = DEFAULT_SORT.sort,
+export function useVenuesPage(
+  query: string,
+  sort: SortField = DEFAULT_SORT.sort,
   sortOrder: SortOrder = DEFAULT_SORT.sortOrder,
 ) {
   const { page, nextPage, previousPage, reset } = useVenuePagination();

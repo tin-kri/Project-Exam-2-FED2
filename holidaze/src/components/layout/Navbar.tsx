@@ -35,7 +35,7 @@ export default function Navbar() {
       ];
 
   return (
-    <header className="sticky top-0 z-50 bg-white">
+    <header className="top-0 z-50 bg-white shadow-sm">
       <nav className="mx-auto flex max-w-7xl items-center px-4 py-6 md:px-8">
         <Link
           to="/"

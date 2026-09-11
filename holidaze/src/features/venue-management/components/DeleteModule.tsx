@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/vendor/button";
 import { useDeleteVenue } from "../hooks/useDeleteVenue";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
@@ -19,7 +19,6 @@ export default function DeleteModule({ venue, onClose }: DeleteModuleProps) {
       toast.success("Successfully deleted venue.");
       onClose();
       navigate("/");
-//    Need to check out was to redirect to a fresh profile page ref?
     }
   }
 
@@ -48,7 +47,7 @@ export default function DeleteModule({ venue, onClose }: DeleteModuleProps) {
         </p>
 
         {error && (
-          <p role="alert" className="mt-3 text-sm text-red-600">
+          <p role="alert" className="mt-3 text-sm text-destructive">
             {error}
           </p>
         )}
@@ -56,7 +55,7 @@ export default function DeleteModule({ venue, onClose }: DeleteModuleProps) {
         <div className="mt-6 flex justify-end gap-3">
           <Button
             type="button"
-            variant="outline"
+            variant="default"
             onClick={onClose}
             disabled={isLoading}
           >
@@ -64,10 +63,11 @@ export default function DeleteModule({ venue, onClose }: DeleteModuleProps) {
           </Button>
           <Button
             type="button"
+            variant="destructive"
             onClick={handleConfirm}
             disabled={isLoading}
             aria-busy={isLoading}
-            className="bg-red-600 text-white hover:bg-red-500"
+            
           >
             {isLoading ? "Deleting..." : "Delete"}
           </Button>

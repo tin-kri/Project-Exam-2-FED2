@@ -2,11 +2,11 @@ import { useState } from "react";
 import type { VenueApiData } from "@/features/venues/types/venue.types";
 import DateRangePicker from "@/features/bookings/components/DateRangePicker";
 import { type DateRange } from "react-day-picker";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/vendor/button";
 import { useBookingCalculation } from "../hooks/useCalculations";
 import BookingSummary from "./BookingSummary";
 import { useBookedDates } from "@/features/venues/hooks/useBookingDays";
-import Stepper from "@/components/ui/stepper";
+import Stepper from "@/components/vendor/stepper";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useAuthStore } from "@/features/auth/stores/authStore";
 import type { CreateBookingValues } from "../types/booking.types";
@@ -54,20 +54,30 @@ export default function BookingSection({
 
       <div className="flex flex-col gap-4 md:items-start ">
         <div className="w-full md:w-auto">
-          <p className="mb-2 text-center md:text-left text-sm font-medium text-navy-800">Select dates</p>
-             <div className="flex justify-center md:justify-start">
-          <DateRangePicker
-            date={date}
-            onSelect={setDate}
-            disabledDates={bookedDays}
-          /></div>
+          <p className="mb-2 text-center md:text-left text-sm font-medium text-navy-800">
+            Select dates
+          </p>
+          <div className="flex justify-center md:justify-start">
+            <DateRangePicker
+              date={date}
+              onSelect={setDate}
+              disabledDates={bookedDays}
+            />
+          </div>
         </div>
 
-         <div className="w-full md:w-auto">
-          <p className="mb-2 text-sm text-center md:text-left font-medium text-navy-800">Guests</p>
- <div className="flex justify-center md:justify-start">
-      <Stepper value={guests} onChange={setGuests} max={venue.maxGuests} />
-    </div>        </div>
+        <div className="w-full md:w-auto">
+          <p className="mb-2 text-sm text-center md:text-left font-medium text-navy-800">
+            Guests
+          </p>
+          <div className="flex justify-center md:justify-start">
+            <Stepper
+              value={guests}
+              onChange={setGuests}
+              max={venue.maxGuests}
+            />
+          </div>
+        </div>
       </div>
 
       {date?.from && nights > 0 && (
@@ -85,7 +95,7 @@ export default function BookingSection({
           )}
           {user ? (
             <Button
-              type="submit"
+              type="button"
               onClick={handleBook}
               className="w-full"
               disabled={nights === 0 || isLoading}

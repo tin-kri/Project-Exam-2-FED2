@@ -15,9 +15,9 @@ export function useVenueSearch(query: string) {
   useEffect(() => {
     if (!debouncedQuery.trim()) {
       setResults([]);
-      setMeta(null)
-      setError(null)
-      setIsLoading(false)
+      setMeta(null);
+      setError(null);
+      setIsLoading(false);
       return;
     }
 

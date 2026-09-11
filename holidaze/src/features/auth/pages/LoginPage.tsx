@@ -12,7 +12,6 @@ export default function LoginPage() {
   const from = location.state?.from?.pathname || "/";
 
   async function handleSubmit(values: LoginFormValues) {
-    console.log("Submitting:", values);
     const success = await handleLogin(values);
     if (success) {
       navigate(from, { replace: true });
@@ -21,9 +20,8 @@ export default function LoginPage() {
 
   return (
     <PageWrapper>
-     
       <LoginForm onSubmit={handleSubmit} isLoading={isLoading} error={error} />
-    <RegisterRedirect />
+      <RegisterRedirect />
     </PageWrapper>
   );
 }

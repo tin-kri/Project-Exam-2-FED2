@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/vendor/button";
 import { useState } from "react";
 import type { AuthRegisterValues } from "../types/auth.types";
 
@@ -73,9 +73,12 @@ export default function RegisterForm({
         noValidate
       >
         {error && (
-          <p role="alert" className="text-destructive">
+          <div
+            role="alert"
+            className="rounded-sm border border-destructive bg-background px-4 py-3 text-sm text-destructive"
+          >
             {error}
-          </p>
+          </div>
         )}
 
         <div className="flex flex-col gap-1">
@@ -185,7 +188,7 @@ export default function RegisterForm({
         </div>
         <Button
           type="submit"
-          variant="outline"
+          variant="default"
           className="mt-2 w-full"
           disabled={isLoading}
           aria-busy={isLoading}
