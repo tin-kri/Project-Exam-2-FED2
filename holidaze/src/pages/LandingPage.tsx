@@ -11,9 +11,6 @@ export default function LandingPage() {
           alt="Holidaze background cover image of a white villa with blue skies"
           className="h-full w-full object-center object-cover"
         />
-
-        <div className="absolute inset-0 bg-sky-200/50 mix-blend-darken" />
-
         <div className="absolute inset-0 flex items-center justify-center px-4 lg:px-24">
           <div className="w-full max-w-3xl">
             <div className="text-center mb-6">
