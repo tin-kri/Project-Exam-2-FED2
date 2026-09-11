@@ -37,7 +37,10 @@ export default function VenueImageCarousel({
             <CarouselItem key={image.url}>
               <VenueImage
                 src={image.url}
-                alt={image.alt || `${venueName} photo ${index + 1}`}
+                alt={
+                  image.alt ||
+                  `${venueName}, photo ${index + 1} of ${media.length}`
+                }
                 className="aspect-video w-full rounded-sm object-cover"
               />
             </CarouselItem>

@@ -67,7 +67,10 @@ export default function BookingSection({
         </div>
 
         <div className="w-full md:w-auto">
-          <p className="mb-2 text-sm text-center md:text-left font-medium text-navy-800">
+          <p
+            id="stepper-label"
+            className="mb-2 text-sm text-center md:text-left font-medium text-navy-800"
+          >
             Guests
           </p>
           <div className="flex justify-center md:justify-start">
