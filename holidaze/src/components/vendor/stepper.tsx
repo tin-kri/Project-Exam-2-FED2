@@ -27,7 +27,7 @@ export default function Stepper({
         aria-labelledby="stepper-label"
       >
         <Button
-          variant="outline"
+          variant="ghost"
           size="icon-sm"
           onClick={decrease}
           disabled={value <= min}
@@ -41,7 +41,7 @@ export default function Stepper({
         </span>
 
         <Button
-          variant="outline"
+          variant="ghost"
           size="icon-sm"
           onClick={increase}
           disabled={value >= max}

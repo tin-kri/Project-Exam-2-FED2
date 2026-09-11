@@ -125,7 +125,7 @@ export default function LoginForm({
 
         <Button
           type="submit"
-          variant="outline"
+          variant="default"
           className="mt-2 w-full"
           aria-busy={isLoading}
           disabled={isLoading}

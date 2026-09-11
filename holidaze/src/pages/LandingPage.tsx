@@ -34,8 +34,7 @@ export default function LandingPage() {
             Whether you're planning a weekend escape, a family holiday, or a
             dream retreat — Holidaze connects you with unique venues for
             comfort, character and unforgettable experiences. Browse hundreds of
-            locations across the world and book the stay you've always
-            wanted.
+            locations across the world and book the stay you've always wanted.
           </p>
         </section>
         <hr className="mt-12 border-t border-grey-200" />

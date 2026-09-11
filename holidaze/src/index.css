@@ -38,8 +38,9 @@
   --color-grey-900: #1a1f2e;
   --color-grey-600: #505152;
 
-  --color-bg-card: #f7f5f0;
-  --color-page-bg: #fefaf7;
+  --color-bg-card: #eef7fb;
+  /* --color-page-bg: #fefaf7; */
+  --color-page-bg: f4f9fc;
   --color-star: #f5a623;
 
   --color-light-blue: #e0edff;

@@ -188,7 +188,7 @@ export default function RegisterForm({
         </div>
         <Button
           type="submit"
-          variant="outline"
+          variant="default"
           className="mt-2 w-full"
           disabled={isLoading}
           aria-busy={isLoading}
