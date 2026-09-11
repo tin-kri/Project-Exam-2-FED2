@@ -1,4 +1,3 @@
-// src/components/layout/Breadcrumbs.tsx
 import { Link } from "react-router-dom";
 import {
   Breadcrumb,
