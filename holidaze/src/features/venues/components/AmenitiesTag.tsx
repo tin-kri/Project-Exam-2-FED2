@@ -16,7 +16,7 @@ export default function AmenitiesTag({ meta }: AmenitiesTagProps) {
   if (amenities.length === 0)
     return (
       <ul className="mt-2 flex list-none flex-wrap gap-1.5">
-        <li className="rounded-md bg-destructive px-3 py-1 text-xs font-medium leading-5 text-white">
+        <li className="rounded-md bg-muted text-muted-foreground px-3 py-1 text-xs font-medium leading-5 ">
           {disclosure}
         </li>
       </ul>
