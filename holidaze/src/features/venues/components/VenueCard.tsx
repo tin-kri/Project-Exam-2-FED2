@@ -9,8 +9,8 @@ interface VenueCardProps {
 
 export default function VenueCard({ venue }: VenueCardProps) {
   const { id, name, location, media, price } = venue;
-  const image = media?.[0]?.url;
-  const imageAlt = media?.[0]?.alt ?? name;
+const image = media?.[0]?.url;
+const imageAlt = media?.[0]?.alt || "";
 
   return (
     <article className="overflow-hidden h-full rounded-sm shadow-sm">

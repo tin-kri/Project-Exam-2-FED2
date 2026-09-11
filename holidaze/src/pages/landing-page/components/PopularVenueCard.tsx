@@ -7,8 +7,8 @@ interface PopularVenueProps {
 
 export default function PopularVenueCard({ popularVenue }: PopularVenueProps) {
   const { id, name, location, media } = popularVenue;
-  const image = media?.[0]?.url;
-  const imageAlt = media?.[0]?.alt ?? name;
+ const image = media?.[0]?.url;
+const imageAlt = media?.[0]?.alt || "";
   return (
     <Link
       to={`/venues/${id}`}
