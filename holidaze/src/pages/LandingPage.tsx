@@ -9,7 +9,7 @@ export default function LandingPage() {
         <img
           src="https://images.unsplash.com/photo-1532915905335-03659fc83ff9?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt="Holidaze background cover image of a white villa with blue skies"
-          className="h-full w-full object-center object-cover"
+          className="h-full w-full object-center object-none md:object-cover "
         />
         <div className="absolute inset-0 flex items-center justify-center px-4 lg:px-24">
           <div className="w-full max-w-3xl">
