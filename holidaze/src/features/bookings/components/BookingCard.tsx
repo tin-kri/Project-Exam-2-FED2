@@ -21,12 +21,13 @@ export default function BookingCard({ booking }: BookingCardProps) {
         />
         <div className="flex flex-col gap-1">
           <h3 className="font-semibold text-navy-800">
-            {venue?.name ?? "Venue no longer available"}
-          </h3>
-          <p className="text-grey-900 text-sm">
             {formatBookingDate(booking.dateFrom)} -{" "}
             {formatBookingDate(booking.dateTo)}
+          </h3>
+          <p className="text-sm font-bold text-navy-800 ">
+            {venue?.name ?? "Venue no longer available"}
           </p>
+
           <p className="text-grey-900 text-sm">{booking.guests} guests</p>
         </div>
       </article>

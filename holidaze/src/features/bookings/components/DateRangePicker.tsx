@@ -24,6 +24,7 @@ export default function DateRangePicker({
       onSelect={onSelect}
       numberOfMonths={1}
       disabled={[{ before: new Date() }, ...disabledDates]}
+      excludeDisabled
       className="[--cell-size:--spacing(10)] md:[--cell-size:--spacing(11)]  rounded-md shadow-sm"
     />
   );
