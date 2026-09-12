@@ -18,7 +18,7 @@ export default function DeleteModule({ venue, onClose }: DeleteModuleProps) {
     if (success) {
       toast.success("Successfully deleted venue.");
       onClose();
-      navigate("/");
+      navigate("/profile");
     }
   }
 
