@@ -185,12 +185,12 @@ Hosted on Netlify, deploying from `main`.
 
 ## Required Links
 
-- **Gantt chart:** [link]
-- **Design prototype:** [link]
-- **Style guide:** [link]
-- **Kanban board:** [link]
+- **Gantt chart:** [https://github.com/users/tin-kri/projects/4/views/4](https://github.com/users/tin-kri/projects/4/views/4)
+- **Kanban board:** [https://github.com/users/tin-kri/projects/4/views/1](https://github.com/users/tin-kri/projects/4/views/1)]
 - **Repository:** [https://github.com/tin-kri/Project-Exam-2-FED2](https://github.com/tin-kri/Project-Exam-2-FED2)
 - **Hosted demo:** [https://holidaze-venue-finder.netlify.app](https://holidaze-venue-finder.netlify.app)
+- **Design prototype:** [link]
+- **Style guide:** [link]
 
 ---
 
