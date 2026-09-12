@@ -50,7 +50,7 @@ The client specified the following requirements:
 - Vite
 - React Router
 - Tailwind
-- Shadcn/ui, React Day Picker, Embla 
+- Shadcn/ui, React Day Picker, Embla, Lucid 
 - Zustand for auth state, persist to localStorage
 - Zod for schema validation
 - Vitest
