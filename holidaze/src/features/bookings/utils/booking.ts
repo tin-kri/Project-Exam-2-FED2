@@ -1,3 +1,5 @@
+import type { BookingVenue } from "../types/booking.types";
+
 export function calculateNights(dateFrom: string, dateTo: string): number {
   const from = new Date(dateFrom).getTime();
   const to = new Date(dateTo).getTime();
@@ -19,4 +21,24 @@ export function formatBookingDate(iso: string): string {
     month: "long",
     year: "numeric",
   });
+}
+
+export function separateBookings(
+  bookings: BookingVenue[],
+): { upcoming: BookingVenue[]; previous: BookingVenue[] } {
+  const now = Date.now();
+
+  const upcoming = bookings
+    .filter((b) => new Date(b.dateTo).getTime() >= now)
+    .sort(
+      (a, b) => new Date(a.dateFrom).getTime() - new Date(b.dateFrom).getTime(),
+    );
+
+  const previous = bookings
+    .filter((b) => new Date(b.dateTo).getTime() < now)
+    .sort(
+      (a, b) => new Date(b.dateTo).getTime() - new Date(a.dateTo).getTime(),
+    );
+
+  return { upcoming, previous };
 }
